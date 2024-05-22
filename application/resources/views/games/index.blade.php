@@ -32,9 +32,9 @@
     <!-- Side Content -->
     <div class="relative text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
         <div class="relative rounded-full bg-zinc-500 md:h-80 md:w-200px top-2">
-            @foreach ($post as $posts)
-            <img src="{{ asset($posts->logo) }}" class="relative object-cover w-full h-full rounded-full" alt="Logo">
-            @endforeach
+
+            <img src="" class="relative object-cover w-full h-full rounded-full" alt="Logo">
+
 
 
 
