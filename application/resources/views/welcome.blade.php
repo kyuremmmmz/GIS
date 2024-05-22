@@ -12,13 +12,13 @@
 </head>
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
-        <h1 class="relative xl:mx-auto xl:text-center xl:right-11">Game Information Management System</h1>
+        <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
     </div>
 
     <main class="relative h-screen md:h-[30%] xl:h-[30%] lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 amo text-black left-[400px] top-96  float-end">
-        <h1 class="absolute text-[50px] right-[20px] bottom-[200px]  animate-pulse">Announcements:</h1>
+        <h1 class="absolute text-[50px] right-[20px] bottom-[200px] 2xl:left-[30px] xl:left-[-300px]">Announcements:</h1>
         <div class="relative">
-            <div class="absolute grid grid-cols-3 justify-center grid-rows-3 gap-4 h-[1050px] text-center w-96 bg-slate-500">
+            <div class="absolute grid self-center left-[-300px] grid-cols-3 justify-center grid-rows-3 gap-4 h-[1050px] text-center w-[1400px] bg-slate-500">
                 <div class="h-20 bg-gray-950">hi</div>
                 <div class="h-20 bg-gray-950">hello</div>
                 <div class="h-20 bg-gray-950">fs</div>
@@ -31,8 +31,9 @@
 
     <!-- Side Content -->
     <div class="relative text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
+        {{ print_r(URL('')) }}
         <div class="relative rounded-full bg-zinc-500 md:h-80 md:w-200px top-2">
-            <img src="/application/images/Logo.png.jpg" class="absolute object-cover w-full h-full rounded-full " alt="Logo" srcset="">
+            <img src="{{ URL('application/images/Logo.jpg') }}" class="absolute object-cover w-full h-full rounded-full " alt="Logo" srcset="">
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">

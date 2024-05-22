@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->id()->autoIncrement()->primary();
+            $table->id('id')->autoIncrement()->primary();
+            $table->string('schedule');
+            $table->date('gamesched')->nullable()->default;
+            $table->integer('');
             $table->timestamps();
         });
     }
