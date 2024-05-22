@@ -11,7 +11,8 @@ class GameAdminController extends Controller
 {
     public function index()
     {
-        return view('games.index');
+        $games = gameInfoModel::all();
+        return view('games.index', ['games' => $games]);
     }
 
     public function create(){
@@ -30,6 +31,11 @@ class GameAdminController extends Controller
 
         $postData = gameInfoModel::create($validator);
 
+        return redirect(route('game.index'));
+    }
+
+    public function edit(gameInfoModel $id){
+        dd($id);
 
 
     }

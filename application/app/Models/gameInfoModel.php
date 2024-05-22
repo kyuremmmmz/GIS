@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class gameInfoModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'game_information_database';
     protected $fillable =  [
         'games',
         'player_standing',

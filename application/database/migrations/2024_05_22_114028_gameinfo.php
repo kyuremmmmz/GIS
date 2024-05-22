@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('players');
             $table->integer('team_standing');
             $table->date('date_played');
+            $table->timestamps();
         });
     }
 
