@@ -31,9 +31,8 @@
 
     <!-- Side Content -->
     <div class="relative text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
-        {{ print_r(URL('')) }}
         <div class="relative rounded-full bg-zinc-500 md:h-80 md:w-200px top-2">
-            <img src="{{ URL('application/images/Logo.jpg') }}" class="absolute object-cover w-full h-full rounded-full " alt="Logo" srcset="">
+            <img src="{{ asset('xampp/htdocs/Client/application/images/Logo.jpg') }}" class="relative object-cover w-full h-full rounded-full" alt="Logo">
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">

@@ -1,6 +1,8 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  plugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
-  ],
-}
+    content: ["./src/**/*.{html,js,php,laravel}"],
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  }

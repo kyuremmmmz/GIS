@@ -11,20 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
-            $table->id('id')->autoIncrement()->primary();
-            $table->string('schedule');
-            $table->date('gamesched')->nullable();
-            $table->integer('scores');
-            $table->timestamps();
+        Schema::create('logo_table', function (Blueprint $table){
+            $table->integer('user_id')->primary()->autoIncrement();
+            $table->string('logo');
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('logo_table');
     }
 };
+
