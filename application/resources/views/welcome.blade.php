@@ -12,13 +12,20 @@
 </head>
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
-        <h1 class="relative mx-auto text-center right-11">Game Information Management System</h1>
+        <h1 class="relative xl:mx-auto xl:text-center xl:right-11">Game Information Management System</h1>
     </div>
 
-    <main class="relative md:h-[30%] xl:h-[30%] lg:h-80 sm:h-96 2xl:h-[100%] bg-white text-black left-[400px] top-96  float-end">
-        <h1>Announcements</h1>
-        <div class="grid grid-cols-2 row-auto gap-4">
-
+    <main class="relative h-screen md:h-[30%] xl:h-[30%] lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 amo text-black left-[400px] top-96  float-end">
+        <h1 class="absolute text-[50px] right-[20px] bottom-[200px]  animate-pulse">Announcements:</h1>
+        <div class="relative">
+            <div class="absolute grid grid-cols-3 justify-center grid-rows-3 gap-4 h-[1050px] text-center w-96 bg-slate-500">
+                <div class="h-20 bg-gray-950">hi</div>
+                <div class="h-20 bg-gray-950">hello</div>
+                <div class="h-20 bg-gray-950">fs</div>
+                <div class="h-20 bg-gray-950">hi</div>
+                <div class="h-20 bg-gray-950">hello</div>
+                <div class="h-20 bg-gray-950">fs</div>
+            </div>
         </div>
     </main>
 
