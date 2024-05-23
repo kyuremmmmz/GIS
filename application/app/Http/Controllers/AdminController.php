@@ -7,6 +7,6 @@ class AdminController extends Controller
 {
     public function admin()
     {
-        return view('welcome');
+        return view('Welcome');
     }
 }

@@ -11,7 +11,13 @@ class GameAdminController extends Controller
 {
     public function index()
     {
-        $games = gameInfoModel::all();
+        $games = gameInfoModel::all()->count();
+        return view('games.index', ['games' => $games]);
+    }
+
+    public function usercount()
+    {
+        $games = gameInfoModel::all()->count();
         return view('games.index', ['games' => $games]);
     }
 
@@ -35,14 +41,27 @@ class GameAdminController extends Controller
     }
 
     public function edit(gameInfoModel $id){
-        dd($id);
+        return view('games.edit',['game'=>$id]);
 
 
     }
 
-    public function games(Request $request)
+    public function games()
     {
         $games  = gameInfoModel::all();
         return view('games.games', ['games' => $games]);
+    }
+
+    public function update(gameInfoModel $id, Request $request)
+    {
+        $validator = $request->validate([
+            'games'=>'required',
+            'player_standing'=>'required',
+            'players'=>'required',
+            'team_standing'=>'required',
+            'date_played'=>'required',
+    ]);
+         $id->update($validator);
+         return redirect(route('game1.index', ['id'=>$id]))->with('success', 'Success!');
     }
 }

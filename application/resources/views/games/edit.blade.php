@@ -15,20 +15,20 @@
                 <h1>Create Game Record</h1>
             </div>
             <div class="card-body">
-                <form action="{{route('game.store')}}" method="post">
+                <form action="{{route('game.update', ['id'=>$game])}}" method="put">
                     @csrf
-                    @method('post')
+                    @method('put')
                     <div class="mb-3">
                         <label for="games" class="form-label">Games</label>
-                        <input type="text" class="form-control" id="games" name="games" required>
+                        <input type="text" class="form-control" id="games" name="games" value="{{$game->games}}" required>
                     </div>
                     <div class="mb-3">
                         <label for="player_standing" class="form-label">Player Standing</label>
-                        <input type="text" class="form-control" id="player_standing" name="player_standing" required>
+                        <input type="text" class="form-control" id="player_standing" name="player_standing" value="{{$game->games}}" required>
                     </div>
                     <div class="mb-3">
                         <label for="players" class="form-label">Players</label>
-                        <input type="text" class="form-control" id="players" name="players" required>
+                        <input type="text" class="form-control" id="players" name="players" value="{{$game->games}}" required>
                     </div>
                     <div class="mb-3">
                         <label for="team_standing" class="form-label">Team Standing</label>
@@ -36,9 +36,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="date_played" class="form-label">Date Played</label>
-                        <input type="date" class="form-control" id="date_played" name="date_played" required>
+                        <input type="date" class="form-control" id="date_played" name="date_played"  value="{{$game->date_played}}" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
