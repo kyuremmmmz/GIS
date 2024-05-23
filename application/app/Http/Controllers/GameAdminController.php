@@ -39,4 +39,10 @@ class GameAdminController extends Controller
 
 
     }
+
+    public function games(Request $request)
+    {
+        $games  = gameInfoModel::all();
+        return view('games.games', ['games' => $games]);
+    }
 }

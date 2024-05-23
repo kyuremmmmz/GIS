@@ -9,28 +9,45 @@
     <!-- Fonts and Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
     </div>
-    @foreach ($games as $game)
+
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
-        <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Announcements:</h1>
+        <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Games:</h1>
         <div class="relative">
-            <div class="absolute grid self-center left-[-300px] grid-cols-3 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
-                <div class="h-20 mb-16 bg-slate-700">
-                    <h1 class=" text-[30px]">Users</h1>
+            <div class="absolute grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
+                <div class="h-auto mb-16 overflow-hidden bg-slate-700">
+
+                    <table class="table table-dark table-hover">
+                        <thead>
+                          <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($games as $game)
+                          <tr>
+
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+
                 </div>
-                <div class="h-20 mb-16 bg-slate-700">Date Played</div>
-                <div class="h-20 mb-16 bg-slate-700">fs</div>
-                <div class="h-20 mb-16 bg-slate-700">hi</div>
-                <div class="h-20 mb-16 bg-slate-700"><h1>Player Ranks: {{$game->team_standing}}</h1></div>
-                <div class="h-20 mb-16 bg-slate-700"><a href="{{route('game.edit', ['id'=>$game])}}">Edit</a></div>
             </div>
         </div>
     </main>
-    @endforeach
+
 
 
     <!-- Side Content -->
@@ -49,13 +66,13 @@
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">
-            <div class="relative flex items-center rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 hover:bg-sky-700 w-50 focus:bg-sky-700">
+            <div class="relative flex items-center rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-tachometer-alt left-20"></i>
-                <a href="#" class="relative left-24">Dashboard</a>
+                <a href="{{route('game.index')}}" class="relative left-24">Dashboard</a>
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-basketball-ball left-20"></i>
-                <a href="{{route('game1.index')}}" class="relative left-24">Games</a>
+                <a href="" class="relative left-24">Games</a>
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-users left-20"></i>
