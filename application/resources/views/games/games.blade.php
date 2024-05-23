@@ -23,12 +23,14 @@
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <div class="mb-16 overflow-hidden bg-slate-700">
 
-                    <table class="absolute table table-dark table-hover top-[20px]">
+                    <table class="absolute table table-dark table-hover top-[20px]  overflow-auto">
                         <thead>
                           <tr>
-                            <th>Game</th>
-                            <th>Date</th>
-                            <th>Email</th>
+                            <th>Games</th>
+                            <th>Date Played</th>
+                            <th>Players</th>
+                            <th>Team Standing</th>
+                            <th>Player Standing</th>
                             <th>Edit</th>
                             <th>Delete</th>
                           </tr>
@@ -37,9 +39,11 @@
                             @foreach ($games as $game)
                           <tr>
 
-                            <td></td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
+                            <td>{{$game->games}}</td>
+                            <td>{{$game->date_played}}</td>
+                            <td>{{$game->players}}</td>
+                            <td>{{$game->team_standing}}</td>
+                            <td>{{$game->player_standing}}</td>
                             <td><a href="{{route('game.edit',['id'=>$game])}}" class=" btn btn-primary">Edit</a></td>
                             <td></td>
                           </tr>
