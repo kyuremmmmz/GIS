@@ -15,7 +15,7 @@
                 <h1>Create Game Record</h1>
             </div>
             <div class="card-body">
-                <form action="{{route('game.update', ['id'=>$game])}}" method="put">
+                <form action="{{route('game.update',['id'=>$game])}}" method="post">
                     @csrf
                     @method('put')
                     <div class="mb-3">
@@ -24,15 +24,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="player_standing" class="form-label">Player Standing</label>
-                        <input type="text" class="form-control" id="player_standing" name="player_standing" value="{{$game->games}}" required>
+                        <input type="text" class="form-control" id="player_standing" name="player_standing" value="{{$game->player_standing}}" required>
                     </div>
                     <div class="mb-3">
                         <label for="players" class="form-label">Players</label>
-                        <input type="text" class="form-control" id="players" name="players" value="{{$game->games}}" required>
+                        <input type="text" class="form-control" id="players" name="players" value="{{$game->players}}" required>
                     </div>
                     <div class="mb-3">
                         <label for="team_standing" class="form-label">Team Standing</label>
-                        <input type="text" class="form-control" id="team_standing" name="team_standing" required>
+                        <input type="text" class="form-control" id="team_standing" name="team_standing" value="{{$game->team_standing}}" required>
                     </div>
                     <div class="mb-3">
                         <label for="date_played" class="form-label">Date Played</label>

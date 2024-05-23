@@ -20,10 +20,10 @@
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
         <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Games:</h1>
         <div class="relative">
-            <div class="absolute grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
-                <div class="h-auto mb-16 overflow-hidden bg-slate-700">
+            <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
+                <div class="mb-16 overflow-hidden bg-slate-700">
 
-                    <table class="table table-dark table-hover">
+                    <table class="absolute table table-dark table-hover top-[20px]">
                         <thead>
                           <tr>
                             <th>Game</th>
