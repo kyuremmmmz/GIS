@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('game_information_database', function(Blueprint $table)
         {
             $table-> id()->primary()->autoIncrement();
-            $table->string('games');
-            $table->integer('player_standing');
-            $table->integer('players');
-            $table->integer('team_standing');
+            $table->string('teamname');
+            $table->integer('game1');
+            $table->integer('game2');
+            $table->integer('game3');
+            $table->integer('wins');
+            $table->integer('losses');
             $table->date('date_played');
             $table->timestamps();
         });
@@ -28,6 +30,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('game_information_database');
+        Schema::table('game_information_database', function (Blueprint $table) {
+            $table->dropColumn(['games']);
+        });
     }
 };
