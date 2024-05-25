@@ -26,8 +26,6 @@
                     <table class="absolute table table-dark table-hover top-[20px]  overflow-auto">
                         <thead>
                           <tr>
-
-                            <th>Standing</th>
                             <th>Games</th>
                             <th>Date Played</th>
                             <th>Players</th>
@@ -38,17 +36,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @php
-                             $index = 1;
-                            @endphp
                             @foreach ($games as $game)
-
-
-
                           <tr>
-
-                            <td>{{$index++}}</td>
-                            <td>{{$game->games}}</td>
+                            <td>{{$game->id}}</td>
                             <td>{{$game->date_played}}</td>
                             <td>{{$game->players}}</td>
                             <td>{{$game->team_standing}}</td>
