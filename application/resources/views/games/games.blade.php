@@ -31,6 +31,10 @@
                             <th>Team Name</th>
                             <th>Wins</th>
                             <th>Losses</th>
+                            <th>Game 1</th>
+                            <th>Game 2</th>
+                            <th>Game 3</th>
+                            <th>Total Scores</th>
                             <th>Total Wins</th>
                             <th>Total Losses</th>
                             <th>fpg</th>
@@ -50,6 +54,10 @@
                             <td>{{$game->teamname}}</td>
                             <td>{{$game->wins}}</td>
                             <td>{{$game->losses}}</td>
+                            <td>{{$game->game1}}</td>
+                            <td>{{$game->game2}}</td>
+                            <td>{{$game->game3}}</td>
+                            <td>{{$game->final_score}}</td>
                             <td>{{$game->total_wins}}</td>
                             <td>{{$game->total_losses}}</td>
                             <td>{{$game->fpg}}%</td>
@@ -61,7 +69,6 @@
                                     @method('delete')
                                     <button href="" class="btn btn-danger">Delete</button>
                                 </form>
-
                             </td>
                           </tr>
                           @endforeach
