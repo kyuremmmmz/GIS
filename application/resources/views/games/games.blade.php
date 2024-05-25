@@ -26,34 +26,43 @@
                     <table class="absolute table table-dark table-hover top-[20px]  overflow-auto">
                         <thead>
                           <tr>
-                            <th>Games</th>
-                            <th>Date Played</th>
-                            <th>Players</th>
-                            <th>Team Standing</th>
-                            <th>Player Standing</th>
+                            <th>Standing</th>
+                            <th>ID</th>
+                            <th>Team Name</th>
+                            <th>Wins</th>
+                            <th>Losses</th>
+                            <th>Total Wins</th>
+                            <th>Total Losses</th>
+                            <th>fpg</th>
                             <th>Edit</th>
                             <th>Delete</th>
                           </tr>
                         </thead>
                         <tbody>
+                            @php
+                             $index = 1;
+                            @endphp
                             @foreach ($games as $game)
                           <tr>
+                            <td>Rank {{$index++}}</td>
                             <td>{{$game->id}}</td>
-                            <td>{{$game->date_played}}</td>
-                            <td>{{$game->players}}</td>
-                            <td>{{$game->team_standing}}</td>
-                            <td>{{$game->player_standing}}</td>
+                            <td>{{$game->teamname}}</td>
+                            <td>{{$game->wins}}</td>
+                            <td>{{$game->losses}}</td>
+                            <td>{{$game->total_wins}}</td>
+                            <td>{{$game->total_losses}}</td>
+                            <td>{{$game->fpg}}%</td>
+
                             <td><a href="{{route('game.edit',['id'=>$game])}}" class=" btn btn-primary">Edit</a></td>
                             <td></td>
                           </tr>
                           @endforeach
                         </tbody>
                       </table>
-
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
 
 

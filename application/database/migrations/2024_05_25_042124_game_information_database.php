@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('game_information_database', function(Blueprint $table)
         {
             $table-> id()->primary()->autoIncrement();
-            $table->string('teamname');
+            $table->string('teamname')->unique();
             $table->integer('game1');
             $table->integer('game2');
             $table->integer('game3');
