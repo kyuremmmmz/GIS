@@ -38,7 +38,6 @@
                         <tbody>
                             @foreach ($games as $game)
                           <tr>
-
                             <td>{{$game->games}}</td>
                             <td>{{$game->date_played}}</td>
                             <td>{{$game->players}}</td>

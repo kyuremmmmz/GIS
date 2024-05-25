@@ -47,7 +47,7 @@ class GameAdminController extends Controller
         return view('games.games', ['games' => $games]);
     }
 
-    public function update(gameInfoModel $id,Request $request)
+    public function update(gameInfoModel $id, Request $request)
     {
         $data = $request->validate([
             'games'=>'required',
