@@ -34,6 +34,7 @@
                             <th>Total Wins</th>
                             <th>Total Losses</th>
                             <th>fpg</th>
+                            <th>Date Played</th>
                             <th>Edit</th>
                             <th>Delete</th>
                           </tr>
@@ -52,9 +53,16 @@
                             <td>{{$game->total_wins}}</td>
                             <td>{{$game->total_losses}}</td>
                             <td>{{$game->fpg}}%</td>
-
+                            <td>{{$game->date_played}}</td>
                             <td><a href="{{route('game.edit',['id'=>$game])}}" class=" btn btn-primary">Edit</a></td>
-                            <td></td>
+                            <td>
+                                <form action="{{route('game.delete', ['id'=>$game])}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button href="" class="btn btn-danger">Delete</button>
+                                </form>
+
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>

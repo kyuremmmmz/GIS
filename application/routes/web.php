@@ -15,3 +15,4 @@ Route::post('/games/store', [GameAdminController::class, 'store'])->name('game.s
 Route::get('/games/{id}/edit', [GameAdminController::class, 'edit'])->name('game.edit');
 Route::get('/games/games', [GameAdminController::class, 'games'])->name('game1.index');
 Route::put('/games/{id}/update', [GameAdminController::class, 'update'])->name('game.update');
+Route::delete('/games/{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');

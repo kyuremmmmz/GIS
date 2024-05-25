@@ -78,4 +78,10 @@ class GameAdminController extends Controller
 
         return redirect(route('game1.index', ['id' => $id]))->with('success', 'Success update!');
     }
+
+    public function delete(gameInfoModel $id)
+    {
+        $id->delete();
+        return redirect(route('game1.index'))->with('success', 'Success delete!');
+    }
 }
