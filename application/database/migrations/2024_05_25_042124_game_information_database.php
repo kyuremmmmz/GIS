@@ -30,8 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('game_information_database', function (Blueprint $table) {
-            $table->dropColumn(['games']);
-        });
+        Schema::dropIfExists('game_information_database');
     }
 };

@@ -21,13 +21,18 @@ class GameAdminController extends Controller
         return view('games.create');
     }
 
+
+
     public function store(Request $request){
         $validator = $request->validate([
-                    'games'=>'required',
-                    'player_standing'=>'required',
-                    'players'=>'required',
-                    'team_standing'=>'required',
-                    'date_played'=>'required',
+            'teamname'=> 'required',
+            'game1'=> 'required',
+            'game2' =>  'required',
+            'game3' => 'required',
+            'wins'  => 'required',
+            'losses' => 'required',
+            'date_played' => 'required',
+
         ]);
 
         $postData = gameInfoModel::create($validator);
@@ -50,11 +55,13 @@ class GameAdminController extends Controller
     public function update(gameInfoModel $id, Request $request)
     {
         $data = $request->validate([
-            'games'=>'required',
-            'player_standing'=>'required',
-            'players'=>'required',
-            'team_standing'=>'required',
-            'date_played'=>'required',
+            'teamname'=> 'required',
+            'game1'=> 'required',
+            'game2' =>  'required',
+            'game3' => 'required',
+            'wins'  => 'required',
+            'losses' => 'required',
+            'date_played' => 'required',
         ]);
         $id->update($data);
 

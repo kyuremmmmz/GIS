@@ -11,10 +11,15 @@ class gameInfoModel extends Model
 
     protected $table = 'game_information_database';
     protected $fillable =  [
-        'games',
-        'player_standing',
-        'players',
-        'team_standing',
+        'teamname',
+        'game1',
+        'game2',
+        'game3',
+        'wins',
+        'losses',
         'date_played',
+        'updated_at',
+        'created_at',
+
     ];
 }

@@ -38,9 +38,15 @@
                           </tr>
                         </thead>
                         <tbody>
+                            @php
+                             $index = 1;
+                            @endphp
                             @foreach ($games as $game)
-                            $index = 0;
+
+
+
                           <tr>
+
                             <td>{{$index++}}</td>
                             <td>{{$game->games}}</td>
                             <td>{{$game->date_played}}</td>
