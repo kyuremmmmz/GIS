@@ -21,9 +21,9 @@
         <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Games:</h1>
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
+                <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
                 <div class="mb-16 overflow-hidden bg-slate-700">
-
-                    <table class="absolute table table-dark table-hover top-[20px]  overflow-auto">
+                    <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
                         <thead>
                           <tr>
                             <th>Standing</th>
@@ -67,13 +67,60 @@
                                 <form action="{{route('game.delete', ['id'=>$game])}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button href="" class="btn btn-danger">Delete</button>
+                                    <button class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                           </tr>
                           @endforeach
                         </tbody>
                       </table>
+                    </div>
+                    <div class="modal fade" id="create">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Create Records</h3>
+                                    <button type="button" class="btn-close" data-bs-target="#create" data-bs-toggle="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body">
+                                        <form action="{{ route('game.store') }}" method="post">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="teamname" class="form-label">Team Name</label>
+                                                <input type="text" class="form-control" id="teamname" name="teamname" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="game1" class="form-label">Game 1</label>
+                                                <input type="number" class="form-control" id="game1" name="game1" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="game2" class="form-label">Game 2</label>
+                                                <input type="number" class="form-control" id="game2" name="game2" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="game3" class="form-label">Game 3</label>
+                                                <input type="number" class="form-control" id="game3" name="game3" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="wins" class="form-label">Wins</label>
+                                                <input type="number" class="form-control" id="wins" name="wins" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="losses" class="">Losses</label>
+                                                <input type="number" class="form-control" id="losses" name="losses" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="date_played" class="form-label">Date Played</label>
+                                                <input type="date" class="form-control" id="date_played" name="date_played" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,7 +139,7 @@
                 <i class="relative fas fa-tachometer-alt left-20"></i>
                 <a href="{{route('game.index')}}" class="relative left-24">Dashboard</a>
             </div>
-            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active bg-sky-700">
                 <i class="relative fas fa-basketball-ball left-20"></i>
                 <a href="{{route('game1.index')}}" class="relative left-24">Games</a>
             </div>
