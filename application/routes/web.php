@@ -11,4 +11,7 @@ Route::get('/games/{id}/edit', [GameAdminController::class, 'edit'])->name('game
 Route::get('/games/games', [GameAdminController::class, 'games'])->name('game1.index');
 Route::put('/games/{id}/update', [GameAdminController::class, 'update'])->name('game.update');
 Route::delete('/games/{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
-Route::get('/admin/admin', [AdminLoginController::class, 'createUser'])->name('admin.createUser');
+Route::get('/admin/admin', [AdminLoginController::class, 'see'])->name('admin.see');
+Route::post('/admin/admin', [AdminLoginController::class, 'createUser'])->name('admin.createUser');
+
+

@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -18,10 +18,16 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.createUser') }}">
                         @csrf
+                        @method('post')
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="adminID" class="form-label">Admin ID</label>
+                            <input id="adminID" type="text" class="form-control" name="adminID" value="{{ old('adminID') }}" required>
                         </div>
 
                         <div class="mb-3">
@@ -51,5 +57,13 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+    window.history.forward();
+    function noBack()
+    {
+        window.history.forward();
+    }
+</script>
+
 </body>
 </html>

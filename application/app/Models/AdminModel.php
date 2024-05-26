@@ -12,6 +12,7 @@ class AdminModel extends Model
     protected $table = "admin_models";
 
     protected $fillable = [
+        'name',
         'adminID',
         'password',
 
