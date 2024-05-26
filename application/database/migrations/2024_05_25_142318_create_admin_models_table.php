@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('admin_models', function (Blueprint $table) {
             $table->id()->autoIncrement();
+            $table->string('name');
             $table->string('adminID')->unique();
             $table->string('password');
             $table->string('confirmPassword');
