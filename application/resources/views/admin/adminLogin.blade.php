@@ -42,9 +42,9 @@
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </div>
                         <div class="d-grid">
-                            <p class="mt-1">Already a member? <a href="" class=" alert-link no-underline  hover:text-slate-500">Sign in</a></p>
+                            <p class="mt-1">Already a member? <a href="{{route('admin.see')}}" class=" alert-link  hover:text-slate-500">Sign up</a></p>
                         </div>
-                        <p class=" mt-1">------------------ <a href="" class=" underline">Forgot password?</a>  ------------------</p>
+                        <p class=" mt-1">------------------ <a href="{{route('forgotpassword')}}" class=" underline">Forgot password?</a>  ------------------</p>
                     </form>
                 </div>
             </div>
