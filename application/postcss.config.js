@@ -1,8 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-    content: ["./src/**/*.{html,js,php,laravel}"],
-    theme: {
-      extend: {},
+export default {
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
     },
-    plugins: [],
-  }
+};

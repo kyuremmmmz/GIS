@@ -28,16 +28,12 @@ class AdminLoginController extends Controller
         $user->password = bcrypt($datavalidation['password']);
         $user->remember_token = Str::random(60);
         $user->save();
+        return view('games.index');
         if (Auth::check()) {
             return redirect()->route('game.index')->with('user', $user);
         } else {
             return view('admin.admin');
         }
-
-
-
-
-
     }
 
 
