@@ -49,7 +49,7 @@
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-users left-20"></i>
-                <a href="#" class="relative left-24">Users</a>
+                <a href="{{route('user')}}" class="relative left-24">Users</a>
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-trophy left-20"></i>

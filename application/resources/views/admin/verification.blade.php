@@ -32,16 +32,6 @@
         </div>
     </main>
 
-    <footer class="text-muted" style="background-color: #f5f5f5; display: block; position: absolute; bottom: 0; width: 100%;">
-        <div class="container" style="padding: 20px">
-            <p class="float-right">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-            </p>
-            <p class="m-0">© Jam-Es.com 2020. Available on GitHub <a href="https://github.com/James231/Bootstrap-Account-System-Pages">here</a>!</p>
-        </div>
-    </footer>
-
     <script type="text/javascript">
         function ContinuePressed() {
             DisplayError("Not Implemented");

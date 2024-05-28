@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-
 class AdminLoginController extends Controller
 {
     public function createUser(User $user ,Request $request)
@@ -85,5 +85,18 @@ class AdminLoginController extends Controller
         return $status === Password::RESET_LINK_SENT
         ? back()->with('status', __($status))
         : back()->withErrors(['email' => __($status)]);
+    }
+
+    public function users(){
+        $selectUsers = User::select('*', DB::raw('COUNT(adminID) OVER (PARTITION by name) AS admins'))->get();
+
+        return view('admin.users', compact('selectUsers'));
+    }
+
+    public function deleteUsers(User $adminID)
+    {
+        $adminID->delete();
+
+        return redirect(route('game1.index'))->with('adminID', 'Deleted Successfully');
     }
 }
