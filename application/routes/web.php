@@ -2,18 +2,21 @@
 
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\GameAdminController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/games/games', function () {
-    return view('games.games');
-})->middleware(['auth', 'verified'])->name('game1.index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/games/index', [GameAdminController::class,  'index'])->name('game.index');
     Route::get('/games/create', [GameAdminController::class, 'create'])->name('game.create');
     Route::post('/games/store', [GameAdminController::class, 'store'])->name('game.store');
@@ -31,20 +34,17 @@ Route::get('/games/games', function () {
     Route::get('admin/users', [AdminLoginController::class, 'users'])->name('user');
     Route::delete('/admin/{adminID}/delete', [AdminLoginController::class, 'deleteUsers'])->name('delete.User');
 
+});
 
-// This Route function is for email verification sendings
-Route::get('/admin/verification', function()
-{
-    return view('admin.verification');
-})->middleware('auth')->name('verification.sent');
+require __DIR__.'/auth.php';
 
 
-// TODO: Make a function that i can request sendings to my gmail account
 
-Route::get('admin/verification/{id}/{hash}', function(EmailVerificationRequest $request){
-    $request->fulfill();
 
-    return redirect(route('verification.sent'));
-})->middleware(['auth', 'signed'])->name('email.requestSend');
+Route::get('/games/games', function () {
+    return view('games.games');
+})->middleware(['auth', 'verified'])->name('game1.index');
 
-Route::post('/admin/');
+
+
+
