@@ -5,18 +5,19 @@ use App\Models\gameInfoModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class GameAdminController extends Controller
 {
     public function index()
     {
         $games = gameInfoModel::all();
-        return view('games.index', ['games' => $games]);
+        return view('index', ['games' => $games]);
     }
 
 
     public function create(){
 
-        return view('games.create');
+        return view('create');
     }
 
 
@@ -39,7 +40,7 @@ class GameAdminController extends Controller
     }
 
     public function edit(gameInfoModel $id){
-        return view('games.edit',['game'=>$id]);
+        return view('edit',['game'=>$id]);
 
 
     }
@@ -57,7 +58,7 @@ class GameAdminController extends Controller
                             ->orderBy('final_score', 'desc')
                             ->orderBy('fpg',  'desc')
                             ->get();
-                            return view('games.games', ['games' => $games]);
+                            return view('games', ['games' => $games]);
     }
 
     public function update(gameInfoModel $id, Request $request)

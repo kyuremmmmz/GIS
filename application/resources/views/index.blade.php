@@ -13,6 +13,7 @@
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
+
     </div>
 
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
@@ -26,7 +27,7 @@
                 <div class="h-20 mb-16 bg-slate-700">Date Played</div>
                 <div class="h-20 mb-16 bg-slate-700">fs</div>
                 <div class="h-20 mb-16 bg-slate-700">hi</div>
-                <div class="h-20 mb-16 bg-slate-700"><h1>Player Ranks: </h1></div>
+                <div class="h-20 mb-16 bg-slate-700"><h1>{{Auth::user()->name}} </h1></div>
             </div>
         </div>
     </main>
@@ -57,7 +58,7 @@
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-cog left-20"></i>
-                <a href="#" class="relative left-24">Settings</a>
+                <a href="{{route('profile.edit')}}" class="relative left-24">Settings</a>
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-sign-out left-20"></i>

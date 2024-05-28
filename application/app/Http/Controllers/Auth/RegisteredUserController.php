@@ -31,12 +31,16 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'adminID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^03[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'adminID.regex' => 'The adminID must start with 03.',
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'adminID' => $request->adminID,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

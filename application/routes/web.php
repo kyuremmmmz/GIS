@@ -17,13 +17,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/games/index', [GameAdminController::class,  'index'])->name('game.index');
-    Route::get('/games/create', [GameAdminController::class, 'create'])->name('game.create');
-    Route::post('/games/store', [GameAdminController::class, 'store'])->name('game.store');
-    Route::get('/games/{id}/edit', [GameAdminController::class, 'edit'])->name('game.edit');
-    Route::get('/games/games', [GameAdminController::class, 'games'])->name('game1.index');
-    Route::put('/games/{id}/update', [GameAdminController::class, 'update'])->name('game.update');
-    Route::delete('/games/{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
+    Route::get('index', [GameAdminController::class,  'index'])->name('game.index');
+    Route::get('create', [GameAdminController::class, 'create'])->name('game.create');
+    Route::post('store', [GameAdminController::class, 'store'])->name('game.store');
+    Route::get('{id}/edit', [GameAdminController::class, 'edit'])->name('game.edit');
+    Route::get('games', [GameAdminController::class, 'games'])->name('game1.index');
+    Route::put('{id}/update', [GameAdminController::class, 'update'])->name('game.update');
+    Route::delete('{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
     Route::get('/admin/admin', [AdminLoginController::class, 'see'])->name('admin.see');
     Route::post('/admin/admin', [AdminLoginController::class, 'createUser'])->name('admin.createUser');
     Route::get('/admin/adminLogin',  [AdminLoginController::class, 'seeLogin'])->name('admin.seeLogin');
@@ -41,9 +41,6 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/games/games', function () {
-    return view('games.games');
-})->middleware(['auth', 'verified'])->name('game1.index');
 
 
 
