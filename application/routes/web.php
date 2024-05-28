@@ -2,26 +2,10 @@
 
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\GameAdminController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/games/games', function () {
-    return view('games.games');
-})->middleware(['auth', 'verified'])->name('game1.index');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/games/index', [GameAdminController::class,  'index'])->name('game.index');
-
-    Route::get('/games/create', [GameAdminController::class, 'create'])->name('game.create');
-    Route::post('/games/store', [GameAdminController::class, 'store'])->name('game.store');
-    Route::get('/games/{id}/edit', [GameAdminController::class, 'edit'])->name('game.edit');
     Route::get('/games/games', [GameAdminController::class, 'games'])->name('game1.index');
     Route::put('/games/{id}/update', [GameAdminController::class, 'update'])->name('game.update');
     Route::delete('/games/{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
@@ -34,6 +18,6 @@ Route::middleware('auth')->group(function () {
     Route::post('admin/adminForgotpass', [AdminLoginController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
 
 });
-require __DIR__.'/auth.php';
+
 
 

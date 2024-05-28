@@ -13,12 +13,13 @@
         .login-card {
             max-width: 400px;
             margin: auto;
-            margin-top: 100px;
+            margin-top: 300px;
+
         }
     </style>
 </head>
 <body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
-    <div class=" form-floating container ">
+    <div class="container form-floating">
         <div class="login-card">
             @if (session('status'))
             <div class="alert alert-danger">{{session('status')}}</div>@endif
@@ -42,9 +43,9 @@
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </div>
                         <div class="d-grid">
-                            <p class="mt-1">Already a member? <a href="{{route('admin.see')}}" class=" alert-link  hover:text-slate-500">Sign up</a></p>
+                            <p class="mt-1">Already a member? <a href="{{route('admin.see')}}" class=" alert-link hover:text-slate-500">Sign up</a></p>
                         </div>
-                        <p class=" mt-1">------------------ <a href="{{route('forgotpassword')}}" class=" underline">Forgot password?</a>  ------------------</p>
+                        <p class="mt-1 ">------------------ <a href="{{route('forgotpassword')}}" class="underline ">Forgot password?</a>  ------------------</p>
                     </form>
                 </div>
             </div>
