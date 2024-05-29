@@ -33,43 +33,38 @@
 
 
     <!-- Side Content -->
-   <aside class="relative overflow-hidden text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
-    <div class="relative rounded-full bg-zinc-500 md:h-80 md:w-200px top-2">
-        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/361839816_594450056207554_5067445039035230165_n.jpg?stp=dst-jpg_p206x206&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH7aVd9xyUPlxsDrw1HGupokKj6k4-Hb5-QqPqTj4dvn469EAukG5ZNsWA_cyMs37BNKmn5QYbzvKCBQ6xFxPf4&_nc_ohc=84g4L3woZVQQ7kNvgFDpguu&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QF0_aJOy-nhtWjbI392g5lW91ZC99u5NrNgihDT6de4dw&oe=667BA8A9" class="relative object-cover w-full h-full rounded-full" alt="Logo">
+    <div class="relative overflow-hidden text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
+        <div class="relative rounded-full bg-zinc-500 md:h-80 md:w-200px top-2">
+            <img src="https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/361839816_594450056207554_5067445039035230165_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH7aVd9xyUPlxsDrw1HGupokKj6k4-Hb5-QqPqTj4dvn469EAukG5ZNsWA_cyMs37BNKmn5QYbzvKCBQ6xFxPf4&_nc_ohc=84g4L3woZVQQ7kNvgFXN0RZ&_nc_ht=scontent.fcrk4-2.fna&oh=03_Q7cD1QFSljQWGhWTfu5mpa4p0iI8TNz8y-Th9RLoJQYlV7_W8w&oe=667D3269" class="relative object-cover w-full h-full rounded-full" alt="Logo">
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">
-            <div class="relative flex items-center rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 hover:bg-sky-700 w-50 focus:bg-sky-700">
+            <div class="relative flex items-center w-auto rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-tachometer-alt left-20"></i>
                 <a href="{{route('game.index')}}" class="relative left-24">Dashboard</a>
             </div>
-            <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
+            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-basketball-ball left-20"></i>
                 <a href="{{route('game1.index')}}" class="relative left-24">Games</a>
             </div>
-            <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
+            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-users left-20"></i>
-                <a href="{{route('user')}}" class="relative left-24">Users</a>
+                <a href="#" class="relative left-24">Users</a>
             </div>
-            <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
+            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-trophy left-20"></i>
-                <a href="{{route('admin.createUser')}}" class="relative left-24">Team Rankings</a>
+                <a href="{{route('game.create')}}" class="relative left-24">Team Rankings</a>
             </div>
-            <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
+            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-cog left-20"></i>
                 <a href="{{route('profile.edit')}}" class="relative left-24">Settings</a>
             </div>
-            <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
+            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
                 <i class="relative fas fa-sign-out left-20"></i>
-                <form action="{{route('admin.login')}}" method="get">
-                    @csrf
-
-                    <button type="submit"  class="relative left-24">Sign out</button>
-                </form>
-
+                <a href="{{route('login')}}" class="relative left-24">Sign out</a>
             </div>
         </div>
-    </aside>
+    </div>
     <script type="text/javascript">
         window.history.forward();
         function noBack()

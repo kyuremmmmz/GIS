@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'University of Perpetual Help System Dalta - Molino Campus Game Information System'),
 
     /*
     |--------------------------------------------------------------------------
