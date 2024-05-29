@@ -65,35 +65,34 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('game.store') }}" method="post">
+                                <form action="{{ route('post') }}" method="post">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="teamname" class="form-label">Team Name</label>
-                                        <input type="text" class="form-control" id="teamname" name="teamname" required>
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="game1" class="form-label">Game 1</label>
-                                        <input type="number" class="form-control" id="game1" name="game1" required>
+                                        <label for="game1" class="form-label">Committee ID</label>
+                                        <input type="text" class="form-control" id="comitteeID" name="comitteeID" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="game2" class="form-label">Game 2</label>
-                                        <input type="number" class="form-control" id="game2" name="game2" required>
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="game3" class="form-label">Game 3</label>
-                                        <input type="number" class="form-control" id="game3" name="game3" required>
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="wins" class="form-label">Wins</label>
-                                        <input type="number" class="form-control" id="wins" name="wins" required>
+                                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="losses" class="">Losses</label>
-                                        <input type="number" class="form-control" id="losses" name="losses" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="date_played" class="form-label">Date Played</label>
-                                        <input type="date" class="form-control" id="date_played" name="date_played" required>
+                                        <label for="role">Role</label>
+                                        <select id="role" class="form-control" name="role" required>
+                                            <option value="Committee">Committee</option>
+                                            <option value="Guest">Guest</option>
+                                        </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>

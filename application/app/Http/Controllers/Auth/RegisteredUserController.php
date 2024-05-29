@@ -24,6 +24,12 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+
+    public function createComittee()
+    {
+        return view('admin.users');
+    }
+
     /**
      * Handle an incoming registration request.
      *
@@ -56,7 +62,7 @@ class RegisteredUserController extends Controller
 
 
 
-    public function storeComittee(Request $request): RedirectResponse
+    public function storeComittee(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -81,7 +87,7 @@ class RegisteredUserController extends Controller
         $password  = $request->password;
         $comitteeID = $request->comitteeID;
 
-        Mail::to($user->email)->send(new  UserAccountDetailsMail($user, $comitteeID, $password));
+        Mail::to($user->email)->send(new UserAccountDetailsMail($user, $comitteeID, $password));
 
         event(new Registered($user));
 
