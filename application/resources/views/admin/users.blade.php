@@ -39,7 +39,7 @@
                         <tbody>
                             @foreach ($selectUsers as $admins)
                           <tr>
-                            <td>{{$admins->name}}</td>
+                            <td>{{$admins->Adminname}}</td>
                             <td>{{$admins->email}}</td>
                             <td>{{$admins->adminID}}</td>
                             <td><a href="#" class="btn btn-primary">Edit</a></td>
@@ -65,11 +65,13 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('post') }}" method="post">
+                                <form action="{{ route('admin.createUser') }}" method="post">
                                     @csrf
+                                    @method('post')
+
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" required>
+                                        <input type="text" class="form-control" id="Comitteename" name="Comitteename" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="game1" class="form-label">Committee ID</label>
@@ -77,7 +79,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <input type="email" class="form-control" id="Comitteeemail" name="Comitteeemail" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>

@@ -3,33 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str;
+use Illuminate\Validation\Rules;
+
+use function Symfony\Component\Clock\now;
+
 class AdminLoginController extends Controller
 {
     public function createUser(User $user ,Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:225',
-            'email'=>'required|string|max:70',
-            'adminID'=>'required|string|max:16|',
-            'password'=>'required|string|min:8|confirmed',
+        $request->validate([
+            'Comitteename' => ['required', 'string', 'max:255'],
+            'comitteeID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
+            'Comitteeemail' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' =>['required', 'string',]
         ]);
 
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'adminID'=>$data['adminID'],
-            'password'=>bcrypt($data['password']),
-            'remember_token'=>Str::random(60),
+            'Comitteename' => $request->Comitteename,
+            'comitteeID' => $request->comitteeID,
+            'Comitteeemail' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+            'email_verified_at' => now()
         ]);
+
+        event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect()->route('game.index');
+        return redirect(route('user', absolute: false));
     }
 
 
@@ -46,7 +55,7 @@ class AdminLoginController extends Controller
     public function login(Request $request)
     {
         $data = $request->validate([
-            'adminID' =>'required|string|max:70',
+            'comitteeID' =>'required|string|max:70',
             'password' => 'required|string|max:8',
         ]);
 
@@ -57,7 +66,7 @@ class AdminLoginController extends Controller
         }
         return back()->withErrors([
             'auth_error' =>'Invalid credentials'
-        ])->withInput([$request->only('adminID')])->with('status', 'Credentials are invalid');
+        ])->withInput([$request->only('comitteeID')])->with('status', 'Credentials are invalid');
         }
 
     public function logout(Request $request)
@@ -88,7 +97,9 @@ class AdminLoginController extends Controller
     }
 
     public function users(){
-        $selectUsers = User::select('*', DB::raw('COUNT(adminID) OVER (PARTITION by name) AS admins'))->get();
+        $selectUsers = User::select(['id', 'Adminname', 'email', 'adminID'],
+                                    DB::raw('COUNT(adminID) OVER (PARTITION by Adminname) AS admins'))
+                                    ->get();
 
         return view('admin.users', compact('selectUsers'));
     }

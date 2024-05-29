@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/users', [AdminLoginController::class, 'users'])->name('user');
     Route::delete('/admin/{adminID}/delete', [AdminLoginController::class, 'deleteUsers'])->name('delete.User');
 
+    Route::post('/admin/users', [App\Http\Controllers\ComitteeAuthController::class, 'createUser'])->name('comitteeCreate');
+
+
 
 
     //Comittee

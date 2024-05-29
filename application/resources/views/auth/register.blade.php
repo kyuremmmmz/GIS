@@ -5,8 +5,8 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-text-input id="Adminname" class="block w-full mt-1" type="text" name="Adminname" :value="old('Adminname')" required autofocus autocomplete="Adminname" />
+            <x-input-error :messages="$errors->get('Adminname')" class="mt-2" />
         </div>
 
          <!-- Admin ID -->
