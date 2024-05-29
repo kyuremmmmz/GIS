@@ -31,7 +31,7 @@
                           <tr>
                             <th>Name</th>
                             <th>Email Address</th>
-                            <th>da</th>
+                            <th>ID</th>
                             <th>Edit</th>
                             <th>Delete</th>
                           </tr>
@@ -108,38 +108,38 @@
 
 
 
-    <!-- Side Content -->
-    <div class="relative overflow-hidden text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
-        <div class="relative rounded-full bg-zinc-500 md:h-80 md:w-200px top-2">
-            <img src="" class="relative object-cover w-full h-full rounded-full" alt="Logo">
-        </div>
-        <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
-        <div class="relative">
-            <div class="relative flex items-center w-auto rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-tachometer-alt left-20"></i>
-                <a href="{{route('game.index')}}" class="relative left-24">Dashboard</a>
-            </div>
-            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-basketball-ball left-20"></i>
-                <a href="{{route('game1.index')}}" class="relative left-24">Games</a>
-            </div>
-            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active bg-sky-700">
-                <i class="relative fas fa-users left-20"></i>
-                <a href="{{route('user')}}" class="relative left-24">Users</a>
-            </div>
-            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-trophy left-20"></i>
-                <a href="{{route('game.create')}}" class="relative left-24">Team Rankings</a>
-            </div>
-            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-cog left-20"></i>
-                <a href="#" class="relative left-24">Settings</a>
-            </div>
-            <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
-                <i class="relative fas fa-sign-out left-20"></i>
-                <a href="#" class="relative left-24">Sign out</a>
-            </div>
-        </div>
+   <!-- Side Content -->
+   <div class="relative overflow-hidden text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
+    <div class="relative rounded-full bg-zinc-500 md:h-80 md:w-200px top-2">
+        <img src="https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/361839816_594450056207554_5067445039035230165_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH7aVd9xyUPlxsDrw1HGupokKj6k4-Hb5-QqPqTj4dvn469EAukG5ZNsWA_cyMs37BNKmn5QYbzvKCBQ6xFxPf4&_nc_ohc=84g4L3woZVQQ7kNvgFXN0RZ&_nc_ht=scontent.fcrk4-2.fna&oh=03_Q7cD1QFSljQWGhWTfu5mpa4p0iI8TNz8y-Th9RLoJQYlV7_W8w&oe=667D3269" class="relative object-cover w-full h-full rounded-full" alt="Logo">
     </div>
+    <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
+    <div class="relative">
+        <a href="{{route('game.index')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <i class="relative fas fa-tachometer-alt left-5"></i>
+            <span class="relative left-7">Dashboard</span>
+        </a>
+        <a href="{{route('game1.index')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <i class="relative fas fa-basketball-ball left-5"></i>
+            <span class="relative left-7">Games</span>
+        </a>
+        <a href="{{route('user')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <i class="relative fas fa-users left-5"></i>
+            <span class="relative left-7">Users</span>
+        </a>
+        <a href="{{route('game.create')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <i class="relative fas fa-trophy left-5"></i>
+            <span class="relative left-7">Team Rankings</span>
+        </a>
+        <a href="{{route('profile.edit')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <i class="relative fas fa-cog left-5"></i>
+            <span class="relative left-7">Settings</span>
+        </a>
+        <a href="{{route('login')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
+            <i class="relative fas fa-sign-out left-5"></i>
+            <span class="relative left-7">Sign out</span>
+        </a>
+    </div>
+</div>
 </body>
 </html>

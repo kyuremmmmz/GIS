@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\GameAdminController;
+use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/users', [AdminLoginController::class, 'users'])->name('user');
     Route::delete('/admin/{adminID}/delete', [AdminLoginController::class, 'deleteUsers'])->name('delete.User');
 
+
+
+    //Comittee
+    Route::get('comittee/dashboard', [GameComitteeController::class, 'dashboardView'])->name('comittee.dashboard');
 });
 
 require __DIR__.'/auth.php';

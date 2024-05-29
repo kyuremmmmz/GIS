@@ -51,4 +51,32 @@ class RegisteredUserController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+
+
+
+    public function storeComittee(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'comitteeID'  => ['required', 'string', 'max:255', 'unique:users', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role'  => ['required', 'string', 'lowercase', 'email']
+        ], [
+            'comitteeID.regex' => 'The Comittee ID must start with 04.',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'comitteeID' => $request->comitteeID,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(route('user', absolute: false));
+    }
 }

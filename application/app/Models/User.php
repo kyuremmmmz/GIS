@@ -20,9 +20,19 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'adminID',
-        'remember_token',
+        'comitteeID',
         'password',
     ];
+
+    public function setAdminAttributes($admin)
+    {
+        $this->attributes['adminID'] = $admin? : null;
+    }
+
+    public function setComitteeAttributes($comittee)
+    {
+        $this->attributes['adminID'] = $comittee? : null;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
