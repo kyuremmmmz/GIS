@@ -13,12 +13,14 @@ class UserAccountDetailsMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
+    public $user;
+    public $password;
+    public $email;
+    public function __construct($user,  $password, $email,)
     {
-        //
+        $this->user = $user;
+        $this->password = $password;
+        $this->email = $email;
     }
 
     /**
@@ -39,6 +41,10 @@ class UserAccountDetailsMail extends Mailable
         return new Content(
             view: 'view.name',
         );
+    }
+    public function build()
+    {
+        return $this->markdown('emails.user_account_details');
     }
 
     /**
