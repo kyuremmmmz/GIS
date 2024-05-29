@@ -28,6 +28,9 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
+    public $role = 'admin';
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -35,6 +38,7 @@ class RegisteredUserController extends Controller
             'adminID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^03[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required']
 
         ], [
             'adminID.regex' => 'The adminID must start with 03.',
@@ -45,6 +49,7 @@ class RegisteredUserController extends Controller
             'adminID' => $request->adminID,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
 
         ]);
 

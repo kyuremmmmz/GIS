@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'Adminname',
-        'ComitteeName',
+        'name',
         'email',
         'comitteeEmail',
         'adminID',

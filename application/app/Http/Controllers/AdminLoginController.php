@@ -18,17 +18,17 @@ class AdminLoginController extends Controller
     public function createUser(User $user ,Request $request)
     {
         $request->validate([
-            'Comitteename' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'comitteeID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
-            'Comitteeemail' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' =>['required', 'string',]
         ]);
 
         $user = User::create([
-            'Comitteename' => $request->Comitteename,
+            'name' => $request->name,
             'comitteeID' => $request->comitteeID,
-            'Comitteeemail' => $request->email,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
             'email_verified_at' => now()
@@ -98,7 +98,9 @@ class AdminLoginController extends Controller
 
     public function users(){
         $selectUsers = User::select(['id', 'Adminname', 'email', 'adminID'],
-                                    DB::raw('COUNT(adminID) OVER (PARTITION by Adminname) AS admins'))
+                                    DB::raw('SUM(adminID) OVER (PARTITION by Adminname) AS admins'),
+                                    )
+                                    ->where('role', 'like', '%admin%')
                                     ->get();
 
         return view('admin.users', compact('selectUsers'));
