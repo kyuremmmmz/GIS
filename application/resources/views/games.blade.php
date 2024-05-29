@@ -154,7 +154,7 @@
             </div>
             <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-cog left-20"></i>
-                <a href="#" class="relative left-24">Settings</a>
+                <a href="{{route('profile.edit')}}" class="relative left-24">Settings</a>
             </div>
             <div class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
                 <i class="relative fas fa-sign-out left-20"></i>

@@ -26,7 +26,7 @@
                 <div class="h-20 mb-16 bg-slate-700">Date Played</div>
                 <div class="h-20 mb-16 bg-slate-700">fs</div>
                 <div class="h-20 mb-16 bg-slate-700">hi</div>
-                <div class="h-20 mb-16 bg-slate-700"><h1>{{Auth::user()->email}}</h1></div>
+                <div class="h-20 mb-16 bg-slate-700"><h1>{{Auth::user()->name}} </h1></div>
             </div>
         </div>
     </main>
@@ -57,7 +57,7 @@
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-cog left-20"></i>
-                <a href="#" class="relative left-24">Settings</a>
+                <a href="{{route('profile.edit')}}" class="relative left-24">Settings</a>
             </div>
             <div class="relative flex items-center h-auto gap-1 mt-4 rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full cursor-pointer justify-self-auto top-6 row col-1 hover:bg-sky-700 w-50">
                 <i class="relative fas fa-sign-out left-20"></i>
