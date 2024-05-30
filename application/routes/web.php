@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\GameAdminController;
-use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\ProfileController;
+use App\Models\gameInfoModel;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,7 +11,12 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $gamesCount = gameInfoModel::select('id', 'teamname', 'wins',
+                    )
+                    ->take(3)
+                    ->orderBy('wins', 'desc')
+                    ->get();
+    return view('dashboard', compact('gamesCount'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -34,13 +39,14 @@ Route::middleware('auth')->group(function () {
     Route::post('admin/adminForgotpass', [AdminLoginController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
     Route::get('admin/users', [AdminLoginController::class, 'users'])->name('user');
     Route::delete('/admin/{adminID}/delete', [AdminLoginController::class, 'deleteUsers'])->name('delete.User');
+    Route::get('comittee/dashboard', [GameAdminController::class, 'top3'])->name('top3');
 
 
 
 
 
-    //Comittee
-    Route::get('comittee/dashboard', [GameComitteeController::class, 'dashboardView'])->name('comittee.dashboard');
+
+
 });
 
 require __DIR__.'/auth.php';

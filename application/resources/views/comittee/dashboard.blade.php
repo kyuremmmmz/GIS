@@ -23,10 +23,21 @@
                 <div class="h-20 mb-16 bg-slate-700">
                     <h1 class="text-[30px]">Users</h1>
                 </div>
-                <div class="h-20 mb-16 bg-slate-700">Date Played</div>
-                <div class="h-20 mb-16 bg-slate-700">fs</div>
-                <div class="h-20 mb-16 bg-slate-700">hi</div>
-                <div class="h-20 mb-16 bg-slate-700"><h1>{{Auth::user()->name}}</h1></div>
+                <div class="h-[159px]  overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1  text-[20px] rounded-2xl font-bold">Top 3 Teams</h1>
+                    @php
+                    $index = 1;
+
+                    @endphp
+                    @foreach ($gamesCount as $gamesCount)
+                    <p class="absolute mt-10 text-[20px] rounded-2xl ">
+                        Top {{$index++}}. {{$gamesCount->teamname}}
+                    </p>
+                    @endforeach
+                </div>
+                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl"></div>
+                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl">hi</div>
+                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl"></div>
             </div>
         </div>
     </main>
@@ -38,7 +49,7 @@
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">
-            <a href="{{route('game.index')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('top3')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
                 <i class="relative fas fa-tachometer-alt left-5"></i>
                 <span class="relative left-7">Dashboard</span>
             </a>
@@ -58,10 +69,14 @@
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>
-            <a href="{{route('login')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
+            <form action="{{route('logout')}}" method="post">
+                @csrf
+                @method('post')
+            <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
                 <i class="relative fas fa-sign-out left-5"></i>
                 <span class="relative left-7">Sign out</span>
-            </a>
+            </button>
+            </form>
         </div>
     </div>
     <script type="text/javascript">

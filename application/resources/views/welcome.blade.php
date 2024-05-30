@@ -13,11 +13,18 @@
         <h1 class="mb-4">Welcome to Game Information Management System</h1>
         <p class="mb-4 lead">Are you?</p>
         <div class="gap-3 mx-auto d-grid col-6">
-            <form action="{{route('comittee.dashboard')}}" method="GET">
+            <form action="{{route('admin.seeLogin')}}" method="GET">
                 @csrf
                 @method('get')
                 <button type="submit" class="btn btn-primary btn-lg">Committee</button>
             </form>
+
+            <form action="{{route('login')}}" method="post">
+                @csrf
+                @method('get')
+                <button type="submit" class="btn btn-success btn-lg">Admin</button>
+            </form>
+
             <button type="button" class="btn btn-secondary btn-lg">Guest</button>
         </div>
     </div>

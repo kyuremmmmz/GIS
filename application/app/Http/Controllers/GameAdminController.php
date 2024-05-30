@@ -61,6 +61,17 @@ class GameAdminController extends Controller
                             return view('games', ['games' => $games]);
     }
 
+    public function top3()
+    {
+        $gamesCount = gameInfoModel::select('id', 'teamname', 'wins',
+                    )
+                    ->take(3)
+                    ->orderBy('wins', 'desc')
+                    ->get();
+
+        return view('comittee/dashboard', ['gamesCount' => $gamesCount]);
+    }
+
     public function update(gameInfoModel $id, Request $request)
     {
         $data = $request->validate([

@@ -19,9 +19,6 @@ class AdminLoginController extends Controller
 {
     public function createUser(User $user ,Request $request)
     {
-
-
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'comitteeID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
@@ -72,7 +69,7 @@ class AdminLoginController extends Controller
 
     public function seeLogin()
     {
-        return view('admin.adminLogin');
+        return view('comitteeAuth.adminLogin');
     }
 
     public function login(Request $request)
@@ -103,7 +100,7 @@ class AdminLoginController extends Controller
 
     public function forgotpassword()
     {
-        return view('admin.adminForgotpass');
+        return view('comitteeAuth.adminForgotpass');
     }
 
     public function sendResetLinkEmail(Request $request)
@@ -126,7 +123,7 @@ class AdminLoginController extends Controller
                                     ->where('role', 'like', '%admin%')
                                     ->get();
 
-        return view('admin.users', compact('selectUsers'));
+        return view('comitteeAuth.users', compact('selectUsers'));
     }
 
     public function deleteUsers(User $adminID)
