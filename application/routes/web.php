@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\GameAdminController;
+use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\gameInfoModel;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     $gamesCount = gameInfoModel::select('id', 'teamname', 'wins',
@@ -22,33 +23,36 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('index', [GameAdminController::class,  'index'])->name('game.index');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');;
     Route::get('create', [GameAdminController::class, 'create'])->name('game.create');
     Route::post('store', [GameAdminController::class, 'store'])->name('game.store');
     Route::get('{id}/edit', [GameAdminController::class, 'edit'])->name('game.edit');
     Route::get('games', [GameAdminController::class, 'games'])->name('game1.index');
     Route::put('{id}/update', [GameAdminController::class, 'update'])->name('game.update');
     Route::delete('{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
-    Route::get('/admin/admin', [AdminLoginController::class, 'see'])->name('admin.see');
-    Route::post('/admin/admin', [AdminLoginController::class, 'createUser'])->name('admin.createUser');
-    Route::get('/admin/adminLogin',  [AdminLoginController::class, 'seeLogin'])->name('admin.seeLogin');
-    Route::post('admin/adminLogin', [AdminLoginController::class,'login'])->name('admin.login');
-    Route::post('admin/adminLogout',  [AdminLoginController::class, 'logout'])->name('admin.logout');
-    Route::get('admin/adminForgotpass', [AdminLoginController::class, 'forgotpassword'])->name('forgotpassword');
-    Route::post('admin/adminForgotpass', [AdminLoginController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
-    Route::get('admin/users', [AdminLoginController::class, 'users'])->name('user');
-    Route::delete('/admin/{adminID}/delete', [AdminLoginController::class, 'deleteUsers'])->name('delete.User');
-    Route::get('comittee/dashboard', [GameAdminController::class, 'top3'])->name('top3');
-
-
-
-
-
-
-
+    Route::get('/comitteeAuth/admin', [ComitteeAuthController::class, 'see'])->name('admin.see');
+    Route::post('/comitteeAuth/admin', [ComitteeAuthController::class, 'createUser'])->name('admin.createUser');
 });
 
+
+Route::middleware('auth')->group(function (){
+//COMITTEE COMPONENTS
+Route::get('comittee/games', [GameComitteeController::class, 'see'])->name('view.Game');
+Route::post('comittee/games', [GameComitteeController::class, 'createGame'])->name('create.Game');
+Route::get('comittee/dashboard', [GameComitteeController::class, 'top3'])->name('top3');
+Route::delete('comittee/{id}/dashboard', [GameComitteeController::class, 'delete'])->name('delete');
+Route::get('comittee/{id}/edit', [GameComitteeController::class, 'edit'])->name('edit');
+Route::put('comittee/{id}/update', [GameComitteeController::class, 'update'])->name('update');
+
+
+Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
+Route::post('/comitteeAuth/adminLogin', [ComitteeAuthController::class,'login'])->name('admin.login');
+Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logout'])->name('admin.logout');
+Route::get('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpassword'])->name('forgotpassword');
+Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
+Route::get('/comitteeAuth/users', [ComitteeAuthController::class, 'users'])->name('user');
+Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 'deleteUsers'])->name('delete.User');
+});
 require __DIR__.'/auth.php';
 
 

@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class GameAdminController extends Controller
 {
-    public function index()
-    {
-        $games = gameInfoModel::all();
-        return view('dashboard', ['games' => $games]);
-    }
+
 
 
     public function create(){

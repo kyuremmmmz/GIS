@@ -62,9 +62,9 @@
                             <td>{{$game->total_losses}}</td>
                             <td>{{$game->fpg}}%</td>
                             <td>{{$game->date_played}}</td>
-                            <td><a href="{{route('game.edit',['id'=>$game])}}" class=" btn btn-primary">Edit</a></td>
+                            <td><a href="{{route('edit',['id'=>$game])}}" class=" btn btn-primary">Edit</a></td>
                             <td>
-                                <form action="{{route('game.delete', ['id'=>$game])}}" method="post">
+                                <form action="{{route('delete', ['id'=>$game])}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">Delete</button>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('game.store') }}" method="post">
+                                <form action="{{ route('create.Game') }}" method="post">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="teamname" class="form-label">Team Name</label>
@@ -137,17 +137,13 @@
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">
-            <a href="{{route('dashboard')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('top3')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-tachometer-alt left-5"></i>
                 <span class="relative left-7">Dashboard</span>
             </a>
-            <a href="{{route('game1.index')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
+            <a href="{{route('view.Game')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
                 <i class="relative fas fa-basketball-ball left-5"></i>
                 <span class="relative left-7">Games</span>
-            </a>
-            <a href="{{route('user')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-users left-5"></i>
-                <span class="relative left-7">Users</span>
             </a>
             <a href="{{route('game.create')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-trophy left-5"></i>
@@ -157,7 +153,7 @@
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>
-            <form action="{{route('admin.logout')}}" method="post">
+            <form action="{{route('logout')}}" method="post">
                 @csrf
                 @method('post')
             <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">

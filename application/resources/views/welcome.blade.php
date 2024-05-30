@@ -11,19 +11,14 @@
 <body class="bg-light d-flex flex-column justify-content-center align-items-center vh-100">
     <div class="container text-center">
         <h1 class="mb-4">Welcome to Game Information Management System</h1>
-        <p class="mb-4 lead">Are you?</p>
+        <h2 class="mb-4">Are you?</h2>
         <div class="gap-3 mx-auto d-grid col-6">
-            <form action="{{route('admin.seeLogin')}}" method="GET">
-                @csrf
-                @method('get')
-                <button type="submit" class="btn btn-primary btn-lg">Committee</button>
-            </form>
 
-            <form action="{{route('login')}}" method="post">
-                @csrf
-                @method('get')
-                <button type="submit" class="btn btn-success btn-lg">Admin</button>
-            </form>
+                <a href="{{route('admin.seeLogin')}}" class="btn btn-primary btn-lg">Committee</a>
+
+
+                <a href="{{route('login')}}" class="btn btn-success btn-lg">Admin</a>
+
 
             <button type="button" class="btn btn-secondary btn-lg">Guest</button>
         </div>

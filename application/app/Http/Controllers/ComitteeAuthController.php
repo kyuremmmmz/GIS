@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rules;
 
-use function Symfony\Component\Clock\now;
-
-class AdminLoginController extends Controller
+class ComitteeAuthController extends Controller
 {
     public function createUser(User $user ,Request $request)
     {
@@ -24,7 +22,7 @@ class AdminLoginController extends Controller
             'comitteeID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' =>['required', 'string',]
+            'role' =>['required', 'string',],
         ]);
 
 
@@ -36,7 +34,7 @@ class AdminLoginController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'email_verified_at' => now()
+
         ]);
 
         $comitteeID = $request->comitteeID ?? 'N/A'; // Default value if null
@@ -45,8 +43,8 @@ class AdminLoginController extends Controller
         $details = [
             'greeting' => 'Good Day University of Perpetual Help System Dalta - Molino Campus Comittee member',
             'body' => 'This is your Account Details
-                        <br>comitteeID:'.$comitteeID.'
-                        <br>Password:'.$password.'',
+                        Comittee ID:'.$comitteeID.'
+                        Password:'.$password.'',
             'action' => route('admin.seeLogin'),
             'lastline' => 'No reply'
         ];
@@ -82,7 +80,7 @@ class AdminLoginController extends Controller
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('game1.index'));
+            return redirect()->intended(route('top3'));
         }
         return back()->withErrors([
             'auth_error' =>'Invalid credentials'
