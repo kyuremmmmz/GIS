@@ -50,9 +50,10 @@ class AdminLoginController extends Controller
             'body' => 'This is your Account Details
                         <br>comitteeID:'.$comitteeID.'
                         <br>Password:'.$password.'',
-            'action' => '/',
+            'action' => route('admin.seeLogin'),
             'lastline' => 'No reply'
         ];
+
         $users = User::where('comitteeID', $request->comitteeID)->get();
 
         Notification::send($users, new EmailIDAndPassword($details));
@@ -68,10 +69,6 @@ class AdminLoginController extends Controller
     }
 
 
-    public function see()
-    {
-        return view('admin.admin');
-    }
 
     public function seeLogin()
     {
