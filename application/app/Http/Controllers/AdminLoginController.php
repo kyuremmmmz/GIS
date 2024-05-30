@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Notifications\EmailIDAndPassword;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rules;
 
@@ -17,6 +19,9 @@ class AdminLoginController extends Controller
 {
     public function createUser(User $user ,Request $request)
     {
+
+
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'comitteeID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
@@ -24,6 +29,9 @@ class AdminLoginController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' =>['required', 'string',]
         ]);
+
+
+
 
         $user = User::create([
             'name' => $request->name,
@@ -34,7 +42,25 @@ class AdminLoginController extends Controller
             'email_verified_at' => now()
         ]);
 
+        $comitteeID = $request->comitteeID ?? 'N/A'; // Default value if null
+        $password = $request->password ?? 'N/A';
+
+        $details = [
+            'greeting' => 'Good Day University of Perpetual Help System Dalta - Molino Campus Comittee member',
+            'body' => 'This is your Account Details
+                        <br>comitteeID:'.$comitteeID.'
+                        <br>Password:'.$password.'',
+            'action' => '/',
+            'lastline' => 'No reply'
+        ];
+        $users = User::where('comitteeID', $request->comitteeID)->get();
+
+        Notification::send($users, new EmailIDAndPassword($details));
+
+
         event(new Registered($user));
+
+
 
         Auth::login($user);
 

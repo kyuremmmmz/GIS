@@ -1,3 +1,14 @@
-<div>
-    <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie -->
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Account Details</title>
+</head>
+<body>
+    <h1>Welcome, {{ $name }}!</h1>
+    <p>Your account has been created successfully. Here are your details:</p>
+    <p><strong>Committee ID:</strong> {{ $comitteeID }}</p>
+    <p><strong>Email:</strong> {{ $email }}</p>
+    <p><strong>Password:</strong> {{ $password }}</p>
+    <p>Please keep this information safe.</p>
+</body>
+</html>
