@@ -86,7 +86,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('create.Game') }}" method="post">
+                                <form action="{{ route('game.store') }}" method="post">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="teamname" class="form-label">Team Name</label>
@@ -94,23 +94,23 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="game1" class="form-label">Game 1</label>
-                                        <input type="number" class="form-control" id="game1" name="game1" required>
+                                        <input type="number" class="form-control" id="game1" max="12" min="0" name="game1" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="game2" class="form-label">Game 2</label>
-                                        <input type="number" class="form-control" id="game2" name="game2" required>
+                                        <input type="number" class="form-control" id="game2" max="12" min="0" name="game2" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="game3" class="form-label">Game 3</label>
-                                        <input type="number" class="form-control" id="game3" name="game3" required>
+                                        <input type="number" class="form-control" id="game3" max="12" min="0" name="game3" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="wins" class="form-label">Wins</label>
-                                        <input type="number" class="form-control" id="wins" name="wins" required>
+                                        <input type="number" class="form-control" id="wins" max="3" min="0" name="wins" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="losses" class="">Losses</label>
-                                        <input type="number" class="form-control" id="losses" name="losses" required>
+                                        <input type="number" class="form-control" id="losses"  max="3" min="0" name="losses" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="date_played" class="form-label">Date Played</label>
