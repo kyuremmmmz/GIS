@@ -21,9 +21,8 @@
         <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Games:</h1>
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
-                <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
                 <div class="mb-16 overflow-hidden bg-slate-700">
-                    <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
+                    <table class="absolute table table-dark table-hover top-[20px]  overflow-auto">
                         <thead>
                           <tr>
                             <th>Standing</th>
