@@ -31,7 +31,7 @@
 
                     @foreach ($gamesCount as $gamesCount)
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
-                         {{$index++}}. {{$gamesCount->teamname}}
+                        {{$index++}}. {{$gamesCount->teamname}}
                     </p>
                     @endforeach
                 </div>

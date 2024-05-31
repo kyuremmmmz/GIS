@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
+<body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
     </div>
@@ -91,9 +91,9 @@
                 <i class="relative fas fa-trophy left-5"></i>
                 <span class="relative left-7">Players</span>
             </a>
-            <form action="{{route('welcome')}}" method="post">
+            <form action="{{route('logout')}}" method="post">
                 @csrf
-                @method('get')
+                @method('post')
             <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
                 <i class="relative fas fa-sign-out left-5"></i>
                 <span class="relative left-7">Back</span>
@@ -101,11 +101,6 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript">
-        window.history.forward();
-        function noBack() {
-            window.history.forward();
-        }
-    </script>
+
 </body>
 </html>
