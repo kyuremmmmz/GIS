@@ -18,7 +18,7 @@ class CommitteeMiddleware
     {
         // Check if user is authenticated and has the 'committee' role
         if (!Auth::check() || Auth::user()->role !== 'committee') {
-            return redirect(route('admin.login')); // Redirect if not authorized
+            return redirect('/login'); // Redirect if not authorized
         }
 
         return $next($request);

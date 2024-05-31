@@ -4,7 +4,9 @@ use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\EnsureTokenIsValid;
 use App\Models\gameInfoModel;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,7 +37,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function (){
+Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(function (){
 //COMITTEE COMPONENTS
 Route::get('comittee/games', [GameComitteeController::class, 'see'])->name('view.Game');
 Route::post('comittee/games', [GameComitteeController::class, 'createGame'])->name('create.Game');
