@@ -20,7 +20,7 @@
                 <a href="{{route('login')}}" class="btn btn-success btn-lg">Admin</a>
 
 
-            <button type="button" class="btn btn-secondary btn-lg">Guest</button>
+            <a href="{{route('seeGuest')}}" class="btn btn-secondary btn-lg">Guest</a>
         </div>
     </div>
 

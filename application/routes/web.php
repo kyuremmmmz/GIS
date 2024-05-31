@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
+use App\Http\Controllers\GuestGameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Models\gameInfoModel;
@@ -34,6 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
     Route::get('/comitteeAuth/admin', [ComitteeAuthController::class, 'see'])->name('admin.see');
     Route::post('/comitteeAuth/admin', [ComitteeAuthController::class, 'createUser'])->name('admin.createUser');
+
+
+
+
+
 });
 
 
@@ -46,7 +52,7 @@ Route::delete('comittee/{id}/dashboard', [GameComitteeController::class, 'delete
 Route::get('comittee/{id}/edit', [GameComitteeController::class, 'edit'])->name('edit');
 Route::put('comittee/{id}/update', [GameComitteeController::class, 'update'])->name('update');
 
-
+//COMITTEE CRUD CODE
 Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
 Route::post('/comitteeAuth/adminLogin', [ComitteeAuthController::class,'login'])->name('admin.login');
 Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logout'])->name('admin.logout');
@@ -54,6 +60,12 @@ Route::get('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'for
 Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
 Route::get('/comitteeAuth/users', [ComitteeAuthController::class, 'users'])->name('user');
 Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 'deleteUsers'])->name('delete.User');
+
+
+
+//GUESTS CRUD
+Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');
+Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames');
 });
 require __DIR__.'/auth.php';
 

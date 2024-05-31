@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\gameInfoModel;
 
 class GuestGameController extends Controller
 {
-    public function seeGames()
+    public function seeGuest()
     {
-        return view('guest/dashboard');
+        $gamesCount = gameInfoModel::select(['id', 'teamname', 'wins'])
+                                    ->take(3)
+                                    ->get();
+
+        return view('guest/dashboard', ['gamesCount' => $gamesCount]);
+    }
+
+    public function games()
+    {
+        return view('guest/games');
     }
 }
