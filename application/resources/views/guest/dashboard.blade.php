@@ -49,7 +49,7 @@
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">
-            <a href="{{route('dashboard')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
+            <a href="{{route('seeGuest')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
                 <i class="relative fas fa-tachometer-alt left-5"></i>
                 <span class="relative left-7">Dashboard</span>
             </a>

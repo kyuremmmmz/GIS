@@ -79,7 +79,7 @@
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">
-            <a href="{{route('dashboard')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('seeGuest')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-tachometer-alt left-5"></i>
                 <span class="relative left-7">Dashboard</span>
             </a>
@@ -89,11 +89,11 @@
             </a>
             <a href="{{route('game.create')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-trophy left-5"></i>
-                <span class="relative left-7">Team Rankings</span>
+                <span class="relative left-7">Players</span>
             </a>
-            <form action="{{route('admin.logout')}}" method="post">
+            <form action="{{route('welcome')}}" method="post">
                 @csrf
-                @method('post')
+                @method('get')
             <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
                 <i class="relative fas fa-sign-out left-5"></i>
                 <span class="relative left-7">Back</span>
@@ -101,5 +101,11 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
 </body>
 </html>
