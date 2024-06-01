@@ -24,7 +24,7 @@
                 <div class="mb-16 overflow-hidden bg-slate-700">
                     <table class="absolute table table-dark table-hover top-[20px]  overflow-auto">
                         <thead>
-                          <tr>
+                        <tr>
                             <th>Standing</th>
                             <th>ID</th>
                             <th>Team Name</th>
@@ -38,14 +38,14 @@
                             <th>Total Losses</th>
                             <th>fpg</th>
                             <th>Date Played</th>
-                          </tr>
+                        </tr>
                         </thead>
                         <tbody>
                             @php
-                             $index = 1;
+                            $index = 1;
                             @endphp
                             @foreach ($games as $game)
-                          <tr>
+                        <tr>
                             <td>Rank {{$index++}}</td>
                             <td>{{$game->id}}</td>
                             <td>{{$game->teamname}}</td>
@@ -59,10 +59,10 @@
                             <td>{{$game->total_losses}}</td>
                             <td>{{$game->fpg}}%</td>
                             <td>{{$game->date_played}}</td>
-                          </tr>
-                          @endforeach
+                        </tr>
+                        @endforeach
                         </tbody>
-                      </table>
+                    </table>
                     </div>
                 </div>
             </div>

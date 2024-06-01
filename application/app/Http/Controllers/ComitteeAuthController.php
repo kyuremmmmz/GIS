@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Notifications\EmailIDAndPassword;
+use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,16 +52,18 @@ class ComitteeAuthController extends Controller
 
         $users = User::where('comitteeID', $request->comitteeID)->get();
 
-        Notification::send($users, new EmailIDAndPassword($details));
 
+        try {
+            if ($users->isNotEmpty()) {
+                Notification::send($users, new EmailIDAndPassword($details));
+                event(new Registered($user));
+                Auth::login($user);
 
-        event(new Registered($user));
-
-
-
-        Auth::login($user);
-
-        return redirect(route('user', absolute: false));
+                return redirect(route('user', absolute: false));
+            }
+        } catch (Exception $e) {
+                return redirect()->withErrors([$e])->back();
+        }
     }
 
 
