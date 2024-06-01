@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class players extends Model
 {
@@ -17,7 +18,7 @@ class players extends Model
         'teamname',
         ];
 
-    public function postData()
+    public function postData():HasMany
     {
         return $this->hasMany(player_rankings::class);
     }

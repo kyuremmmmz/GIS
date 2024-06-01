@@ -36,8 +36,9 @@ class playersController extends Controller
             'age'=>'required|integer',
             'playerID'=>'required|interger',
             'teamname'=>'required|string',
-
-
         ]);
+
+        $create = players::findOrFail($playersRanks['playerID']);
+        $create->player_ranking()->create($playersRanks);
     }
 }
