@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class players extends Model
 {
     use HasFactory;
+
+    protected $table = 'players';
+    protected $fillable = [
+        'playerNumber',
+        'name',
+        'age',
+        'teamname',
+        ];
+
+    public function postData()
+    {
+        return $this->hasMany(player_rankings::class);
+    }
 }
