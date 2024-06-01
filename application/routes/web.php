@@ -55,6 +55,7 @@ Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logou
 Route::get('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpassword'])->name('forgotpassword');
 Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
 Route::get('/comitteeAuth/users', [ComitteeAuthController::class, 'users'])->name('user');
+
 Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 'deleteUsers'])->name('delete.User');
 
 
@@ -68,6 +69,10 @@ Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames
 //PLAYERS CRUD
 Route::get('players', [playersController::class, 'players'])->name('playersList');
 Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
+Route::post('players', [playersController::class, 'CreatePlayerRankings'])->name('createPlayers');
+//Route::get('')
+//Route::put()
+//Route::delete();
 require __DIR__.'/auth.php';
 
 

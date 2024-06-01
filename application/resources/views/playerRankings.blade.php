@@ -31,6 +31,7 @@
                             <th>Player Name</th>
                             <th>Team Name</th>
                             <th>Player Number</th>
+                            <th>Player Points</th>
                             <th>Age</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -47,6 +48,7 @@
                             <td>{{$player->teamname}}</td>
                             <td>{{$player->playerNumber}}</td>
                             <td>{{$player->age}}</td>
+                            <td>{{$players->points}}</td>
                             <td><a href="" class=" btn btn-primary">Edit</a></td>
                             <td>
                                 <form action="" method="post">

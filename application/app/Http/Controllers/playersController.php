@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\player_rankings;
 use App\Models\players;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,10 @@ class playersController extends Controller
             'teamname'=>'required|string',
         ]);
 
-        $create = players::findOrFail($playersRanks['playerID']);
-        $create->player_ranking()->create($playersRanks);
+        /*$create = players::findOrFail($playersRanks['playerID']);
+        $create->player_ranking()->create($playersRanks);*/
+        $create = player_rankings::create($playersRanks);
+
+        return redirect()->back()->with('status', 'success');
     }
 }
