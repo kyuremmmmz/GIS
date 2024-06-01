@@ -26,4 +26,18 @@ class playersController extends Controller
 
 
     }
+
+
+    public function CreatePlayerRankings(Request $request)
+    {
+        $playersRanks = $request->validate([
+            'name'=>'required',
+            'points'=>'required',
+            'age'=>'required|integer',
+            'playerID'=>'required|interger',
+            'teamname'=>'required|string',
+
+
+        ]);
+    }
 }
