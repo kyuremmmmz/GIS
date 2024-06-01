@@ -4,6 +4,7 @@ use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\GuestGameController;
+use App\Http\Controllers\playersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Models\gameInfoModel;
@@ -35,11 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
     Route::get('/comitteeAuth/admin', [ComitteeAuthController::class, 'see'])->name('admin.see');
     Route::post('/comitteeAuth/admin', [ComitteeAuthController::class, 'createUser'])->name('admin.createUser');
-
-
-
-
-
 });
 
 
@@ -67,6 +63,10 @@ Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 
 Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');
 Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames');
 });
+
+
+//PLAYERS CRUD
+Route::get('players', [playersController::class, 'players'])->name('playersList');
 require __DIR__.'/auth.php';
 
 

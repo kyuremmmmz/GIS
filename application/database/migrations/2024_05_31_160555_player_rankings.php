@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('playear_rankings');
+        Schema::dropIfExists('player_rankings');
     }
 };
