@@ -45,4 +45,10 @@ class playersController extends Controller
 
         return redirect()->back()->with('status', 'success');
     }
+
+    public function seeRankings()
+    {
+        $players = player_rankings::select('*')->orderBy('points', 'desc')->get();
+        return view('playerRankings', compact('players'));
+    }
 }

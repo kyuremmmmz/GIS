@@ -22,7 +22,7 @@
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
-                <button type="button" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</button>
+                <a href="{{route('viewRankings')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
                 <div class="mb-16 overflow-hidden bg-slate-700">
                     <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
                         <thead>
@@ -62,6 +62,43 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="create">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Register Players</h3>
+                            <button type="button" class="btn-close" data-bs-target="#create" data-bs-toggle="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <form action="{{ route('createPlayers') }}" method="post">
+                                    @csrf
+                                    @method('post')
+                                    <div class="mb-3">
+                                        <label for="playerid" class="form-label">Player ID</label>
+                                        <input type="text" class="form-control" id="playerid" name="playerNumber" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name"  name="name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="text" class="form-control" id="age" min="0" name="age" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="teamname" class="form-label">Team Name</label>
+                                        <input type="text" class="form-control" id="teamname"  min="0" name="teamname" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
 
 
