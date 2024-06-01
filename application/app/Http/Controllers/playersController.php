@@ -8,7 +8,7 @@ class playersController extends Controller
 {
     public function players()
     {
-        $players = players::all();
+        $players = players::select('*')->orderBy('name', 'ASC')->orderBy('teamname', 'ASC');
         return view('players', compact('players'));
     }
 }

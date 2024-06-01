@@ -72,7 +72,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title">Create Records</h3>
+                            <h3 class="modal-title">Register Players</h3>
                             <button type="button" class="btn-close" data-bs-target="#create" data-bs-toggle="modal"></button>
                         </div>
                         <div class="modal-body">
@@ -80,8 +80,8 @@
                                 <form action="{{ route('game.store') }}" method="post">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="teamname" class="form-label">Team Name</label>
-                                        <input type="text" class="form-control" id="teamname" name="teamname" required>
+                                        <label for="playerid" class="form-label">Player ID</label>
+                                        <input type="text" class="form-control" id="teamname" name="playerid" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="game1" class="form-label">Game 1</label>
@@ -132,13 +132,17 @@
                 <i class="relative fas fa-tachometer-alt left-5"></i>
                 <span class="relative left-7">Dashboard</span>
             </a>
-            <a href="{{route('game1.index')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
+            <a href="{{route('game1.index')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-basketball-ball left-5"></i>
                 <span class="relative left-7">Games</span>
             </a>
             <a href="{{route('user')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-users left-5"></i>
                 <span class="relative left-7">Users</span>
+            </a>
+            <a href="{{route('playersList')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
+                <i class="relative fas fa-basketball-ball left-5"></i>
+                <span class="relative left-7">Players</span>
             </a>
             <a href="{{route('playersList')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-trophy left-5"></i>
