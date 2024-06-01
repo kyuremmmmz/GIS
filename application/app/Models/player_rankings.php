@@ -15,7 +15,8 @@ class player_rankings extends Model
         'name',
         'playerID',
         'age',
-        'teamname',];
+        'teamname',
+        'points'];
 
     public function player_rankings()
     {
