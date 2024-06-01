@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('playerNumber');
             $table->string('name')->nullable();
             $table->integer('age')->nullable();
-            $table->string('teamname')->unique();
+            $table->string('teamname');
             $table->timestamps();
         });
     }

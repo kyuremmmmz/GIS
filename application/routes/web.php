@@ -67,6 +67,7 @@ Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames
 
 //PLAYERS CRUD
 Route::get('players', [playersController::class, 'players'])->name('playersList');
+Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
 require __DIR__.'/auth.php';
 
 

@@ -18,7 +18,7 @@
     </div>
 
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
-        <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Games:</h1>
+        <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Players:</h1>
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
@@ -26,9 +26,10 @@
                     <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
                         <thead>
                           <tr>
-                            <th>Standing</th>
+                            <th>#</th>
                             <th>Player Name</th>
                             <th>Team Name</th>
+                            <th>Player Number</th>
                             <th>Age</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -40,22 +41,14 @@
                             @endphp
                             @foreach ($players as $player)
                           <tr>
-                            <td>Rank {{$index++}}</td>
-                            <td>{{$player->id}}</td>
+                            <td>{{$index++}}</td>
+                            <td>{{$player->name}}</td>
                             <td>{{$player->teamname}}</td>
-                            <td>{{$player->wins}}</td>
-                            <td>{{$player->losses}}</td>
-                            <td>{{$player->game1}}</td>
-                            <td>{{$player->game2}}</td>
-                            <td>{{$player->game3}}</td>
-                            <td>{{$player->final_score}}</td>
-                            <td>{{$player->total_wins}}</td>
-                            <td>{{$player->total_losses}}</td>
-                            <td>{{$player->fpg}}%</td>
-                            <td>{{$player->date_played}}</td>
-                            <td><a href="{{route('game.edit',['id'=>$game])}}" class=" btn btn-primary">Edit</a></td>
+                            <td>{{$player->playerNumber}}</td>
+                            <td>{{$player->age}}</td>
+                            <td><a href="" class=" btn btn-primary">Edit</a></td>
                             <td>
-                                <form action="{{route('game.delete', ['id'=>$game])}}" method="post">
+                                <form action="" method="post">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">Delete</button>
@@ -77,35 +70,24 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('game.store') }}" method="post">
+                                <form action="{{ route('createPlayers') }}" method="post">
                                     @csrf
+                                    @method('post')
                                     <div class="mb-3">
                                         <label for="playerid" class="form-label">Player ID</label>
-                                        <input type="text" class="form-control" id="teamname" name="playerid" required>
+                                        <input type="text" class="form-control" id="playerid" name="playerNumber" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="game1" class="form-label">Game 1</label>
-                                        <input type="number" class="form-control" id="game1" max="12" min="0" name="game1" required>
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name"  name="name" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="game2" class="form-label">Game 2</label>
-                                        <input type="number" class="form-control" id="game2" max="12" min="0" name="game2" required>
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="text" class="form-control" id="age" min="0" name="age" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="game3" class="form-label">Game 3</label>
-                                        <input type="number" class="form-control" id="game3" max="12" min="0" name="game3" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="wins" class="form-label">Wins</label>
-                                        <input type="number" class="form-control" id="wins" max="3" min="0" name="wins" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="losses" class="">Losses</label>
-                                        <input type="number" class="form-control" id="losses"  max="3" min="0" name="losses" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="date_played" class="form-label">Date Played</label>
-                                        <input type="date" class="form-control" id="date_played" name="date_played" required>
+                                        <label for="teamname" class="form-label">Team Name</label>
+                                        <input type="text" class="form-control" id="teamname"  min="0" name="teamname" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>

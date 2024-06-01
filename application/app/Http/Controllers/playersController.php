@@ -9,13 +9,13 @@ class playersController extends Controller
 {
     public function players()
     {
-        $players = players::select('*')->orderBy('name', 'ASC')->orderBy('teamname', 'ASC');
+        $players = players::select('*')->orderBy('teamname', 'ASC')->get();
         return view('players', compact('players'));
     }
 
     public function createPlayers(Request $request, players $create)
     {
-        $data = $request->validate(['playerNumber'=>'requiered',
+        $data = $request->validate(['playerNumber'=>'required',
                                     'name' => 'required',
                                     'teamname' => 'required|string',
                                     'age'=>'required|integer']);

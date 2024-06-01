@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->integer('age')->nullable();
             $table->string('teamname')->unique();
-            $table->foreign('playerID')->references('id')->on('players')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('playerID')->references('playerNumber')->on('players')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
