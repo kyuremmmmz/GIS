@@ -70,7 +70,7 @@ Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames
 Route::get('players', [playersController::class, 'players'])->name('playersList');
 Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
 Route::get('playerRankings', [playersController::class, 'seeRankings'])->name('viewRankings');
-Route::post('players', [playersController::class, 'CreatePlayerRankings'])->name('createPlayers');
+Route::post('playerRankings', [playersController::class, 'CreatePlayerRankings'])->name('createPlayers');
 //Route::get('')
 //Route::put()
 //Route::delete();
