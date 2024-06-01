@@ -13,11 +13,17 @@ class playersController extends Controller
         return view('players', compact('players'));
     }
 
-    public function createPlayers(Request $request)
+    public function createPlayers(Request $request, players $create)
     {
         $data = $request->validate(['playerNumber'=>'requiered',
                                     'name' => 'required',
                                     'teamname' => 'required|string',
                                     'age'=>'required|integer']);
+
+        $create = players::create($data);
+
+        return redirect()->back()->with('status', 'success');
+
+
     }
 }
