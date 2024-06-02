@@ -69,11 +69,14 @@ Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames
 //PLAYERS CRUD
 Route::get('players', [playersController::class, 'players'])->name('playersList');
 Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
-Route::get('playerRankings', [playersController::class, 'seeRankings'])->name('viewRankings');
-Route::post('playerRankings', [playersController::class, 'CreatePlayerRankings'])->name('createPlayers');
-//Route::get('')
-//Route::put()
+//Route::get('');
+//Route::put();
 //Route::delete();
+
+
+//PLAYER RANKINGS CRUD
+Route::get('playerRankings', [playersController::class, 'seeRankings'])->name('viewRankings');
+Route::post('playerRankings', [playersController::class, 'CreatePlayerRankings'])->name('createPlayerRankings');
 require __DIR__.'/auth.php';
 
 
