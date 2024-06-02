@@ -77,9 +77,9 @@ Route::delete('{delete}/players', [playersController::class, 'delete_data'])->na
 //PLAYER RANKINGS CRUD
 Route::get('playerRankings', [playersController::class, 'seeRankings'])->name('viewRankings');
 Route::post('playerRankings', [playersController::class, 'createRanking'])->name('createPlayerRankings');
-//Route::get(');
-//Route::put('');
-//Route::delete('');
+Route::get('{id}/PlayerRankingsEdit', [playersController::class, 'seeRankingsEdit'])->name('editPlayerRankings');
+Route::put('{id}/PlayerRankingsUpdate', [playersController::class, 'updatePlayerRankings'])->name('updatePlayerRankings');
+Route::delete('{data}/playerRankings', [playersController::class, 'deletaPlayerRankings'])->name('deletePlayerRankings');
 require __DIR__.'/auth.php';
 
 

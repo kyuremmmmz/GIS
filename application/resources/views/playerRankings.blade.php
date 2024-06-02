@@ -36,14 +36,11 @@
                             <th>Player Points</th>
                             <th>Age</th>
                             <th>Edit</th>
-                            <th>Delete</th>
-                          </tr>
-                        </thead>
                         <tbody>
                             @php
                              $index = 1;
                             @endphp
-                            @foreach ($players as $player)
+                            @foreach ($player as $player)
                           <tr>
                             <td>{{$index++}}</td>
                             <td>{{$player->name}}</td>
@@ -51,14 +48,7 @@
                             <td>{{$player->playerID}}</td>
                             <td>{{$player->points}}</td>
                             <td>{{$player->age}}</td>
-                            <td><a href="" class=" btn btn-primary">Edit</a></td>
-                            <td>
-                                <form action="" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
+                            <td><a href="{{route('editPlayerRankings', ['id'=>$player])}}" class=" btn btn-primary">Edit</a></td>
                           </tr>
                           @endforeach
                         </tbody>
