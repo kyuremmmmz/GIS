@@ -16,7 +16,7 @@ class playersController extends Controller
 
     public function createPlayers(Request $request, players $create)
     {
-        $data = $request->validate(['playerNumber'=>'required',
+        $data = $request->validate(['id'=>'required',
                                     'name' => 'required',
                                     'teamname' => 'required|string',
                                     'age'=>'required|integer']);
@@ -35,12 +35,10 @@ class playersController extends Controller
             'name'=>'required',
             'points'=>'required',
             'age'=>'required|integer',
-            'playerID'=>'required|interger',
+            'id'=>'required|interger',
             'teamname'=>'required|string',
         ]);
 
-        /*$create = players::findOrFail($playersRanks['playerID']);
-        $create->player_ranking()->create($playersRanks);*/
         $create = player_rankings::create($playersRanks);
 
         return redirect()->back()->with('status', 'success');
@@ -50,5 +48,21 @@ class playersController extends Controller
     {
         $players = player_rankings::select('*')->orderBy('points', 'desc')->get();
         return view('playerRankings', compact('players'));
+    }
+
+    public function viewEdit(players $playerNumber)
+    {
+        return view('PlayersEdit', ['playerNumber' => $playerNumber]);
+    }
+
+
+    public function editPlayers(Request $request, players $players)
+    {
+        $data = $request->validate(['id'=>'required',
+                                    'name' => 'required',
+                                    'teamname' => 'required|string',
+                                    'age'=>'required|integer']);
+        $players->update($data);
+        return redirect(route('viewEdit'))->back()->with('success', 'Successfully updated players');
     }
 }

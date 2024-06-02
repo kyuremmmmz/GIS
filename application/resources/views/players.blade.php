@@ -46,9 +46,9 @@
                             <td>{{$index++}}</td>
                             <td>{{$player->name}}</td>
                             <td>{{$player->teamname}}</td>
-                            <td>{{$player->playerNumber}}</td>
+                            <td>{{$player->id}}</td>
                             <td>{{$player->age}}</td>
-                            <td><a href="" class=" btn btn-primary">Edit</a></td>
+                            <td><a href="{{route('viewEdit',['playerNumber'=>$player])}}" class="btn btn-primary">Edit</a></td>
                             <td>
                                 <form action="" method="post">
                                     @csrf
@@ -77,7 +77,7 @@
                                     @method('post')
                                     <div class="mb-3">
                                         <label for="playerid" class="form-label">Player ID</label>
-                                        <input type="text" class="form-control" id="playerid" name="playerNumber" required>
+                                        <input type="text" class="form-control" id="playerid" name="id" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
