@@ -43,13 +43,6 @@ class playersController extends Controller
 
         return redirect()->back()->with('status', 'success');
     }
-
-    public function seeRankings()
-    {
-        $players = player_rankings::select('*')->orderBy('points', 'desc')->get();
-        return view('playerRankings', compact('players'));
-    }
-
     public function viewEdit(players $playerNumber)
     {
         return view('PlayersEdit', ['playerNumber' => $playerNumber]);
@@ -63,6 +56,34 @@ class playersController extends Controller
                                     'teamname' => 'required|string',
                                     'age'=>'required|integer']);
         $players->update($data);
-        return redirect(route('viewEdit'))->back()->with('success', 'Successfully updated players');
+        return redirect(route('playersList', ['playerNumber'=>$players]))->with('success', 'Successfully updated players');
     }
+
+    public function delete_data(players $delete)
+    {
+        $delete->delete();
+        return redirect(route('playersList'))->with('success', 'Successfully deleted players');
+    }
+
+//PLAYER RANKINGS CONTROLLER
+        public function seeRankings()
+        {
+            $players = player_rankings::select('*')->orderBy('points', 'desc')->get();
+            return view('playerRankings', compact('players'));
+        }
+
+        public function createRanking(Request $request)
+        {
+            $data = $request->validate([
+                'name'=>'required',
+                'points'=>'required',
+                'age'=>'required|integer',
+                'playerID'=>'required|integer',
+                'teamname'=>'required|string',
+            ]);
+
+            $createData = player_rankings::create($data);
+            return redirect()->back()->with('status', 'success');
+        }
+
 }

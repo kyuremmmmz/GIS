@@ -18,8 +18,8 @@
                     @csrf
                     @method('put')
                     <div class="mb-3">
-                        <label for="playerid" class="form-label">Player ID</label>
-                        <input type="text" class="form-control" id="playerid" value="{{$playerNumber->playerNumber}}" name="playerNumber" required>
+                        <label for="playerid" class="form-label">Player Number</label>
+                        <input type="text" class="form-control" id="playerid" value="{{$playerNumber->id}}" name="id" required>
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -27,11 +27,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="age" class="form-label">Age</label>
-                        <input type="text" class="form-control" id="age" min="0" name="age" required>
+                        <input type="text" class="form-control" id="age" min="0" value="{{$playerNumber->age}}" name="age" required>
                     </div>
                     <div class="mb-3">
                         <label for="teamname" class="form-label">Team Name</label>
-                        <input type="text" class="form-control" id="teamname"  min="0" name="teamname" required>
+                        <input type="text" class="form-control" id="teamname"  min="0" value="{{$playerNumber->teamname}}" name="teamname" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

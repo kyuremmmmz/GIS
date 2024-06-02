@@ -50,10 +50,10 @@
                             <td>{{$player->age}}</td>
                             <td><a href="{{route('viewEdit',['playerNumber'=>$player])}}" class="btn btn-primary">Edit</a></td>
                             <td>
-                                <form action="" method="post">
+                                <form action="{{route('destroy', ['delete'=>$player])}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                           </tr>

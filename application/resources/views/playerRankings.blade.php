@@ -18,7 +18,8 @@
     </div>
 
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
-        <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Players:</h1>
+        <h1 class="absolute text-[50px]  right-[200px] bottom-[20px] 2xl:left-[-291px] tracking-normal xl:left-[-200px]">Player</h1>
+        <h1 class="absolute text-[50px]  right-[200px] bottom-[20px] 2xl:left-[-151px] tracking-normal xl:left-[-100px]">Rankings:</h1>
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
@@ -47,7 +48,8 @@
                             <td>{{$index++}}</td>
                             <td>{{$player->name}}</td>
                             <td>{{$player->teamname}}</td>
-                            <td>{{$player->playerNumber}}</td>
+                            <td>{{$player->playerID}}</td>
+                            <td>{{$player->points}}</td>
                             <td>{{$player->age}}</td>
                             <td><a href="" class=" btn btn-primary">Edit</a></td>
                             <td>
@@ -73,12 +75,12 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('createPlayers') }}" method="post">
+                                <form action="{{ route('createPlayerRankings') }}" method="post">
                                     @csrf
                                     @method('post')
                                     <div class="mb-3">
-                                        <label for="playerid" class="form-label">Player ID</label>
-                                        <input type="text" class="form-control" id="playerid" name="playerNumber" required>
+                                        <label for="playerid" class="form-label">Player Number</label>
+                                        <input type="text" class="form-control" id="playerid" name="playerID" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
