@@ -13,7 +13,7 @@ class playersCommitteeController extends Controller
         return view('comittee/playersComittee', compact('players'));
     }
 
-    public function createPlayersComittee(Request $request, players $players)
+    public function createPlayersComittee(Request $request)
     {
         $data = $request->validate([
             'id'=>'required',
@@ -24,5 +24,8 @@ class playersCommitteeController extends Controller
 
         $createData = players::create($data);
         return redirect()->back()->with('create', 'Created Successfully');
+
     }
+
+
 }

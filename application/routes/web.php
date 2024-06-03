@@ -53,30 +53,29 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(function (){
-//COMITTEE COMPONENTS
-Route::get('comittee/games', [GameComitteeController::class, 'see'])->name('view.Game');
-Route::post('comittee/games', [GameComitteeController::class, 'createGame'])->name('create.Game');
-Route::get('comittee/dashboard', [GameComitteeController::class, 'top3'])->name('top3');
-Route::delete('comittee/{id}/dashboard', [GameComitteeController::class, 'delete'])->name('delete');
-Route::get('comittee/{id}/edit', [GameComitteeController::class, 'edit'])->name('edit');
-Route::put('comittee/{id}/update', [GameComitteeController::class, 'update'])->name('update');
-Route::get('comittee/playersComittee', [playersCommitteeController::class, 'seePlayersComittee'])->name('comitteePlayers');
+    //COMITTEE COMPONENTS
+    Route::get('comittee/games', [GameComitteeController::class, 'see'])->name('view.Game');
+    Route::post('comittee/games', [GameComitteeController::class, 'createGame'])->name('create.Game');
+    Route::get('comittee/dashboard', [GameComitteeController::class, 'top3'])->name('top3');
+    Route::delete('comittee/{id}/dashboard', [GameComitteeController::class, 'delete'])->name('delete');
+    Route::get('comittee/{id}/edit', [GameComitteeController::class, 'edit'])->name('edit');
+    Route::put('comittee/{id}/update', [GameComitteeController::class, 'update'])->name('update');
+    Route::get('comittee/playersComittee', [playersCommitteeController::class, 'seePlayersComittee'])->name('comitteePlayers');
 
-//COMITTEE CRUD CODE
-Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
-Route::post('/comitteeAuth/adminLogin', [ComitteeAuthController::class,'login'])->name('admin.login');
-Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logout'])->name('admin.logout');
-Route::get('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpassword'])->name('forgotpassword');
-Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
-Route::get('/comitteeAuth/users', [ComitteeAuthController::class, 'users'])->name('user');
-
-Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 'deleteUsers'])->name('delete.User');
-
+    //COMITTEE CRUD CODE
+    Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
+    Route::post('/comitteeAuth/adminLogin', [ComitteeAuthController::class,'login'])->name('admin.login');
+    Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logout'])->name('admin.logout');
+    Route::get('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpassword'])->name('forgotpassword');
+    Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
+    Route::get('/comitteeAuth/users', [ComitteeAuthController::class, 'users'])->name('user');
+    Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 'deleteUsers'])->name('delete.User');
 
 
-//GUESTS CRUD
-Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');
-Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames');
+
+    //GUESTS CRUD
+    Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');
+    Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames');
 });
 
 
