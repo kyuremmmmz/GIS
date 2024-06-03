@@ -24,7 +24,28 @@ class playersCommitteeController extends Controller
 
         $createData = players::create($data);
         return redirect()->back()->with('create', 'Created Successfully');
+    }
 
+    public function editPlayers(players $data)
+    {
+        return view('comittee/editPlayers', ['data' => $data]);
+    }
+
+    public function updatePlayers(Request $request, players $data)
+    {
+        $dataUpdate = $request->validate([
+                        'id'=>'required',
+                        'name' => 'required',
+                        'teamname' => 'required|string',
+                        'age'=>'required|integer']);
+        $data->update($dataUpdate);
+        return redirect()->route('comitteePlayers', ['data'=>$data] )->with('status', 'Updated Successfully');
+    }
+
+    public function deleteData(players $data)
+    {
+        $data->delete();
+        return redirect()->back();
     }
 
 

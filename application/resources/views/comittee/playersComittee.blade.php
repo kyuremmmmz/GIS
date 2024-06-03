@@ -29,8 +29,8 @@
                         <thead>
                           <tr>
                             <th>#</th>
-                            <th>Player Name</th>
                             <th>Team Name</th>
+                            <th>Player Name</th>
                             <th>Player Number</th>
                             <th>Age</th>
                             <th>Edit</th>
@@ -44,13 +44,13 @@
                             @foreach ($players as $player)
                           <tr>
                             <td>{{$index++}}</td>
-                            <td>{{$player->name}}</td>
                             <td>{{$player->teamname}}</td>
+                            <td>{{$player->name}}</td>
                             <td>{{$player->id}}</td>
                             <td>{{$player->age}}</td>
-                            <td><a href="{{route('viewEdit',['playerNumber'=>$player])}}" class="btn btn-primary">Edit</a></td>
+                            <td><a href="{{route('editPlayersComittee',['data'=>$player])}}" class="btn btn-primary">Edit</a></td>
                             <td>
-                                <form action="{{route('destroy', ['delete'=>$player])}}" method="post">
+                                <form action="{{route('deleteComitteePlayers', ['data'=>$player])}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -72,7 +72,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('createPlayers') }}" method="post">
+                                <form action="{{ route('create') }}" method="post">
                                     @csrf
                                     @method('post')
                                     <div class="mb-3">

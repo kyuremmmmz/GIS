@@ -61,6 +61,10 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('comittee/{id}/edit', [GameComitteeController::class, 'edit'])->name('edit');
     Route::put('comittee/{id}/update', [GameComitteeController::class, 'update'])->name('update');
     Route::get('comittee/playersComittee', [playersCommitteeController::class, 'seePlayersComittee'])->name('comitteePlayers');
+    Route::post('comittee/players', [playersCommitteeController::class, 'createPlayersComittee'])->name('create');
+    Route::get('comittee/{data}/PlayersEdit', [playersCommitteeController::class, 'editPlayers'])->name('editPlayersComittee');
+    Route::put('comittee/{data}/PlayersEdit', [playersCommitteeController::class, 'updatePlayers'])->name('updatePlayerss');
+    Route::delete('comittee/{data}/playersComittee', [playersCommitteeController::class, 'deleteData'])->name('deleteComitteePlayers');
 
     //COMITTEE CRUD CODE
     Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');

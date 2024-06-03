@@ -48,7 +48,7 @@
                             <td>{{$player->teamname}}</td>
                             <td>{{$player->id}}</td>
                             <td>{{$player->age}}</td>
-                            <td><a href="{{route('viewEdit',['playerNumber'=>$player])}}" class="btn btn-primary">Edit</a></td>
+                            <td><a href="{{route('editPlayers',['id'=>$player])}}" class="btn btn-primary">Edit</a></td>
                             <td>
                                 <form action="{{route('destroy', ['delete'=>$player])}}" method="post">
                                     @csrf
