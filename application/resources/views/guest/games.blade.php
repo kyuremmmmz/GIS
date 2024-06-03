@@ -83,7 +83,7 @@
                 <i class="relative fas fa-tachometer-alt left-5"></i>
                 <span class="relative left-7">Dashboard</span>
             </a>
-            <a href="{{route('seeGames')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('seeGames')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
                 <i class="relative fas fa-basketball-ball left-5"></i>
                 <span class="relative left-7">Games</span>
             </a>
@@ -91,9 +91,9 @@
                 <i class="relative fas fa-basketball-ball left-5"></i>
                 <span class="relative left-7">Players</span>
             </a>
-            <form action="{{route('logout')}}" method="post">
+            <form action="{{route('out')}}" method="post">
                 @csrf
-                @method('post')
+                @method('get')
             <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
                 <i class="relative fas fa-sign-out left-5"></i>
                 <span class="relative left-7">Back</span>

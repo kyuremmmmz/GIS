@@ -4,6 +4,7 @@ use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\GuestGameController;
+use App\Http\Controllers\GuestPlayersController;
 use App\Http\Controllers\playersCommitteeController;
 use App\Http\Controllers\playersController;
 use App\Http\Controllers\ProfileController;
@@ -12,7 +13,7 @@ use App\Models\gameInfoModel;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('welcome', function () {
     return view('welcome');
 })->name('welcome');
 
@@ -86,7 +87,9 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     //GUESTS CRUD
     Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');
     Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames');
-    Route::get('guest/players', [GuestGameController::class, 'show'])->name('showPlayers');
+    Route::get('guest/players', [GuestPlayersController::class, 'show'])->name('showPlayers');
+    Route::get('welcome', [GuestPlayersController::class, 'back'])->name('out');
+    Route::get('guest/playersRankingGuest', [GuestPlayersController::class, 'showRankings'])->name('rankings');
 });
 
 
