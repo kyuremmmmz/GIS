@@ -9,7 +9,8 @@ class playersCommitteeController extends Controller
 {
     public function seePlayersComittee()
     {
-        return view('comittee/playersComittee');
+        $players = players::select('*')->orderBy('teamname', 'ASC')->get();
+        return view('comittee/playersComittee', compact('players'));
     }
 
     public function createPlayersComittee(Request $request, players $players)
