@@ -57,9 +57,9 @@
                 <i class="relative fas fa-basketball-ball left-5"></i>
                 <span class="relative left-7">Games</span>
             </a>
-            <a href="{{route('game.create')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-trophy left-5"></i>
-                <span class="relative left-7">Team Rankings</span>
+            <a href="{{route('showPlayers')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 ">
+                <i class="relative fas fa-basketball-ball left-5"></i>
+                <span class="relative left-7">Players</span>
             </a>
             <form action="{{route('logout')}}" method="post">
                 @csrf

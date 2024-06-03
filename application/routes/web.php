@@ -86,6 +86,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     //GUESTS CRUD
     Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');
     Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames');
+    Route::get('guest/players', [GuestGameController::class, 'show'])->name('showPlayers');
 });
 
 
