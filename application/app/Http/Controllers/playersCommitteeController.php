@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\player_rankings;
 use App\Models\players;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,27 @@ class playersCommitteeController extends Controller
     {
         $data->delete();
         return redirect()->back();
+    }
+
+    public function seePlayerRanks()
+    {
+        $id = player_rankings::select('*')->orderBy('points', 'desc')->get();
+        return view('comittee/playersRanking', ['id' => $id]);
+    }
+
+    public function createPlayerRanking(Request $request, player_rankings $create)
+    {
+        $data = $request->validate([
+            'name'=>'required',
+            'points'=>'required',
+            'age'=>'required|integer',
+            'playerID'=>'required|integer',
+            'teamname'=>'required|string',
+        ]);
+
+        $create = player_rankings::create($data);
+
+        return redirect()->back()->with('status', ''.$create.' has created successfully');
     }
 
 

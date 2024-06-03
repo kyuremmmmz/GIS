@@ -66,7 +66,10 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::put('comittee/{data}/PlayersEdit', [playersCommitteeController::class, 'updatePlayers'])->name('updatePlayerss');
     Route::delete('comittee/{data}/playersComittee', [playersCommitteeController::class, 'deleteData'])->name('deleteComitteePlayers');
 
-    //COMITTEE CRUD CODE
+    //COMITTEE EDIT PLAYER RANKINGS AND VIEW PLAYER RANKINGS
+    Route::get('comittee/playersRanking', [playersCommitteeController::class, 'seePlayerRanks'])->name('seePlayerRanks');
+
+    //COMITTEE CRUD
     Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
     Route::post('/comitteeAuth/adminLogin', [ComitteeAuthController::class,'login'])->name('admin.login');
     Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logout'])->name('admin.logout');

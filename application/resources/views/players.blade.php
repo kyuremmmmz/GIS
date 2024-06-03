@@ -42,13 +42,13 @@
                              $index = 1;
                             @endphp
                             @foreach ($players as $player)
-                          <tr>
+                        <tr>
                             <td>{{$index++}}</td>
                             <td>{{$player->name}}</td>
                             <td>{{$player->teamname}}</td>
                             <td>{{$player->id}}</td>
                             <td>{{$player->age}}</td>
-                            <td><a href="{{route('editPlayers',['id'=>$player])}}" class="btn btn-primary">Edit</a></td>
+                            <td><a href="{{route('editPlayerRankings',['id'=>$player])}}" class="btn btn-primary">Edit</a></td>
                             <td>
                                 <form action="{{route('destroy', ['delete'=>$player])}}" method="post">
                                     @csrf
@@ -56,10 +56,10 @@
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
-                          </tr>
-                          @endforeach
+                        </tr>
+                        @endforeach
                         </tbody>
-                      </table>
+                    </table>
                     </div>
                 </div>
             </div>
