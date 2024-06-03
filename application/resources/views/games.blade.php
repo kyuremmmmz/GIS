@@ -157,7 +157,7 @@
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>
-            <form action="{{route('admin.logout')}}" method="post">
+            <form action="{{route('logout')}}" method="post">
                 @csrf
                 @method('post')
             <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">
@@ -167,5 +167,11 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
 </body>
 </html>
