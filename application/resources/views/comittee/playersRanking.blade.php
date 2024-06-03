@@ -24,7 +24,7 @@
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
                 <a href="{{route('seePlayerRanks')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
-                <a href="{{route('playersList')}}" class="absolute top-2 w-36 float-end right-[1140px] btn btn-primary">Players</a>
+                <a href="{{route('comitteePlayers')}}" class="absolute top-2 w-36 float-end right-[1140px] btn btn-primary">Players</a>
                 <div class="mb-16 overflow-hidden bg-slate-700">
                     <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
                         <thead>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('createPlayerRankings') }}" method="post">
+                                <form action="{{ route('createPlayerRanking') }}" method="post">
                                     @csrf
                                     @method('post')
                                     <div class="mb-3">
@@ -124,10 +124,6 @@
             <a href="{{route('playersList')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
                 <i class="relative fas fa-basketball-ball left-5"></i>
                 <span class="relative left-7">Players</span>
-            </a>
-            <a href="{{route('playersList')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-trophy left-5"></i>
-                <span class="relative left-7">Team Rankings</span>
             </a>
             <a href="{{route('profile.edit')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-cog left-5"></i>

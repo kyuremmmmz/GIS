@@ -68,6 +68,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
 
     //COMITTEE EDIT PLAYER RANKINGS AND VIEW PLAYER RANKINGS
     Route::get('comittee/playersRanking', [playersCommitteeController::class, 'seePlayerRanks'])->name('seePlayerRanks');
+    Route::post('comittee/playersRanking', [playersCommitteeController::class, 'createPlayerRanking'])->name('createPlayerRanking');
 
     //COMITTEE CRUD
     Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
