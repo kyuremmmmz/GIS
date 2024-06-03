@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\gameInfoModel;
+use App\Models\player_rankings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +12,7 @@ class GameAdminController extends Controller
 
 
 
-   
+
 
 
 
@@ -29,7 +30,7 @@ class GameAdminController extends Controller
 
         $postData = gameInfoModel::create($validator);
 
-        return redirect(route('dashboard'));
+        return redirect(route('game1.index'));
     }
 
     public function edit(gameInfoModel $id){
@@ -77,5 +78,9 @@ class GameAdminController extends Controller
         return redirect(route('game1.index'))->with('success', 'Success delete!');
     }
 
-
+    public function countPlayers()
+    {
+        $count = player_rankings::select('*')->take(5)->orderBy('points', 'desc')->get();
+        return view('guest/dashboard', compact('count'));
+    }
 }

@@ -23,7 +23,7 @@
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
-                <a href="{{route('viewRankings')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
+                <a href="{{route('rankings')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
                 <a href="{{route('playersList')}}" class="absolute top-2 w-36 float-end right-[1140px] btn btn-primary">Players</a>
                 <div class="mb-16 overflow-hidden bg-slate-700">
                     <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
@@ -129,7 +129,7 @@
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>
-            <form action="{{route('admin.logout')}}" method="post">
+            <form action="{{route('logout')}}" method="post">
                 @csrf
                 @method('post')
             <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">

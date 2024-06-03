@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\gameInfoModel;
+use App\Models\player_rankings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,11 @@ class GameComitteeController extends Controller
                     ->take(3)
                     ->orderBy('wins', 'desc')
                     ->get();
+        $count = player_rankings::select('*')->take(5)->orderBy('points', 'desc')->get();
 
-        return view('comittee/dashboard', ['gamesCount' => $gamesCount]);
+
+        return view('comittee/dashboard', ['gamesCount' => $gamesCount,
+                                           'count'=>$count]);
     }
 
     public function see()

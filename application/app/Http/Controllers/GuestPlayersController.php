@@ -21,6 +21,6 @@ class GuestPlayersController extends Controller
     public function showRankings()
     {
         $id = player_rankings::select('*')->orderBy('points', 'DESC')->get();
-        return view('guest/playerRankingsGuest', compact('id'));
+        return view('guest/playersRankingGuest', compact('id'));
     }
 }

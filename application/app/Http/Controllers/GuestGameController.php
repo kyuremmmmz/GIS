@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\gameInfoModel;
+use App\Models\player_rankings;
 use Illuminate\Support\Facades\DB;
 
 class GuestGameController extends Controller
@@ -13,7 +14,9 @@ class GuestGameController extends Controller
                                     ->take(3)
                                     ->get();
 
-        return view('guest/dashboard', ['gamesCount' => $gamesCount]);
+                                    $count = player_rankings::select('*')->take(5)->orderBy('points', 'desc')->get();
+                                    return view('guest/dashboard',compact('gamesCount', 'count'));
+
     }
 
     public function games()

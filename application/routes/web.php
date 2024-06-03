@@ -90,6 +90,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('guest/players', [GuestPlayersController::class, 'show'])->name('showPlayers');
     Route::get('welcome', [GuestPlayersController::class, 'back'])->name('out');
     Route::get('guest/playersRankingGuest', [GuestPlayersController::class, 'showRankings'])->name('rankings');
+
 });
 
 
