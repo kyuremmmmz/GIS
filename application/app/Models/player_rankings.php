@@ -18,7 +18,7 @@ class player_rankings extends Model
         'teamname',
         'points'];
 
-    public function player_rankings()
+    public function player_ranking()
     {
         return $this->belongsTo(players::class);
     }

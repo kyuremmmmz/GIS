@@ -71,4 +71,24 @@ class playersCommitteeController extends Controller
     }
 
 
+    public function seeEditPlayersRanking(player_rankings $data)
+    {
+        return view('comittee/editPlayersRanking ', ['data'=>$data]);
+    }
+
+
+    public function editPlayerRankings(Request $request, player_rankings $data)
+    {
+        $updateData = $request->validate([
+                        'name'=>'required',
+                        'points'=>'required',
+                        'age'=>'required|integer',
+                        'playerID'=>'required|integer',
+                        'teamname'=>'required|string',
+                        ]);
+        $data->update($updateData);
+        return redirect()->route('seePlayerRanks', ['data' => $data]);
+    }
+
+
 }
