@@ -4,6 +4,7 @@ use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\GuestGameController;
+use App\Http\Controllers\playersCommitteeController;
 use App\Http\Controllers\playersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureTokenIsValid;
@@ -36,6 +37,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
     Route::get('/comitteeAuth/admin', [ComitteeAuthController::class, 'see'])->name('admin.see');
     Route::post('/comitteeAuth/admin', [ComitteeAuthController::class, 'createUser'])->name('admin.createUser');
+    //PLAYERS CRUD
+    Route::get('players', [playersController::class, 'players'])->name('playersList');
+    Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
+    Route::get('{playerNumber}/PlayersEdit', [playersController::class, 'viewEdit'])->name('viewEdit');
+    Route::put('{players}/PlayersEdit', [playersController::class, 'editPlayers'])->name('editPlayers');
+    Route::delete('{delete}/players', [playersController::class, 'delete_data'])->name('destroy');
+    //PLAYER RANKINGS CRUD
+    Route::get('playerRankings', [playersController::class, 'seeRankings'])->name('viewRankings');
+    Route::post('playerRankings', [playersController::class, 'createRanking'])->name('createPlayerRankings');
+    Route::get('{id}/PlayerRankingsEdit', [playersController::class, 'seeRankingsEdit'])->name('editPlayerRankings');
+    Route::put('{id}/PlayerRankingsUpdate', [playersController::class, 'updatePlayerRankings'])->name('updatePlayerRankings');
+    Route::delete('{data}/playerRankings', [playersController::class, 'deletaPlayerRankings'])->name('deletePlayerRankings');
 });
 
 
@@ -47,6 +60,7 @@ Route::get('comittee/dashboard', [GameComitteeController::class, 'top3'])->name(
 Route::delete('comittee/{id}/dashboard', [GameComitteeController::class, 'delete'])->name('delete');
 Route::get('comittee/{id}/edit', [GameComitteeController::class, 'edit'])->name('edit');
 Route::put('comittee/{id}/update', [GameComitteeController::class, 'update'])->name('update');
+Route::get('comittee/playersComittee', [playersCommitteeController::class, 'seePlayersComittee'])->name('comitteePlayers');
 
 //COMITTEE CRUD CODE
 Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
@@ -66,20 +80,7 @@ Route::get('guest/games', [GuestGameController::class, 'games'])->name('seeGames
 });
 
 
-//PLAYERS CRUD
-Route::get('players', [playersController::class, 'players'])->name('playersList');
-Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
-Route::get('{playerNumber}/PlayersEdit', [playersController::class, 'viewEdit'])->name('viewEdit');
-Route::put('{players}/PlayersEdit', [playersController::class, 'editPlayers'])->name('editPlayers');
-Route::delete('{delete}/players', [playersController::class, 'delete_data'])->name('destroy');
 
-
-//PLAYER RANKINGS CRUD
-Route::get('playerRankings', [playersController::class, 'seeRankings'])->name('viewRankings');
-Route::post('playerRankings', [playersController::class, 'createRanking'])->name('createPlayerRankings');
-Route::get('{id}/PlayerRankingsEdit', [playersController::class, 'seeRankingsEdit'])->name('editPlayerRankings');
-Route::put('{id}/PlayerRankingsUpdate', [playersController::class, 'updatePlayerRankings'])->name('updatePlayerRankings');
-Route::delete('{data}/playerRankings', [playersController::class, 'deletaPlayerRankings'])->name('deletePlayerRankings');
 require __DIR__.'/auth.php';
 
 
