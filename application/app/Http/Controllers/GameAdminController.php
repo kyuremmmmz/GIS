@@ -78,9 +78,5 @@ class GameAdminController extends Controller
         return redirect(route('game1.index'))->with('success', 'Success delete!');
     }
 
-    public function countPlayers()
-    {
-        $count = player_rankings::select('*')->take(5)->orderBy('points', 'desc')->get();
-        return view('guest/dashboard', compact('count'));
-    }
+    
 }

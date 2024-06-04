@@ -27,7 +27,7 @@
                 <div class="mb-16 overflow-hidden bg-slate-700">
                     <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
                         <thead>
-                          <tr>
+                        <tr>
                             <th>#</th>
                             <th>Player Name</th>
                             <th>Team Name</th>
@@ -35,11 +35,11 @@
                             <th>Age</th>
                             <th>Edit</th>
                             <th>Delete</th>
-                          </tr>
+                        </tr>
                         </thead>
                         <tbody>
                             @php
-                             $index = 1;
+                            $index = 1;
                             @endphp
                             @foreach ($players as $player)
                         <tr>
