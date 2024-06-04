@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\gameInfoModel;
 use App\Models\player_rankings;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class GuestGameController extends Controller
@@ -13,9 +14,15 @@ class GuestGameController extends Controller
         $gamesCount = gameInfoModel::select(['id', 'teamname', 'wins'])
                                     ->take(3)
                                     ->get();
+        $count = player_rankings::select('*')
+                                    ->take(5)
+                                    ->orderBy('points', 'desc')
+                                    ->get();
+        $countPlayers = User::count();
+        $adminCount = User::count('Adminname');
+        $ComitteeCount = User::count('name');
 
-                                    $count = player_rankings::select('*')->take(5)->orderBy('points', 'desc')->get();
-                                    return view('guest/dashboard',compact('gamesCount', 'count'));
+        return view('guest/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount'));
 
     }
 
