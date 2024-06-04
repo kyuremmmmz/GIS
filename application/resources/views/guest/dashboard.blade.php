@@ -20,7 +20,7 @@
         <div class="relative">
             <div class="absolute grid self-center left-[-300px] grid-cols-3 items-center justify-center grid-rows-4 rounded-tl-lg gap-4 h-[1050px] w-[1600px] bg-slate-500">
 
-                <div class="h-[159px]  overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                <div class="h-[159px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Top 5 Players</h1>
                     @php
                     $index = 1;
