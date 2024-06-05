@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\comittee\ComitteeTeamController;
 use App\Http\Controllers\ComitteeAuthController;
+use App\Http\Controllers\ComitteeTeamController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\GuestGameController;
@@ -99,7 +99,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('guest/playersRankingGuest', [GuestPlayersController::class, 'showRankings'])->name('rankings');
 
     //TEAMS
-    Route::get('comittee/teams', [ComitteeTeamController::class, 'showTeams'])->name('teams');
+    Route::get('comittee/teams', [ComitteeTeamController::class, 'comitteeTeamsView'])->name('ComitteeTeams');
 
 
 

@@ -22,6 +22,7 @@
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create Records</button>
+                <a href="{{route('ComitteeTeams')}}" class="absolute top-2 w-36 float-end right-[980px] btn btn-primary">Teams</a>
                 <a href="{{route('seePlayerRanks')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
                 <a href="{{route('comitteePlayers')}}" class="absolute top-2 w-36 float-end right-[1140px] btn btn-primary">Players</a>
                 <div class="mb-16 overflow-hidden bg-slate-700">

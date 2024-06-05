@@ -78,5 +78,5 @@ class GameAdminController extends Controller
         return redirect(route('game1.index'))->with('success', 'Success delete!');
     }
 
-    
+
 }
