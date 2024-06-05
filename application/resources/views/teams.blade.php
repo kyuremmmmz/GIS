@@ -45,8 +45,9 @@
                             <td>{{$team->team}}</td>
                             <td><button type="button" data-bs-target="#edit" data-bs-toggle="modal" class=" btn btn-primary">Edit</button></td>
                             <td>
-                                <form action="" method="post">
-
+                                <form action="{{route('DeleteTeams', ['teams'=>$team])}}" method="post">
+                                    @csrf
+                                    @method('delete')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
@@ -70,7 +71,7 @@
                                     @csrf
                                     @method('post')
                                     <div class="mb-3">
-                                        <label for="team" class="form-label">Player ID</label>
+                                        <label for="team" class="form-label">Team Name</label>
                                         <input type="text" class="form-control" id="team" name="team" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -94,7 +95,7 @@
                                         @csrf
                                         @method('post')
                                         <div class="mb-3">
-                                            <label for="team" class="form-label">Player ID</label>
+                                            <label for="team" class="form-label">Team Name</label>
                                             <input type="text" class="form-control" id="team" value="{{$team->team}}" name="team" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>

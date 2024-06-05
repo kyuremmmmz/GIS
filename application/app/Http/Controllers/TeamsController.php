@@ -24,9 +24,6 @@ class TeamsController extends Controller
         return redirect()->back()->with('status', 'success');
     }
 
-    public function SeeTeams(teams $teams){
-        return view('editTeams', compact('teams'));
-    }
 
     public function Update(Request $request, teams $teams)
     {
@@ -41,7 +38,7 @@ class TeamsController extends Controller
     public function delete(teams $teams)
     {
         $teams->delete();
-        return redirect()->back()->with('status', 'Deleted Successfully');
+        return redirect()->route('teams')->with('status', 'Deleted Successfully');
     }
 
 }

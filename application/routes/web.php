@@ -96,6 +96,8 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('teams', [TeamsController::class, 'teams'])->name('teams');
     Route::post('teams', [TeamsController::class, 'RegisterTeams'])->name('Createteams');
     Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
+    Route::delete('{teams}/teams', [TeamsController::class, 'delete'])->name('DeleteTeams');
+
 
 });
 
