@@ -30,10 +30,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Player Name</th>
                             <th>Team Name</th>
-                            <th>Player Number</th>
-                            <th>Age</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -42,16 +39,14 @@
                             @php
                             $index = 1;
                             @endphp
-                            @foreach ($players as $player)
+                            @foreach ($teams as $team)
                         <tr>
                             <td>{{$index++}}</td>
-                            <td>{{$player->name}}</td>
-                            <td>{{$player->teamname}}</td>
-                            <td>{{$player->id}}</td>
+                            <td>{{$player->team}}</td>
                             <td>{{$player->age}}</td>
-                            <td><a href="{{route('editPlayerRankings',['id'=>$player])}}" class="btn btn-primary">Edit</a></td>
+                            <td><a href="{{route()}}" class="btn btn-primary">Edit</a></td>
                             <td>
-                                <form action="{{route('destroy', ['delete'=>$player])}}" method="post">
+                                <form action="{{route()}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">Delete</button>
