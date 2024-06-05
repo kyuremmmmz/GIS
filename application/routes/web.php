@@ -8,6 +8,7 @@ use App\Http\Controllers\GuestPlayersController;
 use App\Http\Controllers\playersCommitteeController;
 use App\Http\Controllers\playersController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeamsController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Models\gameInfoModel;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -90,6 +91,11 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('guest/players', [GuestPlayersController::class, 'show'])->name('showPlayers');
     Route::get('welcome', [GuestPlayersController::class, 'back'])->name('out');
     Route::get('guest/playersRankingGuest', [GuestPlayersController::class, 'showRankings'])->name('rankings');
+
+    //TEAMS
+    Route::get('teams', [TeamsController::class, 'teams'])->name('teams');
+    Route::post('teams', [TeamsController::class, 'RegisterTeams'])->name('Createteams');
+    Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
 
 });
 

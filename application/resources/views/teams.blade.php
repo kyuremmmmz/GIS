@@ -22,7 +22,7 @@
         <div class="relative">
             <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create Records</button>
-                <a href="{{route('playersList')}}" class="absolute top-2 w-36 float-end right-[1240px] btn btn-primary">Teams</a>
+                <a href="{{route('teams')}}" class="absolute top-2 w-36 float-end right-[980px] btn btn-primary">Teams</a>
                 <a href="{{route('viewRankings')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
                 <a href="{{route('playersList')}}" class="absolute top-2 w-36 float-end right-[1140px] btn btn-primary">Players</a>
                 <div class="mb-16 overflow-hidden bg-slate-700">
@@ -42,13 +42,11 @@
                             @foreach ($teams as $team)
                         <tr>
                             <td>{{$index++}}</td>
-                            <td>{{$player->team}}</td>
-                            <td>{{$player->age}}</td>
-                            <td><a href="{{route()}}" class="btn btn-primary">Edit</a></td>
+                            <td>{{$team->team}}</td>
+                            <td><button type="button" data-bs-target="#edit" data-bs-toggle="modal" class=" btn btn-primary">Edit</button></td>
                             <td>
-                                <form action="{{route()}}" method="post">
-                                    @csrf
-                                    @method('delete')
+                                <form action="" method="post">
+
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
@@ -63,29 +61,17 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title">Register Players</h3>
+                            <h3 class="modal-title">Register Teams</h3>
                             <button type="button" class="btn-close" data-bs-target="#create" data-bs-toggle="modal"></button>
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('createPlayers') }}" method="post">
+                                <form action="{{ route('Createteams') }}" method="post">
                                     @csrf
                                     @method('post')
                                     <div class="mb-3">
-                                        <label for="playerid" class="form-label">Player ID</label>
-                                        <input type="text" class="form-control" id="playerid" name="id" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name"  name="name" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="age" class="form-label">Age</label>
-                                        <input type="text" class="form-control" id="age" min="0" name="age" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="teamname" class="form-label">Team Name</label>
-                                        <input type="text" class="form-control" id="teamname"  min="0" name="teamname" required>
+                                        <label for="team" class="form-label">Player ID</label>
+                                        <input type="text" class="form-control" id="team" name="team" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
@@ -94,6 +80,30 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="edit">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Update Teams</h3>
+                                <button type="button" class="btn-close" data-bs-target="#create" data-bs-toggle="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+
+                                    <form action="{{ route('UpdateTeams', ['teams'=>$team]) }}" method="post">
+                                        @csrf
+                                        @method('post')
+                                        <div class="mb-3">
+                                            <label for="team" class="form-label">Player ID</label>
+                                            <input type="text" class="form-control" id="team" value="{{$team->team}}" name="team" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </main>
 

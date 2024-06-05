@@ -9,14 +9,14 @@ class TeamsController extends Controller
 {
     public function teams()
     {
-        $teams = teams::select('*');
+        $teams = teams::select('*')->orderBy('team', 'asc')->get();
         return view('teams',compact('teams'));
     }
 
     public function RegisterTeams(Request $request)
     {
         $data = $request->validate([
-            'team' => 'required | string'
+            'team' => 'required|string'
         ]);
 
         $create = teams::create($data);
@@ -35,7 +35,7 @@ class TeamsController extends Controller
         ]);
 
         $teams->update($data);
-        return redirect()->back()->with('status', 'Updated Successfully');
+        return redirect()->route('teams', compact('teams'))->with('status', 'Updated Successfully');
     }
 
     public function delete(teams $teams)

@@ -52,7 +52,9 @@
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Comittees: {{$ComitteeCount}}</p>
 
                 </div>
-                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl"></div>
+                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl">
+
+                </div>
             </div>
         </div>
     </main>
