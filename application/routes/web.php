@@ -6,6 +6,7 @@ use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
 use App\Http\Controllers\GuestGameController;
 use App\Http\Controllers\GuestPlayersController;
+use App\Http\Controllers\GuestTeamsController;
 use App\Http\Controllers\playersCommitteeController;
 use App\Http\Controllers\playersController;
 use App\Http\Controllers\ProfileController;
@@ -103,6 +104,9 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::post('comittee/teams', [ComitteeTeamController::class, 'RegisterTeams'])->name('createComitteeTeams');
     Route::put('comittee/{data}/teams', [ComitteeTeamController::class, 'editTeams'])->name('editTeams');
     Route::delete('comittee/{data}/teams', [ComitteeTeamController::class, 'deleteTeams'])->name('deleteTeams');
+
+    //GUEST TEAMS
+    Route::get('guest/teams', [GuestTeamsController::class, 'guestTeams'])->name('MayIseeTeams');
 
 
 
