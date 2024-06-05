@@ -43,9 +43,9 @@
                         <tr>
                             <td>{{$index++}}</td>
                             <td>{{$team->team}}</td>
-                            <td><button type="button" data-bs-target="#edit" data-bs-toggle="modal" class=" btn btn-primary">Edit</button></td>
+                            <td><button type="button" data-bs-target="#edit{{$team->id}}" data-bs-toggle="modal" class=" btn btn-primary">Edit</button></td>
                             <td>
-                                <form action="{{route('DeleteTeams', ['teams'=>$team])}}" method="post">
+                                <form action="{{route('deleteTeams', ['data'=>$team])}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -81,7 +81,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="edit">
+                @foreach ($data as $team)
+                <div class="modal fade" id="edit{{$team->id}}">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -95,8 +96,8 @@
                                         @csrf
                                         @method('post')
                                         <div class="mb-3">
-                                            <label for="team" class="form-label">Team Name</label>
-                                            <input type="text" class="form-control" id="team" value="{{$team->team}}" name="team" required>
+                                            <label for="team{{$team->id}}" class="form-label">Team Name</label>
+                                            <input type="text" class="form-control" id="team{{$team->id}}" value="{{$team->team}}" name="team" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
@@ -105,6 +106,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
             </div>
         </main>
 
@@ -119,19 +121,15 @@
         </div>
         <p class="relative top-2">University of Perpetual Help System Dalta - Molino Campus</p>
         <div class="relative">
-            <a href="{{route('dashboard')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('top3')}}" class="relative flex items-center w-auto rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-tachometer-alt left-5"></i>
                 <span class="relative left-7">Dashboard</span>
             </a>
-            <a href="{{route('game1.index')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('view.Game')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-basketball-ball left-5"></i>
                 <span class="relative left-7">Games</span>
             </a>
-            <a href="{{route('user')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
-                <i class="relative fas fa-users left-5"></i>
-                <span class="relative left-7">Users</span>
-            </a>
-            <a href="{{route('playersList')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
+            <a href="{{route('comitteePlayers')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
                 <i class="relative fas fa-users left-5"></i>
                 <span class="relative left-7">Players</span>
             </a>
@@ -139,7 +137,7 @@
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>
-            <form action="{{route('logout')}}" method="post">
+            <form action="{{route('admin.logout')}}" method="post">
                 @csrf
                 @method('post')
             <button type="submit" class="relative flex items-center w-full gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 lg:relative lg:flex">

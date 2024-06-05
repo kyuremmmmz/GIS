@@ -100,6 +100,9 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
 
     //TEAMS
     Route::get('comittee/teams', [ComitteeTeamController::class, 'comitteeTeamsView'])->name('ComitteeTeams');
+    Route::post('comittee/teams', [ComitteeTeamController::class, 'RegisterTeams'])->name('createComitteeTeams');
+    Route::put('comittee/{data}/teams', [ComitteeTeamController::class, 'editTeams'])->name('editTeams');
+    Route::delete('comittee/{data}/teams', [ComitteeTeamController::class, 'deleteTeams'])->name('deleteTeams');
 
 
 
