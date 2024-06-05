@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\comittee\ComitteeTeamController;
 use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
@@ -51,6 +52,11 @@ Route::middleware('auth')->group(function () {
     Route::get('{id}/PlayerRankingsEdit', [playersController::class, 'seeRankingsEdit'])->name('editPlayerRankings');
     Route::put('{id}/PlayerRankingsUpdate', [playersController::class, 'updatePlayerRankings'])->name('updatePlayerRankings');
     Route::delete('{data}/playerRankings', [playersController::class, 'deletaPlayerRankings'])->name('deletePlayerRankings');
+    //TEAMS
+    Route::get('teams', [TeamsController::class, 'teams'])->name('teams');
+    Route::post('teams', [TeamsController::class, 'RegisterTeams'])->name('Createteams');
+    Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
+    Route::delete('{teams}/teams', [TeamsController::class, 'delete'])->name('DeleteTeams');
 });
 
 
@@ -93,10 +99,8 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('guest/playersRankingGuest', [GuestPlayersController::class, 'showRankings'])->name('rankings');
 
     //TEAMS
-    Route::get('teams', [TeamsController::class, 'teams'])->name('teams');
-    Route::post('teams', [TeamsController::class, 'RegisterTeams'])->name('Createteams');
-    Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
-    Route::delete('{teams}/teams', [TeamsController::class, 'delete'])->name('DeleteTeams');
+    Route::get('comittee/teams', [ComitteeTeamController::class, 'showTeams'])->name('teams');
+
 
 
 });
