@@ -13,6 +13,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Models\gameInfoModel;
+use App\Models\player_rankings;
+use App\Models\teams;
+use App\Models\User;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\Route;
 
@@ -21,12 +24,19 @@ Route::get('welcome', function () {
 })->name('welcome');
 
 Route::get('/dashboard', function () {
-    $gamesCount = gameInfoModel::select('id', 'teamname', 'wins',
-                    )
-                    ->take(3)
-                    ->orderBy('wins', 'desc')
-                    ->get();
-    return view('dashboard', compact('gamesCount'));
+    $gamesCount = gameInfoModel::select(['id', 'teamname', 'wins'])
+    ->take(3)
+    ->get();
+    $count = player_rankings::select('*')
+        ->take(5)
+        ->orderBy('points', 'desc')
+        ->get();
+    $countPlayers = User::count();
+    $adminCount = User::count('Adminname');
+    $ComitteeCount = User::count('name');
+    $teams = teams::select('*')->orderBy('team', 'asc')->get();
+
+    return view('/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount', 'teams'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

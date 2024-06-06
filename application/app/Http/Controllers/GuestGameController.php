@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\gameInfoModel;
 use App\Models\player_rankings;
+use App\Models\teams;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -21,8 +22,9 @@ class GuestGameController extends Controller
         $countPlayers = User::count();
         $adminCount = User::count('Adminname');
         $ComitteeCount = User::count('name');
+        $teams = teams::select('*')->orderBy('team', 'asc')->get();
 
-        return view('guest/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount'));
+        return view('guest/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount', 'teams'));
 
     }
 

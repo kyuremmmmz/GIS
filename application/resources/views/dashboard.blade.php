@@ -18,12 +18,21 @@
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px] float-end">
         <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Announcements:</h1>
         <div class="relative">
-            <div class="absolute grid self-center left-[-300px] grid-cols-3 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] w-[1600px] bg-slate-500">
+            <div class="absolute grid self-center left-[-300px] grid-cols-3 items-center justify-center grid-rows-4 rounded-tl-lg gap-4 h-[1050px] w-[1600px] bg-slate-500">
 
-                <div class="h-[159px]  overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
-                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Top 3 Teams</h1>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Top 5 Players</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($count as $Count)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$Count->name}}
+                    </p>
+                    @endforeach
                 </div>
-                <div class="h-[159px]  overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Top 3 Teams</h1>
                     @php
                     $index = 1;
@@ -31,13 +40,45 @@
 
                     @foreach ($gamesCount as $gamesCount)
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
-                         {{$index++}}. {{$gamesCount->teamname}}
+                        {{$index++}}. {{$gamesCount->teamname}}
                     </p>
                     @endforeach
                 </div>
-                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl"></div>
-                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl">hi</div>
-                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl"></div>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Admins:</h1>
+                </div>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-[-1px] text-white ml-[4px] text-[30px] rounded-2xl font-bold">Users:</h1>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Total Users: {{$countPlayers}}</p>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Admins: {{$adminCount}}</p>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Comittees: {{$ComitteeCount}}</p>
+
+                </div>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Teams:</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($teams as $team)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$team->team}}
+                    </p>
+                    @endforeach
+                </div>
+
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Comittees:</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($teams as $team)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$team->team}}
+                    </p>
+                    @endforeach
+                </div>
             </div>
         </div>
     </main>
