@@ -31,6 +31,9 @@ Route::middleware('guest')->group(function () {
     Route::get('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordCreate'])
                 ->name('Comitteepassword.request');
 
+    Route::post('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordStore'])
+                ->name('password.store2');
+
 
     Route::get('comitteeAuth/ComitteeResetPassword/{token}', [NewPasswordController::class, 'Passwordcreate'])
                 ->name('passwordreset');
