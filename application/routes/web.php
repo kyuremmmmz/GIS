@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminSettingsController;
+use App\Http\Controllers\auth\comitteeReset;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\ComitteeTeamController;
 use App\Http\Controllers\GameAdminController;
@@ -121,11 +123,16 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     //GUEST TEAMS
     Route::get('guest/teams', [GuestTeamsController::class, 'guestTeams'])->name('MayIseeTeams');
 
+    Route::get('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordCreate'])
+    ->name('Comitteepassword.request');
 
+    Route::post('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordStore'])
+        ->name('Comitteepassword.email');
 
 });
 
-
+Route::post('comitteeAuth/ComitteeForgotPassword', [PasswordResetLinkController::class, 'PasswordStore'])
+    ->name('password.email2');
 
 require __DIR__.'/auth.php';
 
