@@ -126,5 +126,16 @@
             window.history.forward();
         }
     </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFNKQM4SX8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LFNKQM4SX8');
+    </script>
+    <!-- End Google Analytics -->
 </body>
 </html>
