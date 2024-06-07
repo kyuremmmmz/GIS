@@ -99,10 +99,6 @@ class ComitteeAuthController extends Controller
         return redirect()->intended(route('admin.seeLogin'));
     }
 
-    public function forgotpassword()
-    {
-        return view('comitteeAuth.ComitteeForgotPassword');
-    }
 
     public function sendResetLinkEmail(Request $request)
     {

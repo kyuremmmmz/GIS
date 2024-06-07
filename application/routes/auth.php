@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\comitteeResetLink;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -33,13 +32,6 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
-
-    Route::get('/comitteeAuth/ComitteeForgotPassword', [comitteeResetLink::class, 'create'])
-                ->name('Comitteepassword.request');
-
-    Route::post('/comitteeAuth/ComitteeForgotPassword', [comitteeResetLink::class, 'store'])
-                ->name('Comitteepassword.email');
-
 });
 
 Route::middleware('auth')->group(function () {
