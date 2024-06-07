@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminSettingsController;
 use App\Http\Controllers\ComitteeAuthController;
 use App\Http\Controllers\ComitteeTeamController;
 use App\Http\Controllers\GameAdminController;
@@ -68,6 +69,9 @@ Route::middleware('auth')->group(function () {
     Route::post('teams', [TeamsController::class, 'RegisterTeams'])->name('Createteams');
     Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
     Route::delete('{teams}/teams', [TeamsController::class, 'delete'])->name('DeleteTeams');
+
+    //Admin Settings Settings
+    Route::get('Settings', [AdminSettingsController::class, 'adminSettings'])->name('AdminSettings');
 });
 
 
