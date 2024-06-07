@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\gameInfoModel;
-use App\Models\player_rankings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

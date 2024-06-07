@@ -101,7 +101,7 @@ class ComitteeAuthController extends Controller
 
     public function forgotpassword()
     {
-        return view('comitteeAuth.adminForgotpass');
+        return view('comitteeAuth.ComitteeForgotPassword');
     }
 
     public function sendResetLinkEmail(Request $request)
