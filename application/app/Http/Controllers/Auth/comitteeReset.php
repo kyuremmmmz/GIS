@@ -24,8 +24,11 @@ class comitteeReset extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        $status = Password::sendResetLink(
-            $request->only('email')
+        $status = Password::broker('committees')->sendResetLink(
+            $request->only('email'),
+            function ($user, $token) {
+                $user->sendPasswordResetNotification($token);
+            }
         );
 
         return $status == Password::RESET_LINK_SENT
@@ -33,10 +36,4 @@ class comitteeReset extends Controller
             : back()->withInput($request->only('email'))
                 ->withErrors(['email' => __($status)]);
     }
-
-    /**
-     * Handle an incoming password reset link request for committee.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
 }

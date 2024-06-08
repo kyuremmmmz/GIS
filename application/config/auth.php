@@ -2,6 +2,10 @@
 
 return [
 
+
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -64,6 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
+        'committees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Committee::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -96,6 +104,11 @@ return [
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'committees' => [
+            'provider' => 'committees',
+            'table' => 'committee_password_resets',
+            'expire' => 60,
         ],
     ],
 
