@@ -47,5 +47,7 @@ class CreateCommitteesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('committees');
+        Schema::dropIfExists('comittee_password_reset_tokens');
+        Schema::dropIfExists('comittee_sessions');
     }
 }

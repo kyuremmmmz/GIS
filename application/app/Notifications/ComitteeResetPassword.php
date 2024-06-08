@@ -46,7 +46,7 @@ class ComitteeResetPassword extends Notification
      */
     protected function resetUrl($notifiable)
     {
-        $baseUrl = url('/committeeAuth/ComitteeResetPassword');
+        $baseUrl = url(route('committee.password.reset', ['token'=>$notifiable]));
         $query = http_build_query([
             'email' => $notifiable->getEmailForPasswordReset(),
             'token' => $this->token,

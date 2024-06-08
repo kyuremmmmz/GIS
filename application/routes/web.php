@@ -14,6 +14,7 @@ use App\Http\Controllers\playersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Middleware\EnsureTokenIsValid;
+use App\Models\Committee;
 use App\Models\gameInfoModel;
 use App\Models\player_rankings;
 use App\Models\teams;
@@ -33,12 +34,12 @@ Route::get('/dashboard', function () {
         ->take(5)
         ->orderBy('points', 'desc')
         ->get();
-    $countPlayers = User::count();
     $adminCount = User::count('Adminname');
-    $ComitteeCount = User::count('name');
+    $ComitteeCount = Committee::count('name');
     $teams = teams::select('*')->orderBy('team', 'asc')->get();
 
-    return view('/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount', 'teams'));
+    $total = $adminCount + $ComitteeCount;
+    return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -74,17 +74,17 @@ class ComitteeAuthControllerr extends Controller
         return view('comitteeAuth.adminLogin');
     }
 
-    public function CreateUser(Request $request): RedirectResponse
+    public function login(Request $request): RedirectResponse
     {
         $request->validate([
             'comitteeID' =>'required|string|max:70',
             'password' => 'required|string|max:8',
         ]);
 
-        if (Auth::guard('comittee')->attempt($request->only('comitteeID', 'password'))) {
+        if (Auth::guard('committee')->attempt($request->only('comitteeID', 'password'))) {
             $request->session()->regenerate();
 
-            return redirect()->back();
+            return redirect()->route('top3');
         }
 
         return back()->withErrors([
@@ -93,7 +93,7 @@ class ComitteeAuthControllerr extends Controller
     }
 
 
-    public function logout(Request $request)
+    public function logoutt(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();

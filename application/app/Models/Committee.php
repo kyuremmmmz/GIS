@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class Committee extends  Authenticatable implements MustVerifyEmail
+class Committee extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 

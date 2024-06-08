@@ -51,11 +51,11 @@
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-[-1px] text-white ml-[4px] text-[30px] rounded-2xl font-bold">Users:</h1>
-                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Total Users: {{$countPlayers}}</p>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Total Users: {{$total}}</p>
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Admins: {{$adminCount}}</p>
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Comittees: {{$ComitteeCount}}</p>
                     <div class="progress relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">
-                        <div class="progress-bar" style="width: {{$countPlayers}}%;"></div>
+                        <div class="progress-bar" style="width: {{$total}}rem;"></div>
                     </div>
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">

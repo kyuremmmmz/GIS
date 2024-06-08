@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Committee;
 use App\Models\gameInfoModel;
 use App\Models\player_rankings;
 use App\Models\teams;
@@ -16,15 +17,15 @@ class GameComitteeController extends Controller
         ->take(3)
         ->get();
         $count = player_rankings::select('*')
-                ->take(5)
-                ->orderBy('points', 'desc')
-                ->get();
-        $countPlayers = User::count();
+            ->take(5)
+            ->orderBy('points', 'desc')
+            ->get();
         $adminCount = User::count('Adminname');
-        $ComitteeCount = User::count('name');
+        $ComitteeCount = Committee::count('name');
         $teams = teams::select('*')->orderBy('team', 'asc')->get();
 
-        return view('guest/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount', 'teams'));
+        $total = $adminCount + $ComitteeCount;
+        return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
     }
 
     public function see()
