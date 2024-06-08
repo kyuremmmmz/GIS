@@ -30,8 +30,8 @@ Route::middleware('guest')->group(function () {
 
     Route::get('committeeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordCreate'])->name('committee.password.request');
     Route::post('committee/ComitteeForgotPassword', [comitteeReset::class, 'PasswordStore'])->name('committee.password.email');
-    Route::get('committee/reset-password/{token}', [NewPasswordController::class, 'create'])->name('committee.password.reset');
-    Route::post('committee/reset-password', [NewPasswordController::class, 'store'])->name('committee.password.update');
+    Route::get('committee/ComitteeResetPassword/{token}', [NewPasswordController::class, 'create'])->name('committee.password.reset');
+    Route::post('committee/ComitteeResetPassword', [NewPasswordController::class, 'store'])->name('committee.password.update');
 });
 
 

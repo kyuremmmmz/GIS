@@ -44,7 +44,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'comittee' => [
+        'committee' => [
             'driver' => 'session',
             'provider' => 'committees',
         ],
@@ -69,16 +69,15 @@ return [
     */
 
     'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\User::class,
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        'committees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Committee::class,
+        ],
     ],
-    'committees' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Comittee::class,
-    ],
-],
-
 
         // 'users' => [
         //     'driver' => 'database',
@@ -133,5 +132,6 @@ return [
     */
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
+
 
 ];
