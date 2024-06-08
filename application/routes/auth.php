@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\auth\comitteeReset;
+use App\Http\Controllers\Auth\comitteeReset;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -27,6 +27,7 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
     // Committee password reset routes
+
     Route::get('committeeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordCreate'])->name('committee.password.request');
     Route::post('committee/ComitteeForgotPassword', [comitteeReset::class, 'PasswordStore'])->name('committee.password.email');
     Route::get('committee/reset-password/{token}', [NewPasswordController::class, 'create'])->name('committee.password.reset');

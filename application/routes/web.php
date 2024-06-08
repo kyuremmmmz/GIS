@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\AdminSettingsController;
 use App\Http\Controllers\auth\comitteeReset;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\ComitteeAuthController;
+use App\Http\Controllers\ComitteeAuthControllerr;
 use App\Http\Controllers\ComitteeTeamController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
@@ -95,13 +94,14 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('comittee/{data}/editPlayersRanking', [playersCommitteeController::class, 'seeEditPlayersRanking'])->name('editPlayerRanking');
     Route::put('comittee/{data}/editPlayersRanking', [playersCommitteeController::class, 'editPlayerRankings'])->name('editRankings');
 
-    //COMITTEE CRUD
-    Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
-    Route::post('/comitteeAuth/adminLogin', [ComitteeAuthController::class,'login'])->name('admin.login');
-    Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logout'])->name('admin.logout');
-    Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
-    Route::get('/comitteeAuth/users', [ComitteeAuthController::class, 'users'])->name('user');
-    Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 'deleteUsers'])->name('delete.User');
+    ///COMITTEE CRUD
+    Route::post('comitteeAuth/users', [ComitteeAuthControllerr::class, 'Creater'])->name('admin.createUser');
+    Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthControllerr::class, 'seeLogin'])->name('admin.seeLogin');
+    Route::post('/comitteeAuth/adminLogin', [ComitteeAuthControllerr::class,'login'])->name('admin.login');
+    Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthControllerr::class, 'logout'])->name('admin.logout');
+    Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthControllerr::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
+    Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
+    Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthControllerr::class, 'deleteUsers'])->name('delete.User');
 
 
 
@@ -127,6 +127,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::post('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordStore'])
         ->name('Comitteepassword.email');
 
+        Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
 });
 
 

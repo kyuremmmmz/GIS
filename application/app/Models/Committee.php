@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Notifications\ComitteeResetPassword;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 
 class Committee extends  Authenticatable implements MustVerifyEmail
@@ -18,6 +18,7 @@ class Committee extends  Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
+    protected $table = 'committees';
     protected $fillable = [
         'name',
         'email',

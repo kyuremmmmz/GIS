@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\teams;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComitteeTeamController extends Controller
 {
@@ -37,5 +39,15 @@ class ComitteeTeamController extends Controller
     {
         $dataa->delete();
         return redirect()->route('teams')->with('status', 'Deleted Successfully');
+    }
+
+    public function users(){
+        $selectUsers = User::select(['id', 'Adminname', 'email', 'adminID'],
+                                    DB::raw('SUM(adminID) OVER (PARTITION by Adminname) AS admins'),
+                                    )
+                                    ->where('role', 'like', '%admin%')
+                                    ->get();
+
+        return view('comitteeAuth/users', compact('selectUsers'));
     }
 }

@@ -4,26 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Committee;
 use App\Models\User;
-use App\Notifications\EmailIDAndPassword;
-use Exception;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Validation\Rules;
 
-class ComitteeAuthController extends Controller
+class ComitteeAuthControllerr extends Controller
 {
-    public function store(Request $request): RedirectResponse
+    public function Creater(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'comitteeID' => ['required', 'string', 'max:255', 'unique:comittees', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:comittees'],
+            'comitteeID' => ['required', 'string', 'max:255', 'unique:committees', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:committees'],
             'password' => ['required', 'confirmed', 'string', 'min:8'],
         ]);
 
@@ -31,7 +26,7 @@ class ComitteeAuthController extends Controller
             'name' => $request->name,
             'comitteeID' => $request->comitteeID,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Use bcrypt() to hash the password
+            'password' => Hash::make($request->password), // Use bcrypt() to hash the password
         ]);
 
         Auth::guard('comittee')->login($comittee);
@@ -93,7 +88,7 @@ class ComitteeAuthController extends Controller
                                     ->where('role', 'like', '%admin%')
                                     ->get();
 
-        return view('comitteeAuth.users', compact('selectUsers'));
+        return view('comitteeAuth/users', compact('selectUsers'));
     }
 
     public function deleteUsers(User $adminID)
