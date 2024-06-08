@@ -93,7 +93,7 @@ class ComitteeAuthControllerr extends Controller
     }
 
 
-    public function logoutt(Request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();

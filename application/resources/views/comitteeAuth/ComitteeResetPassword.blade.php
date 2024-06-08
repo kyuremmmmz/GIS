@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('') }}">
+    <form method="POST" action="{{ route('committee.password.update') }}">
         @csrf
 
         <!-- Password Reset Token -->

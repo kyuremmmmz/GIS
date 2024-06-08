@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateCommitteesTable extends Migration
@@ -19,6 +20,7 @@ class CreateCommitteesTable extends Migration
             $table->string('comitteeID');
             $table->string('email')->unique();
             $table->string('password');
+            $table->timestamp('email_verified_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('role')->nullable();
             $table->timestamps();
         });

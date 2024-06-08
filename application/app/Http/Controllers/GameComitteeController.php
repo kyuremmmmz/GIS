@@ -25,7 +25,7 @@ class GameComitteeController extends Controller
         $teams = teams::select('*')->orderBy('team', 'asc')->get();
 
         $total = $adminCount + $ComitteeCount;
-        return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
+        return view('comittee/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
     }
 
     public function see()
