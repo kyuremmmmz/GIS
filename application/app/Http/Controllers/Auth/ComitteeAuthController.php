@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Committee;
 use App\Models\User;
 use App\Notifications\EmailIDAndPassword;
 use Exception;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,79 +18,50 @@ use Illuminate\Validation\Rules;
 
 class ComitteeAuthController extends Controller
 {
-    public function createUser(User $user ,Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'comitteeID' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' =>['required', 'string',],
+            'comitteeID' => ['required', 'string', 'max:255', 'unique:comittees', 'regex:/^04[\s-]*\d+[\s-]*\d+[\s-]*\d+$/'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:comittees'],
+            'password' => ['required', 'confirmed', 'string', 'min:8'],
         ]);
 
-
-
-
-        $user = User::create([
+        $comittee = Committee::create([
             'name' => $request->name,
             'comitteeID' => $request->comitteeID,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-
+            'password' => bcrypt($request->password), // Use bcrypt() to hash the password
         ]);
 
-        $comitteeID = $request->comitteeID ?? 'N/A'; // Default value if null
-        $password = $request->password ?? 'N/A';
+        Auth::guard('comittee')->login($comittee);
 
-        $details = [
-            'greeting' => 'Good Day University of Perpetual Help System Dalta - Molino Campus Comittee member',
-            'body' => 'This is your Account Details
-                        Comittee ID:'.$comitteeID.'
-                        Password:'.$password.'',
-            'action' => route('admin.seeLogin'),
-            'lastline' => 'No reply'
-        ];
-
-        $users = User::where('comitteeID', $request->comitteeID)->get();
-
-
-        try {
-            if ($users->isNotEmpty()) {
-                Notification::send($users, new EmailIDAndPassword($details));
-                event(new Registered($user));
-                Auth::login($user);
-
-                return redirect(route('user', absolute: false));
-            }
-        } catch (Exception $e) {
-                return redirect()->withErrors([$e])->back();
-        }
+        return redirect(route('top3'));
     }
-
-
 
     public function seeLogin()
     {
         return view('comitteeAuth.adminLogin');
     }
 
-    public function login(Request $request)
+    public function CreateUser(Request $request): RedirectResponse
     {
-        $data = $request->validate([
+        $request->validate([
             'comitteeID' =>'required|string|max:70',
             'password' => 'required|string|max:8',
         ]);
 
-        if (Auth::attempt($data)) {
+        if (Auth::guard('comittee')->attempt($request->only('comitteeID', 'password'))) {
             $request->session()->regenerate();
 
             return redirect()->intended(route('top3'));
         }
+
         return back()->withErrors([
             'auth_error' =>'Invalid credentials'
         ])->withInput([$request->only('comitteeID')])->with('status', 'Credentials are invalid');
-        }
+    }
+
 
     public function logout(Request $request)
     {

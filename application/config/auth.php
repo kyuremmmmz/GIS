@@ -44,7 +44,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'comittee' => [
+            'driver' => 'session',
+            'provider' => 'committees',
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,20 +69,22 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-        'committees' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Committee::class,
-        ],
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+    'committees' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Comittee::class,
+    ],
+],
+
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -99,16 +106,18 @@ return [
     */
 
     'passwords' => [
+
         'users' => [
             'provider' => 'users',
-            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
         'committees' => [
             'provider' => 'committees',
-            'table' => 'committee_password_resets',
+            'table' => 'comittee_password_reset_tokens',
             'expire' => 60,
+            'throttle' => 60,
         ],
     ],
 

@@ -19,7 +19,23 @@ class CreateCommitteesTable extends Migration
             $table->string('comitteeID');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('role')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('comittee_password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('comittee_sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
         });
     }
 

@@ -52,8 +52,6 @@ Route::middleware('auth')->group(function () {
     Route::get('games', [GameAdminController::class, 'games'])->name('game1.index');
     Route::put('{id}/update', [GameAdminController::class, 'update'])->name('game.update');
     Route::delete('{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
-    Route::get('/comitteeAuth/admin', [ComitteeAuthController::class, 'see'])->name('admin.see');
-    Route::post('/comitteeAuth/admin', [ComitteeAuthController::class, 'createUser'])->name('admin.createUser');
     //PLAYERS CRUD
     Route::get('players', [playersController::class, 'players'])->name('playersList');
     Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
@@ -131,8 +129,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
 
 });
 
-Route::post('comitteeAuth/ComitteeForgotPassword', [PasswordResetLinkController::class, 'PasswordStore'])
-    ->name('password.email2');
+
 
 require __DIR__.'/auth.php';
 
