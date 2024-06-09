@@ -17,7 +17,7 @@ class CreateCommitteesTable extends Migration
         Schema::create('committees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('comitteeID');
+            $table->string('comitteeID')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->default(DB::raw('CURRENT_TIMESTAMP'));
