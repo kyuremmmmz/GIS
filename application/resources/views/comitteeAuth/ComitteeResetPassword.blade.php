@@ -1,9 +1,10 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('committee.password.update') }}">
         @csrf
+        @method('post')
 
         <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+        <input type="hidden" name="token" value="{{ $request->token }}">
 
         <!-- Email Address -->
         <div>

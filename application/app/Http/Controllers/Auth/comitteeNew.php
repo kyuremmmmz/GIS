@@ -39,7 +39,7 @@ class comitteeNew extends Controller
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $status = Password::broker('committees')->reset(
-            $request->only('email', 'password', 'password_confirmation', 'ptoken'),
+            $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($committee) use ($request) {
                 $committee->forceFill([
                     'password' => Hash::make($request->password),

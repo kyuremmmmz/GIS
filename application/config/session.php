@@ -19,12 +19,8 @@ return [
     */
 
     'driver' => env('SESSION_DRIVER', 'database'),
-    'session' => [
-        'driver' => env('SESSION_DRIVER', 'file'),
-        'connection' => null,
-        'table' => 'committee_sessions',
 
-    ],
+
 
 
     /*
@@ -94,6 +90,7 @@ return [
     */
 
     'table' => env('SESSION_TABLE', 'sessions'),
+
 
     /*
     |--------------------------------------------------------------------------
