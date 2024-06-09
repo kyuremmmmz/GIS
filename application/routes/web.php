@@ -106,6 +106,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthControllerr::class, 'deleteUsers'])->name('delete.User');
 
     Route::get('comittee/Settings/{comitteeID}', [comitteeSettingsController::class, 'comitteeSettings'])->name('ComitteeSettings');
+    Route::put('comittee/Settings/{user}', [comitteeSettingsController::class, 'updateUser'])->name('UpdateUser');
 
     //GUESTS CRUD
     Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');

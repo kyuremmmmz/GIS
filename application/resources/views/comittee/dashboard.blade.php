@@ -22,7 +22,7 @@
             <ul class="dropdown-menu">
 
               <li>
-                <form action="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->user()->comitteeID]) }}" method="POST">
+                <form action="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->id()]) }}" method="POST">
                     @csrf
                     @method('get')
                     <button class="dropdown-item">Account</button>
