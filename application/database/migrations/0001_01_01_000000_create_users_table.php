@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('Adminname')->nullable();
            $table->string('adminID')->unique()->nullable();
             $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
     Route::delete('{teams}/teams', [TeamsController::class, 'delete'])->name('DeleteTeams');
 
-    //Admin Settings Settings
+    //Admin Settings S
     Route::get('Settings', [AdminSettingsController::class, 'adminSettings'])->name('AdminSettings');
 });
 
