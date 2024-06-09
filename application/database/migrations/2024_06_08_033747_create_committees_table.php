@@ -22,6 +22,7 @@ class CreateCommitteesTable extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('role')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
 
