@@ -81,7 +81,7 @@ class ComitteeAuthControllerr extends Controller
             'password' => 'required|string|max:8',
         ]);
 
-        if (Auth::guard('committee')->attempt($request->only('comitteeID', 'password'))) {
+        if (Auth::guard('committees')->attempt($request->only('comitteeID', 'password'))) {
             $request->session()->regenerate();
 
             return redirect()->route('top3');

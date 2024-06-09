@@ -14,16 +14,20 @@
                 'driver' => 'session',
                 'provider' => 'users',
             ],
+            'committees' => [
+                'driver' => 'session',
+                'provider' => 'committees',
+            ],
         ],
 
-        'providers' => [
+       'providers' => [
             'users' => [
                 'driver' => 'eloquent',
-                'model' => App\Models\User::class,
+                'model' =>  App\Models\User::class,
             ],
-            'comittee' => [
+            'committees' => [ // Corrected provider name
                 'driver' => 'eloquent',
-                'model' => App\Models\Committee::class,
+                'model' =>  App\Models\Committee::class,
             ],
         ],
 
@@ -34,9 +38,10 @@
                 'expire' => 60,
             ],
             'committees' => [
-                'provider' => 'comittee',
+                'provider' => 'committees',
                 'table' => 'comittee_password_reset_tokens',
                 'expire' => 60,
             ],
         ],
+
     ];

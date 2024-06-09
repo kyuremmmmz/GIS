@@ -110,7 +110,7 @@
                 <i class="relative fas fa-users left-5"></i>
                 <span class="relative left-7">Players</span>
             </a>
-            <a href="{{route('AdminSettings')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('profile.edit') }}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>

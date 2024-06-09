@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminSettingsController;
 use App\Http\Controllers\auth\comitteeReset;
 use App\Http\Controllers\ComitteeAuthControllerr;
+use App\Http\Controllers\comitteeSettingsController;
 use App\Http\Controllers\ComitteeTeamController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
@@ -70,8 +70,9 @@ Route::middleware('auth')->group(function () {
     Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
     Route::delete('{teams}/teams', [TeamsController::class, 'delete'])->name('DeleteTeams');
 
-    //Admin Settings S
-    Route::get('Settings', [AdminSettingsController::class, 'adminSettings'])->name('AdminSettings');
+
+
+
 });
 
 
@@ -104,7 +105,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
     Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthControllerr::class, 'deleteUsers'])->name('delete.User');
 
-
+    Route::get('comittee/Settings/{comitteeID}', [comitteeSettingsController::class, 'comitteeSettings'])->name('ComitteeSettings');
 
     //GUESTS CRUD
     Route::get('guest/dashboard', [GuestGameController::class, 'seeGuest'])->name('seeGuest');
@@ -128,7 +129,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::post('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordStore'])
         ->name('Comitteepassword.email');
 
-        Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
+    Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
 });
 
 
