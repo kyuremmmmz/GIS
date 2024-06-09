@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<a href="{{route('top3')}}" class="btn btn-primary w-auto">Back</a>
+
 <div class="container mt-5">
     <!-- Account Settings -->
     <div class="row justify-content-center">
@@ -17,9 +19,12 @@
                 <div class="card-header bg-primary text-white">
                     <h5 class="card-title mb-0">Account Settings</h5>
                 </div>
+                @if (session('status'))
+                    <p class="alert alert-success">{{ session('status') }}</p>
+                @endif
                 <div class="card-body">
                     <!-- Settings Form -->
-                    <form method="POST" action="{{ route('UpdateUser',  ['user' => Auth::guard('committees')->id()]) }}">
+                    <form method="POST" action="{{ route('UpdateUser', ['user' => Auth::guard('committees')->id()]) }}">
                         @csrf
                         @method('put')
                         <!-- Name -->
@@ -27,7 +32,7 @@
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" value="{{ Auth::guard('committees')->user()->name }}" id="name" name="name">
                         </div>
-                        <!-- Last Name -->
+                        <!-- Committee ID -->
                         <div class="mb-3">
                             <label for="comitteeID" class="form-label">Committee ID</label>
                             <input type="text" readonly class="form-control" id="comitteeID" value="{{ Auth::guard('committees')->user()->comitteeID }}" name="comitteeID">
@@ -39,7 +44,7 @@
                         </div>
                         <!-- Save Button -->
                         <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -54,7 +59,8 @@
                 </div>
                 <div class="card-body">
                     <!-- Password Change Form -->
-                    <form method="POST" action="">
+                        @csrf
+                        @method('put')
                         <!-- Current Password -->
                         <div class="mb-3">
                             <label for="current_password" class="form-label">Current Password</label>
@@ -62,13 +68,13 @@
                         </div>
                         <!-- New Password -->
                         <div class="mb-3">
-                            <label for="new_password" class="form-label">New Password</label>
-                            <input type="password" class="form-control" id="new_password" name="new_password">
+                            <label for="password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <!-- Confirm New Password -->
                         <div class="mb-3">
-                            <label for="confirm_password" class="form-label">Confirm New Password</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                            <label for="password_confirmation" class="form-label">Confirm New Password</label>
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                         </div>
                         <!-- Change Password Button -->
                         <button type="submit" class="btn btn-warning">Change Password</button>
