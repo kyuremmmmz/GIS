@@ -38,4 +38,6 @@ class ComitteeTeamController extends Controller
         $dataa->delete();
         return redirect()->route('teams')->with('status', 'Deleted Successfully');
     }
+
+
 }

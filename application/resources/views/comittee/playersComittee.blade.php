@@ -15,6 +15,21 @@
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
+        <div class="dropdown absolute right-16">
+            <button type="button" class="btn btn-primary  dropdown-toggle" data-bs-toggle="dropdown">
+              {{Auth::guard('committees')->user()->name}}
+            </button>
+            <ul class="dropdown-menu">
+
+              <li>
+                <form action="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->id()]) }}" method="POST">
+                    @csrf
+                    @method('get')
+                    <button class="dropdown-item">Account</button>
+                </form>
+              </li>
+            </ul>
+          </div>
     </div>
 
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
@@ -125,7 +140,7 @@
                 <i class="relative fas fa-users left-5"></i>
                 <span class="relative left-7">Players</span>
             </a>
-            <a href="{{route('profile.edit')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->id()]) }}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 ">
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>

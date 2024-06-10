@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Committee;
 use App\Models\gameInfoModel;
 use App\Models\player_rankings;
+use App\Models\teams;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,16 +13,19 @@ class GameComitteeController extends Controller
 {
     public function top3()
     {
-        $gamesCount = gameInfoModel::select('id', 'teamname', 'wins',
-                    )
-                    ->take(3)
-                    ->orderBy('wins', 'desc')
-                    ->get();
-        $count = player_rankings::select('*')->take(5)->orderBy('points', 'desc')->get();
+        $gamesCount = gameInfoModel::select(['id', 'teamname', 'wins'])
+        ->take(3)
+        ->get();
+        $count = player_rankings::select('*')
+            ->take(5)
+            ->orderBy('points', 'desc')
+            ->get();
+        $adminCount = User::count('Adminname');
+        $ComitteeCount = Committee::count('name');
+        $teams = teams::select('*')->orderBy('team', 'asc')->get();
 
-
-        return view('comittee/dashboard', ['gamesCount' => $gamesCount,
-                                           'count'=>$count]);
+        $total = $adminCount + $ComitteeCount;
+        return view('comittee/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
     }
 
     public function see()

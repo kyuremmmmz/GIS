@@ -15,35 +15,95 @@
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
-        <button class="absolute text-sm bg-primary float-end">{{Auth::user()->name}}</button>
+        <div class="dropdown absolute right-16">
+            <button type="button" class="btn btn-primary  dropdown-toggle" data-bs-toggle="dropdown">
+              {{Auth::guard('committees')->user()->name}}
+            </button>
+            <ul class="dropdown-menu">
+
+              <li>
+                <form action="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->id()]) }}" method="POST">
+                    @csrf
+                    @method('get')
+                    <button class="dropdown-item">Account</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+
     </div>
 
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px] float-end">
         <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Announcements:</h1>
         <div class="relative">
-            <div class="absolute grid self-center left-[-300px] grid-cols-3 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
+            <div class="absolute grid self-center left-[-300px] grid-cols-3 items-center justify-center grid-rows-4 rounded-tl-lg gap-4 h-[1050px] w-[1600px] bg-slate-500">
 
-                <div class="h-20 mb-16 bg-slate-700">
-                    <h1 class="text-[30px]">Users</h1>
-                </div>
-                <div class="h-[159px]  overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
-                    <h1 class="absolute mt-1  text-[20px] rounded-2xl font-bold">Top 3 Teams</h1>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Top 5 Players</h1>
                     @php
                     $index = 1;
-
                     @endphp
-                    @foreach ($gamesCount as $gamesCount)
-                    <p class="absolute mt-10 text-[20px] rounded-2xl ">
-                        Top {{$index++}}. {{$gamesCount->teamname}}
+
+                    @foreach ($count as $Count)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$Count->name}}
                     </p>
                     @endforeach
                 </div>
-                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl"></div>
-                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl">hi</div>
-                <div class="h-20 mb-16 bg-slate-700 text-[30px] rounded-2xl"></div>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Top 3 Teams</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($gamesCount as $gamesCount)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$gamesCount->teamname}}
+                    </p>
+                    @endforeach
+                </div>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Admins:</h1>
+                </div>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-[-1px] text-white ml-[4px] text-[30px] rounded-2xl font-bold">Users:</h1>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Total Users: {{$total}}</p>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Admins: {{$adminCount}}</p>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Comittees: {{$ComitteeCount}}</p>
+                    <div class="progress relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">
+                        <div class="progress-bar" style="width: {{$total}}rem;"></div>
+                    </div>
+
+                </div>
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Teams:</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($teams as $team)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$team->team}}
+                    </p>
+                    @endforeach
+                </div>
+
+                <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
+                    <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Comittees:</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($teams as $team)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$team->team}}
+                    </p>
+                    @endforeach
+                </div>
             </div>
         </div>
     </main>
+
 
     <!-- Side Content -->
     <div class="relative overflow-hidden text-2xl text-white sm:text-center xl:text-center lg:text-center bg-zinc-800 h-dvh w-80 col-1">
@@ -64,7 +124,7 @@
                 <i class="relative fas fa-users left-5"></i>
                 <span class="relative left-7">Players</span>
             </a>
-            <a href="{{route('profile.edit')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->id()]) }}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>

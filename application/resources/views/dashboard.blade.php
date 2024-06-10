@@ -9,6 +9,8 @@
     <!-- Fonts and Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
@@ -49,10 +51,12 @@
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-[-1px] text-white ml-[4px] text-[30px] rounded-2xl font-bold">Users:</h1>
-                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Total Users: {{$countPlayers}}</p>
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Total Users: {{$total}}</p>
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Admins: {{$adminCount}}</p>
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">Number of Comittees: {{$ComitteeCount}}</p>
-
+                    <div class="progress relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">
+                        <div class="progress-bar" style="width: {{$total}}rem;"></div>
+                    </div>
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Teams:</h1>
@@ -106,7 +110,7 @@
                 <i class="relative fas fa-users left-5"></i>
                 <span class="relative left-7">Players</span>
             </a>
-            <a href="{{route('profile.edit')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
+            <a href="{{route('profile.edit') }}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700">
                 <i class="relative fas fa-cog left-5"></i>
                 <span class="relative left-7">Settings</span>
             </a>
@@ -126,5 +130,16 @@
             window.history.forward();
         }
     </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFNKQM4SX8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LFNKQM4SX8');
+    </script>
+    <!-- End Google Analytics -->
 </body>
 </html>

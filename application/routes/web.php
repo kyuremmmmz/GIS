@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\ComitteeAuthController;
+use App\Http\Controllers\auth\comitteeReset;
+use App\Http\Controllers\ComitteeAuthControllerr;
+use App\Http\Controllers\comitteeSettingsController;
 use App\Http\Controllers\ComitteeTeamController;
 use App\Http\Controllers\GameAdminController;
 use App\Http\Controllers\GameComitteeController;
@@ -12,6 +14,7 @@ use App\Http\Controllers\playersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Middleware\EnsureTokenIsValid;
+use App\Models\Committee;
 use App\Models\gameInfoModel;
 use App\Models\player_rankings;
 use App\Models\teams;
@@ -31,12 +34,12 @@ Route::get('/dashboard', function () {
         ->take(5)
         ->orderBy('points', 'desc')
         ->get();
-    $countPlayers = User::count();
     $adminCount = User::count('Adminname');
-    $ComitteeCount = User::count('name');
+    $ComitteeCount = Committee::count('name');
     $teams = teams::select('*')->orderBy('team', 'asc')->get();
 
-    return view('/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount', 'teams'));
+    $total = $adminCount + $ComitteeCount;
+    return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -49,8 +52,6 @@ Route::middleware('auth')->group(function () {
     Route::get('games', [GameAdminController::class, 'games'])->name('game1.index');
     Route::put('{id}/update', [GameAdminController::class, 'update'])->name('game.update');
     Route::delete('{id}/delete', [GameAdminController::class, 'delete'])->name('game.delete');
-    Route::get('/comitteeAuth/admin', [ComitteeAuthController::class, 'see'])->name('admin.see');
-    Route::post('/comitteeAuth/admin', [ComitteeAuthController::class, 'createUser'])->name('admin.createUser');
     //PLAYERS CRUD
     Route::get('players', [playersController::class, 'players'])->name('playersList');
     Route::post('players', [playersController::class, 'createPlayers'])->name('createPlayers');
@@ -68,6 +69,10 @@ Route::middleware('auth')->group(function () {
     Route::post('teams', [TeamsController::class, 'RegisterTeams'])->name('Createteams');
     Route::post('{teams}/teams', [TeamsController::class, 'Update'])->name('UpdateTeams');
     Route::delete('{teams}/teams', [TeamsController::class, 'delete'])->name('DeleteTeams');
+
+
+
+
 });
 
 
@@ -91,14 +96,18 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('comittee/{data}/editPlayersRanking', [playersCommitteeController::class, 'seeEditPlayersRanking'])->name('editPlayerRanking');
     Route::put('comittee/{data}/editPlayersRanking', [playersCommitteeController::class, 'editPlayerRankings'])->name('editRankings');
 
-    //COMITTEE CRUD
-    Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthController::class, 'seeLogin'])->name('admin.seeLogin');
-    Route::post('/comitteeAuth/adminLogin', [ComitteeAuthController::class,'login'])->name('admin.login');
-    Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthController::class, 'logout'])->name('admin.logout');
-    Route::get('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpassword'])->name('forgotpassword');
-    Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthController::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
-    Route::get('/comitteeAuth/users', [ComitteeAuthController::class, 'users'])->name('user');
-    Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthController::class, 'deleteUsers'])->name('delete.User');
+    ///COMITTEE CRUD
+    Route::post('comitteeAuth/users', [ComitteeAuthControllerr::class, 'Creater'])->name('admin.createUser');
+    Route::get('/comitteeAuth/adminLogin',  [ComitteeAuthControllerr::class, 'seeLogin'])->name('admin.seeLogin');
+    Route::post('/comitteeAuth/adminLogin', [ComitteeAuthControllerr::class,'login'])->name('admin.login');
+    Route::post('/comitteeAuth/adminLogout',  [ComitteeAuthControllerr::class, 'logout'])->name('admin.logout');
+    Route::post('/comitteeAuth/adminForgotpass', [ComitteeAuthControllerr::class, 'forgotpasswordFunctionality'])->name('email.forgotpassword');
+    Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
+    Route::delete('/comitteeAuth/{adminID}/delete', [ComitteeAuthControllerr::class, 'deleteUsers'])->name('delete.User');
+
+    Route::get('comittee/Settings/{comitteeID}', [comitteeSettingsController::class, 'comitteeSettings'])->name('ComitteeSettings');
+    Route::put('comittee/Settings/{user}', [comitteeSettingsController::class, 'updateUser'])->name('UpdateUser');
+    Route::put('comittee/Settings/{UpdatePassword}', [ComitteeSettingsController::class, 'UpdatePassword'])->name('UpdatePassword');
 
 
 
@@ -118,8 +127,13 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     //GUEST TEAMS
     Route::get('guest/teams', [GuestTeamsController::class, 'guestTeams'])->name('MayIseeTeams');
 
+    Route::get('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordCreate'])
+    ->name('Comitteepassword.request');
 
+    Route::post('comitteeAuth/ComitteeForgotPassword', [comitteeReset::class, 'PasswordStore'])
+        ->name('Comitteepassword.email');
 
+    Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
 });
 
 
