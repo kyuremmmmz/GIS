@@ -49,6 +49,7 @@
                             $index = 1;
                             @endphp
                             @foreach ($players as $player)
+<<<<<<< HEAD
                             <tr>
                                 <td>{{$index++}}</td>
                                 <td>{{$player->name}}</td>
@@ -65,6 +66,24 @@
                                 </td>
                             </tr>
                             @endforeach
+=======
+                        <tr>
+                            <td>{{$index++}}</td>
+                            <td>{{$player->name}}</td>
+                            <td>{{$player->teamname}}</td>
+                            <td>{{$player->id}}</td>
+                            <td>{{$player->age}}</td>
+                            <td><a href="{{route('viewEdit',['playerNumber'=>$player])}}" class="btn btn-primary">Edit</a></td>
+                            <td>
+                                <form action="{{route('destroy', ['delete'=>$player])}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+>>>>>>> 80023260fc424b8556d74ebf9889f806d3aa3f4b
                         </tbody>
                     </table>
                 </div>
