@@ -68,8 +68,8 @@ class playersController extends Controller
 //PLAYER RANKINGS CONTROLLER
         public function seeRankings()
         {
-            $player = player_rankings::select('*')->orderBy('points', 'desc')->get();
-            return view('playerRankings', compact('player'));
+            $players = player_rankings::select('*')->orderBy('points', 'desc')->get();
+            return view('playerRankings', compact('players'));
         }
 
         public function createRanking(Request $request)
@@ -112,42 +112,76 @@ class playersController extends Controller
         }
 
         public function search(Request $request)
-{
-    if($request->ajax()) {
-        $query = $request->get('search');
-        $players = players::where('name', 'LIKE', '%'.$query.'%')
-            ->orWhere('teamname', 'LIKE', '%'.$query.'%')
-            ->orWhere('id', 'LIKE', '%'.$query.'%')
-            ->orWhere('age', 'LIKE', '%'.$query.'%')
-            ->get();
+                {
+                    if($request->ajax()) {
+                        $query = $request->get('search');
+                        $players = players::where('name', 'LIKE', '%'.$query.'%')
+                            ->orWhere('teamname', 'LIKE', '%'.$query.'%')
+                            ->orWhere('id', 'LIKE', '%'.$query.'%')
+                            ->orWhere('age', 'LIKE', '%'.$query.'%')
+                            ->get();
 
-        $output = '';
+                        $output = '';
 
-        if (count($players) > 0) {
-            foreach ($players as $index => $player) {
-                $output .= '
-                <tr>
-                    <td>'.($index + 1).'</td>
-                    <td>'.$player->name.'</td>
-                    <td>'.$player->teamname.'</td>
-                    <td>'.$player->id.'</td>
-                    <td>'.$player->age.'</td>
-                    <td><a href="'.route('viewEdit', ['playerNumber'=>$player]).'" class="btn btn-primary">Edit</a></td>
-                    <td>
-                        <form action="'.route('destroy', ['delete'=>$player]).'" method="post">
-                            '.csrf_field().'
-                            '.method_field('delete').'
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>';
-            }
-        } else {
-            $output = '<tr><td colspan="7">No results found</td></tr>';
-        }
+                        if (count($players) > 0) {
+                            foreach ($players as $index => $player) {
+                                $output .= '
+                                <tr>
+                                    <td>'.($index + 1).'</td>
+                                    <td>'.$player->name.'</td>
+                                    <td>'.$player->teamname.'</td>
+                                    <td>'.$player->id.'</td>
+                                    <td>'.$player->age.'</td>
+                                    <td><a href="'.route('viewEdit', ['playerNumber'=>$player]).'" class="btn btn-primary">Edit</a></td>
+                                    <td>
+                                        <form action="'.route('destroy', ['delete'=>$player]).'" method="post">
+                                            '.csrf_field().'
+                                            '.method_field('delete').'
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>';
+                            }
+                        } else {
+                            $output = '<tr><td colspan="7">No results found</td></tr>';
+                        }
 
-        return $output;
-    }
-}
+                        return $output;
+                    }
+                }
+
+                public function searchh(Request $request)
+                        {
+                            if ($request->ajax()) {
+                                $query = $request->get('search');
+                                $players = player_rankings::where('name', 'LIKE', '%'.$query.'%')
+                                    ->orWhere('teamname', 'LIKE', '%'.$query.'%')
+                                    ->orWhere('id', 'LIKE', '%'.$query.'%')
+                                    ->orWhere('age', 'LIKE', '%'.$query.'%')
+                                    ->get();
+
+                                $output = '';
+
+                                if (count($players) > 0) {
+                                    foreach ($players as $index => $player) {
+                                        $output .= '
+                                        <tr>
+                                            <td>'.($index + 1).'</td>
+                                            <td>'.$player->name.'</td>
+                                            <td>'.$player->teamname.'</td>
+                                            <td>'.$player->playerID.'</td>
+                                            <td>'.$player->points.'</td>
+                                            <td>'.$player->age.'</td>
+                                            <td><a href="'.route('editPlayerRankings', ['id' => $player->id]).'" class="btn btn-primary">Edit</a></td>
+                                        </tr>';
+                                    }
+                                } else {
+                                    $output = '<tr><td colspan="7">No results found</td></tr>';
+                                }
+
+                                return response()->json($output);
+                            }
+                        }
+
 
 }

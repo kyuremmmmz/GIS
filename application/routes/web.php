@@ -65,6 +65,8 @@ Route::middleware('auth')->group(function () {
     Route::put('{id}/PlayerRankingsUpdate', [playersController::class, 'updatePlayerRankings'])->name('updatePlayerRankings');
     Route::delete('{data}/playerRankings', [playersController::class, 'deletaPlayerRankings'])->name('deletePlayerRankings');
     Route::get('/search-players', [playersController::class, 'search'])->name('searchPlayers');
+    Route::get('/searchh', [playersController::class, 'searchh'])->name('searchh');
+
 
     //TEAMS
     Route::get('teams', [TeamsController::class, 'teams'])->name('teams');
