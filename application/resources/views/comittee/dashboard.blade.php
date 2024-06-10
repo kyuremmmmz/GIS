@@ -102,15 +102,15 @@
                     $index = 1;
                     @endphp
 
-<<<<<<< HEAD
-                    @foreach ($teams as $team)
-                    <p class="relative mt-1 top-2 text-[19px] ml-[6px] text-white rounded-2xl ">
-                        {{$index++}}. {{$team->team}}
-=======
+<<<<<<<<< Temporary merge branch 1
                     @foreach ($dataa as $team)
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
                         {{$index++}}. {{$team->name}}
->>>>>>> f5739354b594e8d4eb02c93c8795a5fd8db691ec
+=========
+                    @foreach ($teams as $team)
+                    <p class="relative mt-1 top-2 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$team->team}}
+>>>>>>>>> Temporary merge branch 2
                     </p>
                     @endforeach
                 </div>
