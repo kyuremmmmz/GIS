@@ -16,6 +16,21 @@
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
+        <div class="absolute dropdown right-16">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+              {{Auth::user()->Adminname}}
+            </button>
+            <ul class="dropdown-menu">
+
+              <li>
+                <form action="{{ route('profile.edit' )}}" method="POST">
+                    @csrf
+                    @method('get')
+                    <button class="dropdown-item">Account</button>
+                </form>
+              </li>
+            </ul>
+          </div>
     </div>
 
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
