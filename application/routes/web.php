@@ -64,6 +64,8 @@ Route::middleware('auth')->group(function () {
     Route::get('{id}/PlayerRankingsEdit', [playersController::class, 'seeRankingsEdit'])->name('editPlayerRankings');
     Route::put('{id}/PlayerRankingsUpdate', [playersController::class, 'updatePlayerRankings'])->name('updatePlayerRankings');
     Route::delete('{data}/playerRankings', [playersController::class, 'deletaPlayerRankings'])->name('deletePlayerRankings');
+    Route::get('/search-players', [playersController::class, 'search'])->name('searchPlayers');
+
     //TEAMS
     Route::get('teams', [TeamsController::class, 'teams'])->name('teams');
     Route::post('teams', [TeamsController::class, 'RegisterTeams'])->name('Createteams');
@@ -107,7 +109,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
 
     Route::get('comittee/Settings/{comitteeID}', [comitteeSettingsController::class, 'comitteeSettings'])->name('ComitteeSettings');
     Route::put('comittee/Settings/{user}', [comitteeSettingsController::class, 'updateUser'])->name('UpdateUser');
-    Route::delete('comittee/Settings/{user}', [ComitteeSettingsController::class, 'DeleteAccount'])->name('deleteUser');
+    Route::put('comittee/Settings/{UpdatePassword}', [ComitteeSettingsController::class, 'UpdatePassword'])->name('UpdatePassword');
 
 
 
