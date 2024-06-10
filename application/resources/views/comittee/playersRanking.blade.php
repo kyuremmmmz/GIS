@@ -36,7 +36,7 @@
         <h1 class="absolute text-[50px]  right-[200px] bottom-[20px] 2xl:left-[-291px] tracking-normal xl:left-[-200px]">Player</h1>
         <h1 class="absolute text-[50px]  right-[200px] bottom-[20px] 2xl:left-[-151px] tracking-normal xl:left-[-100px]">Rankings:</h1>
         <div class="relative">
-            <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
+            <div class="absolute overflow-y-scroll grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
                 <a href="{{route('ComitteeTeams')}}" class="absolute top-2 w-36 float-end right-[980px] btn btn-primary">Teams</a>
                 <a href="{{route('seePlayerRanks')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
