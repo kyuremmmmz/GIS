@@ -15,8 +15,8 @@
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
-        <div class="dropdown absolute right-16">
-            <button type="button" class="btn btn-primary  dropdown-toggle" data-bs-toggle="dropdown">
+        <div class="absolute dropdown right-16">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
               {{Auth::guard('committees')->user()->name}}
             </button>
             <ul class="dropdown-menu">
@@ -36,7 +36,7 @@
         <h1 class="absolute text-[50px]  right-[200px] bottom-[20px] 2xl:left-[-291px] tracking-normal xl:left-[-200px]">Player</h1>
         <h1 class="absolute text-[50px]  right-[200px] bottom-[20px] 2xl:left-[-151px] tracking-normal xl:left-[-100px]">Rankings:</h1>
         <div class="relative">
-            <div class="absolute overflow-y-scroll grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
+            <div class="absolute overflow-y-scroll max-h-[750px] grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <button type="button" data-bs-target="#create" data-bs-toggle="modal" class="absolute top-2 w-36 float-end btn btn-primary">Create New</button>
                 <a href="{{route('ComitteeTeams')}}" class="absolute top-2 w-36 float-end right-[980px] btn btn-primary">Teams</a>
                 <a href="{{route('seePlayerRanks')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
@@ -133,7 +133,7 @@
             <i class="relative fas fa-basketball-ball left-5"></i>
             <span class="relative left-7">Games</span>
         </a>
-        <a href="{{route('comitteePlayers')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
+        <a href="{{route('comitteePlayers')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 ">
             <i class="relative fas fa-users left-5"></i>
             <span class="relative left-7">Players</span>
         </a>
