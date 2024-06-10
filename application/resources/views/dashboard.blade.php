@@ -48,6 +48,15 @@
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Admins:</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($data as $gamesCount)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$gamesCount->Adminname}}
+                    </p>
+                    @endforeach
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-[-1px] text-white ml-[4px] text-[30px] rounded-2xl font-bold">Users:</h1>
@@ -77,9 +86,9 @@
                     $index = 1;
                     @endphp
 
-                    @foreach ($teams as $team)
+                    @foreach ($dataa as $team)
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
-                        {{$index++}}. {{$team->team}}
+                        {{$index++}}. {{$team->name}}
                     </p>
                     @endforeach
                 </div>

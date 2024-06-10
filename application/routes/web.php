@@ -37,9 +37,11 @@ Route::get('/dashboard', function () {
     $adminCount = User::count('Adminname');
     $ComitteeCount = Committee::count('name');
     $teams = teams::select('*')->orderBy('team', 'asc')->get();
+    $data = User::select('*')->orderBy('Adminname')->get();
+    $dataa = Committee::select('*')->orderBy('name')->get();
 
     $total = $adminCount + $ComitteeCount;
-    return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
+    return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total', 'data', 'dataa'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -136,6 +138,8 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
         ->name('Comitteepassword.email');
 
     Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
+
+
 });
 
 
