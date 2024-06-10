@@ -39,9 +39,9 @@
                         <tbody>
                             @foreach ($selectUsers as $admins)
                           <tr>
-                            <td>{{$admins->Adminname}}</td>
+                            <td>{{$admins->name}}</td>
                             <td>{{$admins->email}}</td>
-                            <td>{{$admins->adminID}}</td>
+                            <td>{{$admins->comitteeID}}</td>
                             <td><a href="#" class="btn btn-primary">Edit</a></td>
                             <td><form action="{{ route('delete.User', ['adminID' => $admins]) }}" method="post">
                                 @csrf

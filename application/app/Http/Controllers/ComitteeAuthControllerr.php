@@ -11,7 +11,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
@@ -117,16 +116,14 @@ class ComitteeAuthControllerr extends Controller
     }
 
     public function users(){
-        $selectUsers = User::select(['id', 'Adminname', 'email', 'adminID'],
-                                    DB::raw('SUM(adminID) OVER (PARTITION by Adminname) AS admins'),
-                                    )
-                                    ->where('role', 'like', '%admin%')
+        $selectUsers = Committee::select('*')
+                                    ->where('role', 'like', '%committee%')
                                     ->get();
 
         return view('comitteeAuth/users', compact('selectUsers'));
     }
 
-    public function deleteUsers(User $adminID)
+    public function deleteUsers(Committee $adminID)
     {
         $adminID->delete();
 
