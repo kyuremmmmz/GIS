@@ -26,5 +26,11 @@ class ComitteeSettingsController extends Controller
         return redirect()->route('UpdateUser', ['user'=>Auth::guard('committees')->id()])->with('status', 'Updated Successfully');
     }
 
+    public function DeleteAccount(Committee $user, Request $request)
+    {
+        $user->delete();
+        return redirect()->route('admin.login')->with('status', 'Committee account deleted successfully');
+    }
+
 
 }

@@ -107,7 +107,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
 
     Route::get('comittee/Settings/{comitteeID}', [comitteeSettingsController::class, 'comitteeSettings'])->name('ComitteeSettings');
     Route::put('comittee/Settings/{user}', [comitteeSettingsController::class, 'updateUser'])->name('UpdateUser');
-    Route::put('comittee/Settings/{UpdatePassword}', [ComitteeSettingsController::class, 'UpdatePassword'])->name('UpdatePassword');
+    Route::delete('comittee/Settings/{user}', [ComitteeSettingsController::class, 'DeleteAccount'])->name('deleteUser');
 
 
 
