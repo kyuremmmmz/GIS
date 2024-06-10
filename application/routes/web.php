@@ -37,9 +37,11 @@ Route::get('/dashboard', function () {
     $adminCount = User::count('Adminname');
     $ComitteeCount = Committee::count('name');
     $teams = teams::select('*')->orderBy('team', 'asc')->get();
+    $data = User::select('*')->orderBy('Adminname')->get();
+    $dataa = Committee::select('*')->orderBy('name')->get();
 
     $total = $adminCount + $ComitteeCount;
-    return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total'));
+    return view('/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total', 'data', 'dataa'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -111,7 +113,7 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
 
     Route::get('comittee/Settings/{comitteeID}', [comitteeSettingsController::class, 'comitteeSettings'])->name('ComitteeSettings');
     Route::put('comittee/Settings/{user}', [comitteeSettingsController::class, 'updateUser'])->name('UpdateUser');
-    Route::put('comittee/Settings/{UpdatePassword}', [ComitteeSettingsController::class, 'UpdatePassword'])->name('UpdatePassword');
+    Route::delete('comittee/Settings/{user}', [ComitteeSettingsController::class, 'DeleteAccount'])->name('deleteUser');
 
 
 
@@ -138,6 +140,8 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
         ->name('Comitteepassword.email');
 
     Route::get('/comitteeAuth/users', [ComitteeAuthControllerr::class, 'users'])->name('user');
+
+
 });
 
 

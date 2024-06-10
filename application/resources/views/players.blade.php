@@ -49,7 +49,7 @@
                             $index = 1;
                             @endphp
                             @foreach ($players as $player)
-<<<<<<< HEAD
+
                             <tr>
                                 <td>{{$index++}}</td>
                                 <td>{{$player->name}}</td>

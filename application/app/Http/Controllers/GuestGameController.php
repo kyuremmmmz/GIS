@@ -14,18 +14,20 @@ class GuestGameController extends Controller
     public function seeGuest()
     {
         $gamesCount = gameInfoModel::select(['id', 'teamname', 'wins'])
-                                    ->take(3)
-                                    ->get();
+        ->take(3)
+        ->get();
         $count = player_rankings::select('*')
-                                    ->take(5)
-                                    ->orderBy('points', 'desc')
-                                    ->get();
-        $countPlayers = User::count();
+            ->take(5)
+            ->orderBy('points', 'desc')
+            ->get();
         $adminCount = User::count('Adminname');
         $ComitteeCount = Committee::count('name');
         $teams = teams::select('*')->orderBy('team', 'asc')->get();
+        $data = User::select('*')->orderBy('Adminname')->get();
+        $dataa = Committee::select('*')->orderBy('name')->get();
 
-        return view('guest/dashboard',compact('gamesCount', 'count', 'countPlayers', 'adminCount', 'ComitteeCount', 'teams'));
+        $total = $adminCount + $ComitteeCount;
+        return view('guest/dashboard',compact('gamesCount', 'count', 'adminCount', 'ComitteeCount', 'teams', 'total', 'data', 'dataa'));
 
     }
 
