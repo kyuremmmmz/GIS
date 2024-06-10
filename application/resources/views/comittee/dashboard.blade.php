@@ -15,8 +15,8 @@
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
-        <div class="dropdown absolute right-16">
-            <button type="button" class="btn btn-primary  dropdown-toggle" data-bs-toggle="dropdown">
+        <div class="absolute dropdown right-16">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
               {{Auth::guard('committees')->user()->name}}
             </button>
             <ul class="dropdown-menu">
@@ -64,6 +64,15 @@
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Admins:</h1>
+                    @php
+                    $index = 1;
+                    @endphp
+
+                    @foreach ($data as $gamesCount)
+                    <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
+                        {{$index++}}. {{$gamesCount->Adminname}}
+                    </p>
+                    @endforeach
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-[-1px] text-white ml-[4px] text-[30px] rounded-2xl font-bold">Users:</h1>
@@ -73,7 +82,6 @@
                     <div class="progress relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl">
                         <div class="progress-bar" style="width: {{$total}}rem;"></div>
                     </div>
-
                 </div>
                 <div class="h-[200px] overflow-hidden bg-slate-700 text-[30px] rounded-2xl">
                     <h1 class="absolute mt-1 text-white ml-[4px] text-[20px] rounded-2xl font-bold">Teams:</h1>
@@ -94,9 +102,9 @@
                     $index = 1;
                     @endphp
 
-                    @foreach ($teams as $team)
+                    @foreach ($dataa as $team)
                     <p class="relative mt-2 top-9 text-[19px] ml-[6px] text-white rounded-2xl ">
-                        {{$index++}}. {{$team->team}}
+                        {{$index++}}. {{$team->name}}
                     </p>
                     @endforeach
                 </div>
