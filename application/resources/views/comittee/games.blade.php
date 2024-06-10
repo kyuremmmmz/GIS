@@ -15,8 +15,8 @@
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
         <h1 class="relative xl:mx-auto xl:text-center xl:left-11 xl:right-11">Game Information Management System</h1>
-        <div class="dropdown absolute right-16">
-            <button type="button" class="btn btn-primary  dropdown-toggle" data-bs-toggle="dropdown">
+        <div class="absolute dropdown right-16">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
               {{Auth::guard('committees')->user()->name}}
             </button>
             <ul class="dropdown-menu">
@@ -101,7 +101,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="card-body">
-                                <form action="{{ route('game.store') }}" method="post">
+                                <form action="{{ route('create.Game') }}" method="post">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="teamname" class="form-label">Team Name</label>
