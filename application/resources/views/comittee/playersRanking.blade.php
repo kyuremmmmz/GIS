@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
@@ -20,7 +21,6 @@
               {{Auth::guard('committees')->user()->name}}
             </button>
             <ul class="dropdown-menu">
-
               <li>
                 <form action="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->id()]) }}" method="POST">
                     @csrf
@@ -41,6 +41,10 @@
                 <a href="{{route('ComitteeTeams')}}" class="absolute top-2 w-36 float-end right-[930px] btn btn-primary">Teams</a>
                 <a href="{{route('seePlayerRanks')}}" class="absolute top-2 w-36 float-end right-[1270px] btn btn-primary">Player Rankings</a>
                 <a href="{{route('comitteePlayers')}}" class="absolute top-2 w-36 float-end right-[1100px] btn btn-primary">Players</a>
+
+                <!-- Add search input field -->
+                <input type="text" id="search" class="absolute top-[-5px] w-[1000px] float-end right-[130px]" placeholder="Search player rankings..." style="max-width: 300px; margin: 20px auto;">
+
                 <div class="mb-16 overflow-hidden bg-slate-700">
                     <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
                         <thead>
@@ -52,7 +56,7 @@
                             <th>Player Points</th>
                             <th>Age</th>
                             <th>Edit</th>
-                        <tbody>
+                        <tbody id="playerRankingTable">
                             @php
                              $index = 1;
                             @endphp
@@ -133,7 +137,7 @@
             <i class="relative fas fa-basketball-ball left-5"></i>
             <span class="relative left-7">Games</span>
         </a>
-        <a href="{{route('comitteePlayers')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 ">
+        <a href="{{route('comitteePlayers')}}" class="relative flex items-center w-auto gap-1 mt-4 rounded-full cursor-pointer top-6 hover:bg-sky-700 active:bg-sky-700 bg-sky-700">
             <i class="relative fas fa-users left-5"></i>
             <span class="relative left-7">Players</span>
         </a>
@@ -156,6 +160,23 @@
     function noBack() {
         window.history.forward();
     }
+</script>
+
+<!-- AJAX Script -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{{ route('searchPlayerRankings') }}",
+                type: "GET",
+                data: {'search': query},
+                success: function(data) {
+                    $('#playerRankingTable').html(data);
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>

@@ -90,5 +90,78 @@ class playersCommitteeController extends Controller
         return redirect()->route('seePlayerRanks', ['data' => $data]);
     }
 
+    public function searchPlayers(Request $request)
+    {
+        if($request->ajax()) {
+            $query = $request->get('search');
+            $players = player_rankings::where('name', 'LIKE', '%'.$query.'%')
+                ->orWhere('teamname', 'LIKE', '%'.$query.'%')
+                ->orWhere('id', 'LIKE', '%'.$query.'%')
+                ->orWhere('age', 'LIKE', '%'.$query.'%')
+                ->get();
+
+            $output = '';
+
+            if (count($players) > 0) {
+                foreach ($players as $index => $player) {
+                    $output .= '
+                    <tr>
+                        <td>'.($index + 1).'</td>
+                        <td>'.$player->teamname.'</td>
+                        <td>'.$player->name.'</td>
+                        <td>'.$player->id.'</td>
+                        <td>'.$player->age.'</td>
+                        <td><a href="'.route('editPlayersComittee', ['data'=>$player]).'" class="btn btn-primary">Edit</a></td>
+                        <td>
+                            <form action="'.route('deleteComitteePlayers', ['data'=>$player]).'" method="post">
+                                '.csrf_field().'
+                                '.method_field('delete').'
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>';
+                }
+            } else {
+                $output = '<tr><td colspan="7">No results found</td></tr>';
+            }
+
+            return response()->json($output);
+        }
+    }
+
+    public function searchPlayerRankings(Request $request)
+{
+    if ($request->ajax()) {
+        $query = $request->get('search');
+        $players = player_rankings::where('name', 'LIKE', '%'.$query.'%')
+            ->orWhere('teamname', 'LIKE', '%'.$query.'%')
+            ->orWhere('playerID', 'LIKE', '%'.$query.'%')
+            ->orWhere('points', 'LIKE', '%'.$query.'%')
+            ->orWhere('age', 'LIKE', '%'.$query.'%')
+            ->get();
+
+        $output = '';
+
+        if (count($players) > 0) {
+            foreach ($players as $index => $player) {
+                $output .= '
+                <tr>
+                    <td>'.($index + 1).'</td>
+                    <td>'.$player->name.'</td>
+                    <td>'.$player->teamname.'</td>
+                    <td>'.$player->playerID.'</td>
+                    <td>'.$player->points.'</td>
+                    <td>'.$player->age.'</td>
+                    <td><a href="'.route('editPlayerRanking', ['data'=>$player]).'" class="btn btn-primary">Edit</a></td>
+                </tr>';
+            }
+        } else {
+            $output = '<tr><td colspan="7">No results found</td></tr>';
+        }
+
+        return response()->json($output);
+    }
+}
+
 
 }

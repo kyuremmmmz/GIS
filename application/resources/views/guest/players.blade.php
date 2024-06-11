@@ -20,10 +20,10 @@
     <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
         <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Players:</h1>
         <div class="relative">
-            <div class="absolute overflow-hidden grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
+            <div class="absolute overflow-y-scroll grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
                 <a href="{{route('MayIseeTeams')}}" class="absolute top-2 w-36 float-end btn btn-primary">Teams</a>
-                <a href="{{route('rankings')}}" class="absolute top-2 w-36 float-end right-[1300px] btn btn-primary">Player Rankings</a>
-                <a href="{{route('showPlayers')}}" class="absolute top-2 w-36 float-end right-[1140px] btn btn-primary">Players</a>
+                <a href="{{route('rankings')}}" class="absolute top-2 w-36 float-end right-[1100px] btn btn-primary">Player Rankings</a>
+                <a href="{{route('showPlayers')}}" class="absolute top-2 w-36 float-end right-[1270px] btn btn-primary">Players</a>
                 <div class="mb-16 overflow-hidden bg-slate-700">
                     <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
                         <thead>

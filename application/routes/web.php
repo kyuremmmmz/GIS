@@ -95,6 +95,10 @@ Route::middleware([EncryptCookies::class, EnsureTokenIsValid::class, ])->group(f
     Route::get('comittee/{data}/PlayersEdit', [playersCommitteeController::class, 'editPlayers'])->name('editPlayersComittee');
     Route::put('comittee/{data}/PlayersEdit', [playersCommitteeController::class, 'updatePlayers'])->name('updatePlayerss');
     Route::delete('comittee/{data}/playersComittee', [playersCommitteeController::class, 'deleteData'])->name('deleteComitteePlayers');
+    Route::get('/search-players', [playersCommitteeController::class, 'searchPlayers'])->name('searchPlayers');
+    Route::get('/search-player-rankings', [playersCommitteeController::class, 'searchPlayerRankings'])->name('searchPlayerRankings');
+
+
 
     //COMITTEE EDIT PLAYER RANKINGS AND VIEW PLAYER RANKINGS
     Route::get('comittee/playersRanking', [playersCommitteeController::class, 'seePlayerRanks'])->name('seePlayerRanks');

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="overflow-hidden font-sans antialiased dark:bg-white dark:text-white/50" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class="flex items-center md:w-[83.33%] h-24 overflow-hidden font-sans text-3xl font-semibold text-right text-black bg-gray-300 size-fullflex sm:float-end 2xl:float-end md:float-end xl:float-end">
@@ -20,7 +21,6 @@
               {{Auth::guard('committees')->user()->name}}
             </button>
             <ul class="dropdown-menu">
-
               <li>
                 <form action="{{ route('ComitteeSettings', ['comitteeID' => Auth::guard('committees')->id()]) }}" method="POST">
                     @csrf
@@ -32,7 +32,7 @@
           </div>
     </div>
 
-    <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px]  float-end">
+    <main class="relative h-screen md:h-[30%] xl:h-[30%] rounded-full lg:h-80 sm:h-96 2xl:h-[100%] bg-slate-500 text-black left-[299px] top-[200px] float-end">
         <h1 class="absolute text-[50px] right-[200px] bottom-[20px] 2xl:left-[-291px] xl:left-[-300px]">Players:</h1>
         <div class="relative">
             <div class="absolute overflow-y-scroll max-h-[750px] grid self-center left-[-300px] grid-cols-1 items-center justify-center grid-rows-3 rounded-tl-lg gap-4 h-[1050px] text-center w-[1600px] bg-slate-500">
@@ -40,8 +40,11 @@
                 <a href="{{route('ComitteeTeams')}}" class="absolute top-2 w-36 float-end right-[930px] btn btn-primary">Teams</a>
                 <a href="{{route('seePlayerRanks')}}" class="absolute top-2 w-36 float-end right-[1270px] btn btn-primary">Player Rankings</a>
                 <a href="{{route('comitteePlayers')}}" class="absolute top-2 w-36 float-end right-[1100px] btn btn-primary">Players</a>
+
+                <!-- Add search input field -->
+                <input type="text" id="search" class="absolute top-[-5px] w-[1000px] float-end right-[130px]" placeholder="Search players..." style="max-width: 300px; margin: 20px auto;">
                 <div class="mb-16 overflow-hidden bg-slate-700">
-                    <table class="absolute table table-dark table-hover top-[50px]  overflow-auto">
+                    <table class="absolute table table-dark table-hover top-[50px] overflow-auto">
                         <thead>
                           <tr>
                             <th>#</th>
@@ -53,7 +56,7 @@
                             <th>Delete</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="playerTable">
                             @php
                              $index = 1;
                             @endphp
@@ -154,11 +157,29 @@
             </form>
         </div>
     </div>
+
     <script type="text/javascript">
         window.history.forward();
         function noBack() {
             window.history.forward();
         }
+    </script>
+
+    <!-- AJAX Script -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#search').on('keyup', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ route('searchPlayers') }}",
+                    type: "GET",
+                    data: {'search': query},
+                    success: function(data) {
+                        $('#playerTable').html(data);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
