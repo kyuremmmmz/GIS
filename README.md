@@ -1,4 +1,3 @@
-THIS IS THE COMMISSION SYSTEM PROJECT FOR MY CLIENT GIS
 <!DOCTYPE html>
 <html lang="en">
 <head>
