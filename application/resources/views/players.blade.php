@@ -85,6 +85,42 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="create">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Register Players</h3>
+                        <button type="button" class="btn-close" data-bs-target="#create" data-bs-toggle="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <form action="{{ route('createPlayers') }}" method="post">
+                                @csrf
+                                @method('post')
+                                <div class="mb-3">
+                                    <label for="playerid" class="form-label">Player ID</label>
+                                    <input type="text" class="form-control" id="playerid" name="id" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name"  name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="text" class="form-control" id="age" min="0" name="age" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="teamname" class="form-label">Team Name</label>
+                                    <input type="text" class="form-control" id="teamname"  min="0" name="teamname" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Side Content -->
